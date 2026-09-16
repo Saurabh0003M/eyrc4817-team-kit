@@ -24,7 +24,8 @@ MUJOCO39_VENV="$HOME/.local/share/eyrc4817/mujoco-3.9.0"
 BASHRC="$HOME/.bashrc"
 BLOCK_START="# >>> eyrc4817 >>>"
 BLOCK_END="# <<< eyrc4817 <<<"
-APT_PACKAGES="git zip curl python3-pip python3-venv python3-opencv python3-numpy libglfw3-dev \
+APT_PACKAGES="git zip curl python3-pip python3-venv python3-opencv python3-numpy python3-tk python3-yaml \
+python3-matplotlib python3-reportlab libglfw3-dev \
 ros-humble-actuator-msgs ros-humble-image-view ros-humble-rosbag2-storage-default-plugins \
 python3-colcon-common-extensions mosquitto mosquitto-clients"
 MIN_FREE_GB=4
@@ -222,7 +223,7 @@ verify() {
     local mujoco_dir; mujoco_dir="$(find_mujoco39_dir)"
     [ -n "$mujoco_dir" ] && export LD_LIBRARY_PATH="$mujoco_dir:${LD_LIBRARY_PATH:-}"
 
-    python3 - <<'PY' && ok "Python: OpenCV 4.5.x + old ArUco API, numpy < 2, cv_bridge, paho-mqtt >= 2" || bad "Python packages (see line above)"
+    python3 - <<'PY' && ok "Python: OpenCV 4.5.x + old ArUco API, numpy < 2, cv_bridge, paho-mqtt >= 2, tkinter/yaml/matplotlib" || bad "Python packages (see line above)"
 import sys, importlib.metadata as md
 problems = []
 try:
@@ -234,6 +235,10 @@ try:
     import numpy
     if int(numpy.__version__.split(".")[0]) >= 2: problems.append(f"numpy {numpy.__version__} (needs < 2)")
 except ImportError: problems.append("numpy not importable")
+for name in ("tkinter", "yaml", "matplotlib"):
+    try:
+        __import__(name)
+    except ImportError: problems.append(f"{name} missing (PID tuner / tools need it)")
 try:
     from cv_bridge import CvBridge
 except Exception as error: problems.append(f"cv_bridge: {error}")
