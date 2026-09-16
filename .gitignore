@@ -1,0 +1,29 @@
+# Team 4817 repo = a whitelist. Everything in this folder is ignored unless listed below.
+# Why: this folder also holds e-Yantra's own documents (their IP, not ours to redistribute),
+# last season's large archives, a machine-specific Python venv, and nested e-Yantra git clones.
+/*
+
+!/.gitignore
+!/README.md
+!/CLAUDE.md
+!/LEARNING-ROADMAP.pdf
+!/context/
+!/learning/
+!/setup/
+
+# Never commit graded solution code while this repo is public: other teams could copy it,
+# and then OUR submissions get flagged by e-Yantra's plagiarism check.
+task_1a.py
+task_1b.py
+task1a.py
+KD_*_task*.py
+*result.yaml
+*result.json
+*_results.txt
+PB#*.zip
+KD_*.zip
+
+# Python / editor clutter
+__pycache__/
+*.pyc
+.vscode/
