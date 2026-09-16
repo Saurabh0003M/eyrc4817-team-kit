@@ -124,6 +124,9 @@ the install risks, and the dual-boot plan: `context/03-machines.md`.
 | Path | Contents | Read when |
 |---|---|---|
 | `CLAUDE.md` | this file | always — auto-loaded, free |
+| `README.md` | **Teammate entry point** (public repo): first day, what setup checks, laptop layout, per-task run commands, tools, troubleshooting, open forum questions, team rules | teammate questions |
+| `RESOURCES.md` | **Every portal learning link (~180, all verified 2026-09-16 with `check_links.py`)**, grouped like the portal, mapped to roadmap modules | finding any video/doc link |
+| `setup/setup.sh` | v2: preflight (OS/arch/WSL/VM/RAM/disk/ROS/internet) → inventory → installs only what's missing → verify. `--check` = no changes. bashrc block adds `ROS_LOCALHOST_ONLY=1`. Install mode not yet run on a fresh laptop | teammate setup |
 | `learning/tools/` | `pixel_detective.py` (M1-b), `hsv_tuner.py` (M1-f), `toy_drone.py` (M3-f; controller left blank for Saurabh), `kd1a_testbench.py` (M1-j; consistency across 10 variants, no answer key), `submission_check.py` (kd1a/kd1b/kd1c/pb1a/pb1b: coding standard, GUI calls, results format, PB signatures, zip), `bag_score.py` (M6-e/M7-d; scoring assumptions in the file). All tested 2026-09-16 with dummy inputs, and none contains a solution | learning sessions, pre-submission checks |
 | `LEARNING-ROADMAP.pdf` | **Saurabh's learning roadmap v3 (2026-09-16, 19 pages, both themes)**: M0–M7 (KD; M1 = KD 1A, M6 = 1B, M7 = 1C), P1–P3 (PacBot; P2 = PB 1A, P3 = PB 1B), L1 LQR + T2 preview after Task 1; video ladders from all portal material, experiments, dictionary, answers; 100 checkboxes, fillable logs. Source: `learning/source/roadmap.md` + `build_roadmap_pdf.py` (rebuilding resets ticks; the script backs up first) | any learning session: "Roadmap P2, experiment P2-c" |
 | `context/01-theme-khoj-o-drone.md` | KD objectives, build targets, win condition, kit | planning KD work |

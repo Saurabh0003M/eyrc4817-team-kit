@@ -45,6 +45,22 @@ brain's `STATE.md` with your agent name and the date.** Newest entry first.
 
 ## Entries
 
+### 2026-09-16 (late) · claude-code — teammate-readiness pass
+
+- **Audit:** the repo had only 48 links vs ~180 in the portal material (no docs.ros.org at all), and
+  `CLAUDE.md` pointed at 21 local-only paths.
+- Added **`RESOURCES.md`** (every portal link + roadmap extras, mapped to modules) and
+  **`learning/tools/check_links.py`** (YouTube via oEmbed, Colab via GitHub). Result: 182 links OK, portal
+  links skipped, one transient 500 re-checked OK.
+- **`setup.sh` v2:** preflight, inventory, install-only-missing, verification, "where things are", log file,
+  `ROS_LOCALHOST_ONLY=1`, and it disables stale `pico_mujoco_ws` bashrc lines. Fixed 3 bugs found by `--check`
+  (VM detection, MuJoCo search depth, perpetual to-dos). The bashrc editing was tested on a fake HOME and is
+  idempotent. **Install mode is untested on a fresh machine.**
+- **README v2:** teammate-first (first day, setup table, laptop layout, run commands, tools, troubleshooting,
+  forum questions, rules).
+- Still open: Linux + ROS 2 Books portal pages never shared; login-only PDFs; live checks (tuner
+  click-trap, PB LEFT = ±90°, scoring clock); public-repo personal data/IP decision; deadline, split, machines.
+
 ### 2026-09-16 (night) · claude-code — all material in, roadmap v3
 
 - Saurabh: "all learning material provided" (KD + PacBot), plus the PB Task 1B submission page →
