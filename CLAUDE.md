@@ -124,7 +124,7 @@ the install risks, and the dual-boot plan: `context/03-machines.md`.
 | Path | Contents | Read when |
 |---|---|---|
 | `CLAUDE.md` | this file | always — auto-loaded, free |
-| `learning/tools/` | `pixel_detective.py` (click → BGR/HSV, M1-b), `hsv_tuner.py` (sliders → mask, M1-f). GUI learning aids, never part of a submission | Task 1A learning sessions |
+| `learning/tools/` | `pixel_detective.py` (M1-b), `hsv_tuner.py` (M1-f), `toy_drone.py` (M3-f; controller left blank for Saurabh), `kd1a_testbench.py` (M1-j; consistency across 10 variants, no answer key), `submission_check.py` (kd1a/kd1b/kd1c/pb1a/pb1b: coding standard, GUI calls, results format, PB signatures, zip), `bag_score.py` (M6-e/M7-d; scoring assumptions in the file). All tested 2026-09-16 with dummy inputs, and none contains a solution | learning sessions, pre-submission checks |
 | `LEARNING-ROADMAP.pdf` | **Saurabh's learning roadmap v3 (2026-09-16, 19 pages, both themes)**: M0–M7 (KD; M1 = KD 1A, M6 = 1B, M7 = 1C), P1–P3 (PacBot; P2 = PB 1A, P3 = PB 1B), L1 LQR + T2 preview after Task 1; video ladders from all portal material, experiments, dictionary, answers; 100 checkboxes, fillable logs. Source: `learning/source/roadmap.md` + `build_roadmap_pdf.py` (rebuilding resets ticks; the script backs up first) | any learning session: "Roadmap P2, experiment P2-c" |
 | `context/01-theme-khoj-o-drone.md` | KD objectives, build targets, win condition, kit | planning KD work |
 | `context/02-theme-pacbot.md` | PB equivalent | only if PB comes back into play |

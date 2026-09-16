@@ -35,7 +35,7 @@ What `setup.sh` does:
 |---|---|
 | `LEARNING-ROADMAP.pdf` | Learning roadmap for both themes: modules per Task 1 subtask, video ladders, experiments, dictionary (source in `learning/source/`) |
 | `CLAUDE.md`, `context/` | Team notes: task briefs, setup findings, traps, learning-material analysis |
-| `learning/tools/` | `pixel_detective.py` (click → BGR/HSV), `hsv_tuner.py` (sliders → colour mask) |
+| `learning/tools/` | Learning aids and checkers, none of which solve a task: `pixel_detective.py` (click → BGR/HSV), `hsv_tuner.py` (sliders → colour mask), `toy_drone.py` (plain-Python PID playground; you write the controller), `kd1a_testbench.py` (runs your KD 1A script on tilted/darker/blurred arenas and checks the answers stay consistent), `submission_check.py` (file names, coding standard, blocking calls, results format, PacBot boilerplate signatures, zip structure), `bag_score.py` (estimates KD 1B/1C marks from a practice bag) |
 | `setup/setup.sh` | The setup script above |
 
 ## Rules we follow

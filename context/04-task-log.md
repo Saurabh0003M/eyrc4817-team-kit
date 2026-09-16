@@ -55,6 +55,10 @@ brain's `STATE.md` with your agent name and the date.** Newest entry first.
   into video ladders. Includes the portal-bug exercises (I-term formula; translational EOM missing
   thrust) and a team-split *proposal*. Open: the team split, deadline, laptop owner, other machines,
   Task 0 upload status.
+- **Team git repo (local)** at `~/Desktop/e-yantra`: whitelist `.gitignore`, `README.md`, `setup/setup.sh`
+  (`--check` passes on this laptop), first commit `89ff48c` (24 files, 568 K). Git identity set: Saurabh Tomke
+  <saurabh.tomke@gmail.com>. Saurabh chose **public GitHub**; not pushed yet, because it waits for his explicit yes
+  after the IP/privacy warning and his own `gh auth login`. The file isn't committed yet, so it lands with the next commit.
 
 ### 2026-09-16 (evening) · claude-code — Task 1C brief, yt-dlp
 
