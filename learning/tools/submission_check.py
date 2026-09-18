@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Submission checker — roadmap M1-i/M1-k, M6-g, M7-d, P2-g, P3-e.
+Submission checker — for all five Task 1 subtasks (KD 1A/1B/1C, PB 1A/1B).
 
 It never looks at *whether your answer is right*. It checks what gets submissions rejected:
 file names, e-Yantra's coding-standard comment blocks, forbidden GUI/input calls, the KD 1A

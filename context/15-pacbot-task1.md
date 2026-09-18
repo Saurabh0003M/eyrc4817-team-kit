@@ -72,6 +72,18 @@ Task 1 at all.
   Tune for a steady line (hugging the wall scrapes; oscillating clips both sides).
 - Portal folder names are `task_1b`; the repo uses `task1b`. Use the real folder.
 
+## Boilerplate facts vs portal text [VERIFIED from the boilerplates 2026-09-17]
+- **PB 1A:** the maze is 13×13; `WALLS` bitmask grid (N=1, E=2, S=4, W=8); `EXIT_CELLS` = (0,6,'south'), (12,6,'north');
+  `HEADING_DELTA` yaw 0:(0,+1,E) 90:(+1,0,N) 180:(0,−1,W) 270:(−1,0,S). **North = row + 1, so row 0 is the south
+  edge.** `choose_command(pacbot_cell, pacbot_yaw, pellets_remaining)` returns FRONT/LEFT/RIGHT/BACK/None. Plumbing:
+  `parse_pellets`, `main`, nested `decide_and_send`, `on_message`; client_id "Controller".
+- **PB 1B CONTRADICTION:** the portal says `fl, fr` = FRONT ToF and `sl, sr` = SIDE ToF. The boilerplate comments say `fl`/`fr`
+  = distance to the left/right SIDE wall and `sl`/`sr` = distance AHEAD left/right of centre. **Unresolved:** verify
+  by driving straight and watching which pair shrinks. The first reading at the entry was fl≈0.10, fr≈0.10, sl≈0.26, sr≈0.26.
+- The 1B boilerplate docstring says to run `mosquitto` first. The broker is a systemd service here, so a manual
+  `mosquitto` fails with "address already in use".
+- The 1B boilerplate prints every message (500 Hz), which floods the terminal.
+
 ## Setup status [VERIFIED 2026-09-16]
 - Repo `~/Desktop/e-yantra/pacbot_ws` pulled (commit `2c1343c` "feat: task1 launch files").
   **`~/pacbot_ws` → symlink** to it, so the portal paths work.

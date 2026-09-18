@@ -11,19 +11,19 @@ brain's `STATE.md` with your agent name and the date.** Newest entry first.
 | Theme selection | Sep 2026 | **DONE** | team | KD primary, PB secondary |
 | **Task 0 — Setup & Installation** | ~3 wk, Sep 2026 | **IN PROGRESS — 1 of 4 machines done** | all four | Ubuntu box: KD evaluator all green; PB sealed submission generated (2026-09-12). Portal upload status **unknown**. Other three machines not started or unknown |
 | **Task 0 — Bonus task** | end of Task 0 | **Part 1 DONE · Part 2 UNBLOCKED (sim builds; launch not tried)** | Saurabh + claude-code | Practice only. (1) turtlesim circle: node `task_0_4817` verified; portal text says d=2.0 but its figure shows ~8.0, so `radius` is a parameter. (2) apt packages installed; fresh `~/pico_ws` builds all 17 packages. Details: `08-task0-bonus.md` |
-| **Task 1A — find survivors (OpenCV)** | released 2026-09-16, deadline **?** | **NOT STARTED — next** | Saurabh (learning) | 20 marks. Spec + traps: `09-task1-overview-and-1a.md`. Roadmap M1 |
-| **Task 1B — tune altitude PID** | same | **READY TO TUNE** (sim libraries all found; not yet launched with the controller) | Saurabh tunes | 40 marks. Controller is a pre-built binary: **tune gains, record bag + YouTube**. `10-task1b.md` |
-| **Task 1C — tune pitch + roll** | same | not started (needs 1B throttle gains first) | Saurabh tunes | 40 marks. Tuning, not coding; bag + YouTube. `11-task1c.md` |
-| **PacBot Task 1A — maze path planning** | released, deadline ? | **SETUP DONE, not started** | ? | 35 marks. `15-pacbot-task1.md` |
-| **PacBot Task 1B — wall following (MuJoCo)** | same | **SETUP DONE, not started**; submission page not received | ? | 65 marks. `15-pacbot-task1.md` |
+| **Task 1A — find survivors (OpenCV)** | released 2026-09-16, **deadline 23 Sep** | **NOT STARTED — next** | proposed: Mahesh | 20 marks. Spec + traps: `09-task1-overview-and-1a.md`. Study file `chatgpt-project/01_…` |
+| **Task 1B — tune altitude PID** | same | **READY TO TUNE** (sim libraries all found; not yet launched with the controller) | proposed: Gauri | 40 marks. Controller is a pre-built binary: **tune gains, record bag + YouTube**. `10-task1b.md` |
+| **Task 1C — tune pitch + roll** | same | not started (needs 1B throttle gains first) | proposed: Gauri | 40 marks. Tuning, not coding; bag + YouTube. `11-task1c.md` |
+| **PacBot Task 1A — maze path planning** | released, **deadline 23 Sep** | **SETUP DONE, not started** | proposed: Parth | 35 marks. `15-pacbot-task1.md` |
+| **PacBot Task 1B — wall following (MuJoCo)** | same | **SETUP DONE, not started**; submission page received | proposed: Saurabh | 65 marks. `15-pacbot-task1.md` |
 | Task 2 — Learn & Explore II | ~4 wk | not started | — | commit to one theme |
 | Tasks 3–6 | Nov 26 – Feb 27 | Stage 2 only | — | needs Stage 1 selection |
 
 ## Open actions
 
-0. **Task 1A (next).** Ask for the **Task 1 deadline**. Ask on the e-Yantra forum whether the results
-   file has a blank line 2 (the pages contradict each other). Saurabh works through roadmap M1
-   and writes the pipeline himself; Claude supplies tools (`learning/tools/`) and checks. **Gauri
+0. **Task 1 (all five subtasks), deadline Wed 23 Sep.** Plan + proposed owners: `chatgpt-project/00_START_HERE.md`
+   (work final Tue 22; Gauri uploads early on the 23rd). Forum questions (results-file line 2, deadline time, …)
+   are listed there. Everyone studies via the team ChatGPT Project and writes their own code; Claude supplies tools (`learning/tools/`) and checks. **Gauri
    must upload**, because only the Team Leader can.
 1. **Confirm the Task 0 uploads.** Check whether `pacbot_ws/task0/4817_task0.zip` and
    `drone_ws/task0/result-2026-KD-0-20260912.json` have been submitted on the portal.
@@ -44,6 +44,22 @@ brain's `STATE.md` with your agent name and the date.** Newest entry first.
    Firebird V robot and can be skipped. Worth it only if all four can sit together for 5 hours.
 
 ## Entries
+
+### 2026-09-17 · claude-code — deadline 23 Sep; ChatGPT Project replaces the roadmap PDF
+
+- Saurabh: **Task 1 deadline = 23 Sep 2026**. The portal's *ROS 2 Books* page leads to a paid book (skip). **Teammate info
+  may stay public.** He **didn't like the roadmap PDF**, and the new plan is **a ChatGPT Project** (instructions + files)
+  shared with all teammates for questions and learning.
+- Built **`chatgpt-project/`**: `PROJECT_INSTRUCTIONS.md` (~3.9k chars: tutor role, plain words, **no complete graded
+  solutions (plagiarism check, shared project)**, environment facts, common wrong advice) + 9 files: 00 start (team,
+  subtask table, **proposed owners** Gauri KD 1B/1C, Mahesh KD 1A, Parth PB 1A, Saurabh PB 1B, **6-day plan**, forum
+  questions), 01–04 one per subtask, 05 setup/run/submit/coding standard/troubleshooting, 06 concepts, 07 all links +
+  watch-first list, 08 portal-learnings summary + portal mistakes. Plus `HOW_TO_CREATE_THE_PROJECT.md`.
+- **New findings from the PacBot boilerplates** (see `15`): the 1B sensor-name contradiction (portal vs boilerplate);
+  1A north = row+1; manual `mosquitto` conflicts with the service.
+- Repo: the roadmap PDF + source + builder removed from git (moved to `~/Desktop/e-yantra-old-roadmap/`); README and
+  RESOURCES re-tagged by subtask instead of roadmap modules; `check_links.py` retries 5xx and covers
+  `chatgpt-project/`.
 
 ### 2026-09-16 (late) · claude-code — teammate-readiness pass
 

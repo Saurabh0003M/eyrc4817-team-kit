@@ -2,13 +2,13 @@
 
 **Repo:** https://github.com/Saurabh0003M/eyrc4817-team-kit ·
 **Portal:** [Khoj-o-Drone](https://portal.e-yantra.org/courses/theme_kd) · [PacBot](https://portal.e-yantra.org/courses/theme_pb) (login) ·
-**Links:** [RESOURCES.md](RESOURCES.md) · **Roadmap:** [LEARNING-ROADMAP.pdf](LEARNING-ROADMAP.pdf)
+**Links:** [RESOURCES.md](RESOURCES.md) · **Study with ChatGPT:** [chatgpt-project/](chatgpt-project) · **⏰ Task 1 deadline: 23 September 2026**
 
 ```bash
 git clone https://github.com/Saurabh0003M/eyrc4817-team-kit.git ~/eyrc4817
 ```
 
-Everything the team needs to **set up**, **learn** and **check submissions** for e-Yantra Robotics
+Everything the team needs to **set up**, **learn** (through our shared ChatGPT Project) and **check submissions** for e-Yantra Robotics
 Competition 2026-27, Stage 1. Written for teammates who are new to ROS 2, PID, MuJoCo, OpenCV and MQTT.
 
 > This repo contains **no e-Yantra competition files** (task PDFs, launch binaries, boilerplates) and
@@ -58,7 +58,7 @@ Then:
 
 1. **Close the terminal and open a new one** so the new settings load.
 2. Run `bash ~/eyrc4817/setup/setup.sh --check` again. It should end with *Everything is set up*.
-3. Open **[`LEARNING-ROADMAP.pdf`](LEARNING-ROADMAP.pdf)** and read sections 1–3 (about 10 minutes).
+3. Open the team's **ChatGPT Project** (Saurabh shares the link) and ask: *"I'm <name>. What's my subtask and what do I do today?"*. The same files are in [`chatgpt-project/`](chatgpt-project); start with `00_START_HERE.md`.
 4. Agree with the team **who owns which Task 1 subtask** ([section 4](#4-task-1-at-a-glance)).
 5. Open one simulator from [section 5](#5-how-to-run-each-task), just to see it start. Stop it with Ctrl+C.
 
@@ -94,7 +94,7 @@ simulator needs the **3.9.0** library. Setup keeps both, and they don't clash.
 ## 3. Where everything lives on your laptop
 
 ```
-~/eyrc4817/          ← this repo (docs, roadmap, tools). Any folder works; ~/eyrc4817 is the suggestion
+~/eyrc4817/          ← this repo (docs, ChatGPT files, tools). Any folder works; ~/eyrc4817 is the suggestion
 ~/pico_ws/           ← Khoj-o-Drone workspace. Path fixed by e-Yantra; don't rename it
    src/swift_pico/scripts/   task1a.py + image_1.jpg   (KD Task 1A: write your code in task1a.py)
    src/swift_pico/src/       pid_values.yaml           (written by the PID tuner's "Save Values")
@@ -114,17 +114,17 @@ simulator needs the **3.9.0** library. Setup keeps both, and they don't clash.
 
 ## 4. Task 1 at a glance
 
-Deadline: **not known yet**; see [section 11](#11-open-questions-to-ask-e-yantra).
+**Deadline: 23 September 2026** (confirm the exact time on the portal). Suggested owners and a day-by-day plan: [`chatgpt-project/00_START_HERE.md`](chatgpt-project/00_START_HERE.md).
 
-| Theme | Part | What | Code or tune? | Marks | Roadmap | Full brief |
+| Theme | Part | What | Code or tune? | Marks | Study file | Full brief |
 |---|---|---|---|---|---|---|
-| Khoj-o-Drone | 1A | Find survivors in a photo → grid names like `D2` | write Python + OpenCV | 20 | M1 | [context/09](context/09-task1-overview-and-1a.md) |
-| Khoj-o-Drone | 1B | Drone holds a fixed height | tune 3 gains | 40 | M6 | [context/10](context/10-task1b.md) |
-| Khoj-o-Drone | 1C | Drone holds x and y too | tune pitch + roll gains | 40 | M7 | [context/11](context/11-task1c.md) |
-| PacBot | 1A | Grid maze: 2 pellets, then an exit, over MQTT | write Python (search + turn logic) | 35 | P2 | [context/15](context/15-pacbot-task1.md) |
-| PacBot | 1B | 3D maze wall following, 0 collisions | write Python + PID | 65 | P3 | [context/15](context/15-pacbot-task1.md) |
+| Khoj-o-Drone | 1A | Find survivors in a photo → grid names like `D2` | write Python + OpenCV | 20 | [01](chatgpt-project/01_KD_Task1A_Survivor_Detection.md) | [context/09](context/09-task1-overview-and-1a.md) |
+| Khoj-o-Drone | 1B | Drone holds a fixed height | tune 3 gains | 40 | [02](chatgpt-project/02_KD_Task1B_1C_PID_Tuning.md) | [context/10](context/10-task1b.md) |
+| Khoj-o-Drone | 1C | Drone holds x and y too | tune pitch + roll gains | 40 | [02](chatgpt-project/02_KD_Task1B_1C_PID_Tuning.md) | [context/11](context/11-task1c.md) |
+| PacBot | 1A | Grid maze: 2 pellets, then an exit, over MQTT | write Python (search + turn logic) | 35 | [03](chatgpt-project/03_PB_Task1A_Maze_Path_Planning.md) | [context/15](context/15-pacbot-task1.md) |
+| PacBot | 1B | 3D maze wall following, 0 collisions | write Python + PID | 65 | [04](chatgpt-project/04_PB_Task1B_Wall_Following.md) | [context/15](context/15-pacbot-task1.md) |
 
-Four of the five parts use **PID**, so everyone should do roadmap module **M3**.
+Four of the five parts use **PID**, so everyone should watch the PID videos (list in `chatgpt-project/07_Learning_Resources.md`).
 
 ---
 
@@ -186,21 +186,14 @@ Zip the files, not the folder. Example: `cd task_1b && zip -r KD_4817_task_1b.zi
 
 | You want to… | Open |
 |---|---|
-| Know **what to learn, in what order, with experiments** | **[`LEARNING-ROADMAP.pdf`](LEARNING-ROADMAP.pdf)**: one module per Task 1 subtask; click boxes to tick them, Ctrl+S saves |
-| Find **any link** the portal gave (videos, docs, playlists) | **[`RESOURCES.md`](RESOURCES.md)**: grouped like the portal, mapped to roadmap modules, ⭐ = start here |
-| Look up a **word** (PID, topic, broker, HSV…) | Roadmap §4, the plain-words dictionary |
+| **Ask questions, learn, get unstuck** | The team **ChatGPT Project** (it has all the files below as context) |
+| Read **your subtask in plain words** | [`chatgpt-project/`](chatgpt-project): `00_START_HERE` (team, plan) · `01` KD 1A · `02` KD 1B/1C · `03` PB 1A · `04` PB 1B · `05` setup/run/submit · `06` concepts · `07` links · `08` portal learnings |
+| Find **any link** the portal gave (videos, docs, playlists) | **[`RESOURCES.md`](RESOURCES.md)**: grouped like the portal, tagged by subtask, ⭐ = start here |
+| Look up a **word** (PID, topic, broker, HSV…) | [`chatgpt-project/06_Concepts_Explained.md`](chatgpt-project/06_Concepts_Explained.md) |
 | Read the **exact task rules**, traps and scoring | [context/09](context/09-task1-overview-and-1a.md)–[11](context/11-task1c.md) (KD), [context/15](context/15-pacbot-task1.md) (PacBot) |
 | See what the **learning pages say** + portal mistakes we found | [context/12](context/12-learnings-control-systems.md) control · [13](context/13-learnings-quad-control-imgproc-coding.md) quad control, OpenCV, coding standard · [14](context/14-learnings-pacbot-mqtt-pathplanning.md) MQTT, path planning · [06](context/06-prelearnings.md) ROS 2, MuJoCo, quadcopters |
 
-**Suggested first modules:** M0 (big picture), then M1 if you own KD 1A, or P1 → P2 if you own PB 1A. **Everyone** does M3 (PID).
-
-**The roadmap was written with an AI assistant ("Claude") in mind.** No assistant? Here's who covers the
-"Claude does" parts:
-- setup → `setup.sh`
-- checking your work → the tools in [section 8](#8-tools-in-this-repo)
-- anything else → ask a teammate
-
-**The learning parts (predict, try, explain, teach) are yours either way.**
+**Using ChatGPT for graded tasks:** it's set up to teach, review and debug, **not** to write the whole answer file, because e-Yantra plagiarism-checks every submission and all four of us use the same project.
 
 ---
 
@@ -210,14 +203,13 @@ All in `learning/tools/`, run from the repo folder. None of them solves a task; 
 
 | Tool | Use it for | Example |
 |---|---|---|
-| `pixel_detective.py` | Click the photo → see BGR and HSV numbers (M1-b) | `python3 learning/tools/pixel_detective.py` |
-| `hsv_tuner.py` | Sliders → see which pixels a colour range keeps (M1-f) | `python3 learning/tools/hsv_tuner.py` |
-| `kd1a_testbench.py` | Runs **your** KD 1A script on 10 harder arena versions; answers must stay the same (M1-j) | `python3 learning/tools/kd1a_testbench.py --script ~/pico_ws/src/swift_pico/scripts/task1a.py` |
+| `pixel_detective.py` | Click the photo → see BGR and HSV numbers (KD 1A) | `python3 learning/tools/pixel_detective.py` |
+| `hsv_tuner.py` | Sliders → see which pixels a colour range keeps (KD 1A) | `python3 learning/tools/hsv_tuner.py` |
+| `kd1a_testbench.py` | Runs **your** KD 1A script on 10 harder arena versions; answers must stay the same (KD 1A) | `python3 learning/tools/kd1a_testbench.py --script ~/pico_ws/src/swift_pico/scripts/task1a.py` |
 | `submission_check.py` | Before upload: names, **coding standard**, blocking calls, results format, PacBot functions unchanged, zip layout | `python3 learning/tools/submission_check.py pb1a --file ~/pacbot_ws/task1a/task_1a.py` |
 | `bag_score.py` | Estimate KD 1B/1C marks from a practice bag (assumptions in the file) | `python3 learning/tools/bag_score.py 1b task_1b` |
-| `toy_drone.py` | Plain-Python PID playground; you write the controller (M3-f) | `python3 learning/tools/toy_drone.py --kp 20` |
+| `toy_drone.py` | Plain-Python PID playground; you write the controller (PID practice) | `python3 learning/tools/toy_drone.py --kp 20` |
 | `check_links.py` | Check every link in these docs still works | `python3 learning/tools/check_links.py` |
-| `../source/build_roadmap_pdf.py` | Rebuild the roadmap PDF after editing `roadmap.md` (resets your ticks; backs up first) | `python3 learning/source/build_roadmap_pdf.py` |
 
 ---
 
@@ -257,7 +249,7 @@ each person owns specific subtasks.
 `~/pacbot_ws/task1a/task_1a.py`, `~/pacbot_ws/task1b/task_1b.py`. KD 1B/1C: no code, only gains.
 **Never** put solution code in this repo.
 
-**The roadmap mentions "Claude".** That's the AI assistant used to prepare it. See [section 7](#7-learning-where-to-start).
+**Who made these notes?** Saurabh, with an AI assistant (Claude); the `CLAUDE.md` file is its index. Teammates use the ChatGPT Project.
 
 ---
 
@@ -265,7 +257,7 @@ each person owns specific subtasks.
 
 Post these on the e-Yantra forum; the portal doesn't answer them, or contradicts itself:
 
-1. **Task 1 deadline** for both themes.
+1. **Exact deadline time** on 23 September (both themes).
 2. **KD 1A results file:** 3 lines or 4? The instruction page shows a blank line 2; the submission page says "exactly three lines".
 3. **KD 1A marker IDs:** always 80, 85, 90, 95 in the hidden test images? The submission example shows 10, 15, 20, 25.
 4. **KD 1B/1C scoring:** when does the clock start? Are "hover seconds" continuous or cumulative?
@@ -313,8 +305,8 @@ The workspaces `~/pico_ws` and `~/pacbot_ws` are e-Yantra's normal task folders;
 | Path | What |
 |---|---|
 | [`README.md`](README.md) | This page |
-| [`RESOURCES.md`](RESOURCES.md) | Every learning link from the portal, mapped to roadmap modules |
-| [`LEARNING-ROADMAP.pdf`](LEARNING-ROADMAP.pdf) | The learning roadmap (source `learning/source/roadmap.md`, built by `build_roadmap_pdf.py`) |
+| [`RESOURCES.md`](RESOURCES.md) | Every learning link from the portal, tagged by subtask |
+| [`chatgpt-project/`](chatgpt-project) | The files + instructions for the team's ChatGPT Project (see `HOW_TO_CREATE_THE_PROJECT.md`) |
 | [`setup/setup.sh`](setup/setup.sh) | Laptop setup + checker |
 | [`learning/tools/`](learning/tools) | The tools in [section 8](#8-tools-in-this-repo) |
 | [`CLAUDE.md`](CLAUDE.md) | Index of the team notes (written for the AI assistant, but readable) |

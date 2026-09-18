@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Practice-score estimator for KD Task 1B / 1C bag recordings — roadmap M6-e, M7-d.
+Practice-score estimator for KD Task 1B / 1C bag recordings.
 
 Reads /pos_error from a ros2 bag and applies the portal's scoring table:
   Hovering 16  — per second inside the ±0.4 box, up to 10 s

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Toy drone — roadmap experiment M3-f. A PID playground in plain Python: no ROS, no simulator.
+Toy drone — PID practice in plain Python: no ROS, no simulator.
 
 A mass hangs in the air under gravity. Your controller chooses the thrust. That's all, and it's
 enough to *see* what P, I and D do before you touch the real Swift Pico.

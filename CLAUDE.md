@@ -5,7 +5,7 @@ it with zero tool calls.** Open a `context/` file only when the question actuall
 Never bulk-read `_extracted/`, `eYRC 2025-26/`, or the `.docx` / `.pdf` / `.png` originals — those
 are storage, not context.
 
-`Verified: 2026-09-16 · claude-code (on the Ubuntu box)`
+`Verified: 2026-09-17 · claude-code (on the Ubuntu box)`
 
 ## State in one paragraph
 
@@ -19,10 +19,10 @@ Portal upload status and machine owner are unknown → `context/04-task-log.md`.
 **NOW (2026-09-16): Task 1 is released.** It has three parts: **1A** image processing, find
 survivors in a photo (20 marks); **1B** PID for altitude hold (40); **1C** PID for all 3 axes (40).
 Brief and traps: `context/09-task1-overview-and-1a.md`. The workspace is now **`~/pico_ws`** (it
-replaced `pico_mujoco_ws`) and builds cleanly. **Deadline unknown — ask.**
+replaced `pico_mujoco_ws`) and builds cleanly. **Task 1 deadline: 23 Sep 2026** (confirm the exact time).
 
 **Saurabh is a beginner in ROS 2, PID, MuJoCo and OpenCV** (he knows Linux, C++, breadboards and
-basic Python). His goal is **learning**: follow `LEARNING-ROADMAP.pdf`. Claude does setup and
+basic Python). His goal is **learning**. **The PDF roadmap was dropped (2026-09-17: he didn't like it); the team now learns through a shared ChatGPT Project** built from `chatgpt-project/`. Claude does setup and
 plumbing; **Saurabh writes the "brain" code**. Explain every term, ask him to predict before each
 experiment, and never hand him a finished graded solution (submissions are plagiarism-checked).
 
@@ -36,7 +36,7 @@ experiment, and never hand him a finished graded solution (submissions are plagi
 | Member | Portal role | Branch / year | Proposed ownership |
 |---|---|---|---|
 | Gauri S Nanaware | **Captain** | Electrical, 3rd yr | Flight controller, power/ESC, **PID tuning** — control theory is her coursework; career target is F1 / renewable energy |
-| Saurabh Tomke | Member | Cyber Security, 3rd yr | Drives this repo. Wants hardware / robotics / hardware-security; treats AI as tool, not replacement. **Knows Linux, C++, breadboards, intro Python. New to ROS 2 / PID / MuJoCo / MQTT.** Follows `LEARNING-ROADMAP.pdf` |
+| Saurabh Tomke | Member | Cyber Security, 3rd yr | Drives this repo. Wants hardware / robotics / hardware-security; treats AI as tool, not replacement. **Knows Linux, C++, breadboards, intro Python. New to ROS 2 / PID / MuJoCo / MQTT.** Studies with the team ChatGPT Project (`chatgpt-project/`) |
 | Parth S Hingankar | Member | Cyber Security, 3rd yr | Linux, ground-station comms |
 | Mahesh B Ugale | Member | Cyber Security, 3rd yr | Linux, git discipline, CV pipeline |
 
@@ -93,7 +93,7 @@ Stage-2 kit, free to teams that clear Stage 1: flight controller, motors, RadioM
 | When | What |
 |---|---|
 | Sep 2026 | Task 0 — Setup & Installation (~3 weeks) |
-| **16 Sep 2026 →** | **Task 1 released (1A · 1B · 1C), ~4 wk. ← CURRENT. Deadline unknown** |
+| **16 → 23 Sep 2026** | **Task 1 (KD 1A/1B/1C + PB 1A/1B). ← CURRENT. Deadline 23 Sep** |
 | Oct–Nov 2026 | Task 2 Learn & Explore II (~4 wk) |
 | Nov 2026 | Stage 1 ends. Top teams selected for Stage 2 + free hardware kit |
 | Nov 2026 – Feb 2027 | Tasks 3–6 (hardware) |
@@ -125,10 +125,10 @@ the install risks, and the dual-boot plan: `context/03-machines.md`.
 |---|---|---|
 | `CLAUDE.md` | this file | always — auto-loaded, free |
 | `README.md` | **Teammate entry point** (public repo): first day, what setup checks, laptop layout, per-task run commands, tools, troubleshooting, open forum questions, team rules | teammate questions |
-| `RESOURCES.md` | **Every portal learning link (~180, all verified 2026-09-16 with `check_links.py`)**, grouped like the portal, mapped to roadmap modules | finding any video/doc link |
+| `RESOURCES.md` | **Every portal learning link (~180, all verified 2026-09-16 with `check_links.py`)**, grouped like the portal, tagged by subtask (KD 1A … PB 1B) | finding any video/doc link |
 | `setup/setup.sh` | v2: preflight (OS/arch/WSL/VM/RAM/disk/ROS/internet) → inventory → installs only what's missing → verify. `--check` = no changes. bashrc block adds `ROS_LOCALHOST_ONLY=1`. Install mode not yet run on a fresh laptop | teammate setup |
-| `learning/tools/` | `pixel_detective.py` (M1-b), `hsv_tuner.py` (M1-f), `toy_drone.py` (M3-f; controller left blank for Saurabh), `kd1a_testbench.py` (M1-j; consistency across 10 variants, no answer key), `submission_check.py` (kd1a/kd1b/kd1c/pb1a/pb1b: coding standard, GUI calls, results format, PB signatures, zip), `bag_score.py` (M6-e/M7-d; scoring assumptions in the file). All tested 2026-09-16 with dummy inputs, and none contains a solution | learning sessions, pre-submission checks |
-| `LEARNING-ROADMAP.pdf` | **Saurabh's learning roadmap v3 (2026-09-16, 19 pages, both themes)**: M0–M7 (KD; M1 = KD 1A, M6 = 1B, M7 = 1C), P1–P3 (PacBot; P2 = PB 1A, P3 = PB 1B), L1 LQR + T2 preview after Task 1; video ladders from all portal material, experiments, dictionary, answers; 100 checkboxes, fillable logs. Source: `learning/source/roadmap.md` + `build_roadmap_pdf.py` (rebuilding resets ticks; the script backs up first) | any learning session: "Roadmap P2, experiment P2-c" |
+| `learning/tools/` | `pixel_detective.py` + `hsv_tuner.py` (KD 1A), `toy_drone.py` (PID practice; controller left blank for Saurabh), `kd1a_testbench.py` (KD 1A; consistency across 10 variants, no answer key), `submission_check.py` (kd1a/kd1b/kd1c/pb1a/pb1b: coding standard, GUI calls, results format, PB signatures, zip), `bag_score.py` (KD 1B/1C; scoring assumptions in the file), `check_links.py` (every link in README/RESOURCES/chatgpt-project; retries 5xx). All tested 2026-09-16 with dummy inputs, and none contains a solution | learning sessions, pre-submission checks |
+| `chatgpt-project/` | **The team's ChatGPT Project kit (2026-09-17):** `PROJECT_INSTRUCTIONS.md` (paste into the project instructions), 9 upload files `00_START_HERE` … `08_Portal_Learnings_Summary`, `HOW_TO_CREATE_THE_PROJECT.md`. **Keep these in sync when task facts change**, then tell Saurabh which file to re-upload | any change to task facts, team plan, setup |
 | `context/01-theme-khoj-o-drone.md` | KD objectives, build targets, win condition, kit | planning KD work |
 | `context/02-theme-pacbot.md` | PB equivalent | only if PB comes back into play |
 | `context/03-machines.md` | laptop inventory, dual-boot plan, install risks | any setup / Task 0 work |
@@ -138,9 +138,9 @@ the install risks, and the dual-boot plan: `context/03-machines.md`.
 | `context/07-swift-pico-interface.md` | **Swift Pico sim: topics, message, arming, axis mapping** | writing any controller code |
 | `context/08-task0-bonus.md` | **Task 0 bonus:** turtlesim circle (d=2.0 at 5,5) + Swift Pico bring-up, approach notes, MuJoCo-version watch-out | bonus task / sim bring-up |
 | `context/15-pacbot-task1.md` | **PacBot Task 1:** 1A grid maze over MQTT (35), 1B MuJoCo wall following (65); topics, scoring, submission (`PB#4817.zip`), **tamper rule for the launch binaries**, repo-vs-portal name differences, setup verified | working on PacBot Task 1 |
-| `context/14-learnings-pacbot-mqtt-pathplanning.md` | **PacBot learnings:** MQTT (QoS, wildcards, retained/LWT; **local mosquitto + paho 2.1.0 verified**), path planning (BFS/DFS/Dijkstra/Greedy/A*; **PB Task 1A = grid maze planning + pellet choice**) | PacBot work; roadmap rebuild |
-| `context/13-learnings-quad-control-imgproc-coding.md` | Quadcopter Control (6 DOF, **Stage-2 laptop→RC→attitude-controller architecture = the sim's structure**, translational-EOM exercise trap), Image Processing/OpenCV/ROS 2–OpenCV (red hue wraps; sim `image_sink` defaults to shm so no `/image_raw`), **e-Yantra Coding Standard** for submissions | roadmap rebuild; Task 1A/2 coding |
-| `context/12-learnings-control-systems.md` | **Portal Control Systems learnings analysed**: PID/stability/modelling/LQR video ladders (metadata-ordered), portal formula bugs, **"LQR/LQI will be implemented" signal**, PDFs behind login | roadmap rebuild; PID/LQR learning |
+| `context/14-learnings-pacbot-mqtt-pathplanning.md` | **PacBot learnings:** MQTT (QoS, wildcards, retained/LWT; **local mosquitto + paho 2.1.0 verified**), path planning (BFS/DFS/Dijkstra/Greedy/A*; **PB Task 1A = grid maze planning + pellet choice**) | PacBot work; updating `chatgpt-project/` |
+| `context/13-learnings-quad-control-imgproc-coding.md` | Quadcopter Control (6 DOF, **Stage-2 laptop→RC→attitude-controller architecture = the sim's structure**, translational-EOM exercise trap), Image Processing/OpenCV/ROS 2–OpenCV (red hue wraps; sim `image_sink` defaults to shm so no `/image_raw`), **e-Yantra Coding Standard** for submissions | updating `chatgpt-project/`; Task 1A/2 coding |
+| `context/12-learnings-control-systems.md` | **Portal Control Systems learnings analysed**: PID/stability/modelling/LQR video ladders (metadata-ordered), portal formula bugs, **"LQR/LQI will be implemented" signal**, PDFs behind login | updating `chatgpt-project/`; PID/LQR learning |
 | `context/11-task1c.md` | **Task 1C:** tune pitch/roll on top of 1B, submission order, **tuner GUI facts from its source** (save path, multipliers, gains-sent-only-on-click trap) | working on Task 1C / using the tuner |
 | `context/10-task1b.md` | **Task 1B:** tune the pre-built throttle PID, GUI, scoring, bag + YouTube submission, **MuJoCo/GLFW library fixes** | working on Task 1B / launching the sim |
 | `context/09-task1-overview-and-1a.md` | **Task 1 structure + full Task 1A spec**, output format, scoring, traps (OpenCV 4.5.4 old ArUco API, 3-vs-4-line contradiction) | working on Task 1A |
@@ -155,7 +155,7 @@ the install risks, and the dual-boot plan: `context/03-machines.md`.
 
 ```
 ~/Desktop/e-yantra/              ← everything eYRC lives here (this file)
-├── CLAUDE.md  context/  _extracted/
+├── CLAUDE.md  README.md  RESOURCES.md  context/  setup/  _extracted/
 ├── eYRC 2025-26/                  last season's archive
 ├── eYRC 2026-27/                  docs, media (git, no commits)
 │   └── Media/Task0/               bonus_task0.webp, pico_drone.webp
@@ -163,8 +163,9 @@ the install risks, and the dual-boot plan: `context/03-machines.md`.
 ├── pacbot_ws/                     PB — e-Yantra git clone (task0, task1a, task1b); also ~/pacbot_ws (symlink)
 ├── turtlesim_ws    → ~/turtlesim_ws      (symlink) bonus Part 1, node kd_task_0/task_0_4817.py
 ├── pico_ws         → ~/pico_ws           (symlink) Swift Pico sim + Task 1 scripts (src/swift_pico/scripts/)
-├── LEARNING-ROADMAP.pdf           Saurabh's roadmap (source: learning/source/)
-└── learning/                      roadmap source + learning tools
+├── chatgpt-project/               team ChatGPT Project: instructions + 9 upload files
+└── learning/tools/                learning + submission-check tools
+~/Desktop/e-yantra-old-roadmap/  dropped roadmap PDF + source (outside the repo, reference only)
 ~/drone_ws  →  ~/Desktop/e-yantra/drone_ws     (symlink; the venv needs this path)
 ```
 

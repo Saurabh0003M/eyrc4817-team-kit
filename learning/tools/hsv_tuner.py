@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-HSV tuner — roadmap experiment M1-f.
+HSV tuner — for KD Task 1A (finding colour ranges).
 
 Drag the six sliders to choose a colour range. Two views update live:
   - left:  the photo, showing ONLY the pixels inside your range

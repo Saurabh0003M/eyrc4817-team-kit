@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Link checker for the team docs (RESOURCES.md, README.md, the roadmap source).
+Link checker for the team docs (RESOURCES.md, README.md, chatgpt-project/*.md).
 
     python3 learning/tools/check_links.py                 # checks the default files
     python3 learning/tools/check_links.py some_file.md    # or specific files
@@ -19,12 +19,12 @@ from concurrent.futures import ThreadPoolExecutor
 from pathlib import Path
 
 REPO = Path(__file__).resolve().parents[2]
-DEFAULT_FILES = ['RESOURCES.md', 'README.md', 'learning/source/roadmap.md']
+DEFAULT_FILES = ['RESOURCES.md', 'README.md'] + sorted(f'chatgpt-project/{f.name}' for f in (REPO / 'chatgpt-project').glob('*.md'))
 URL_PATTERN = re.compile(r'https?://[^\s)\]>"\'`|]+')
 HEADERS = {'User-Agent': 'Mozilla/5.0 (X11; Linux x86_64) eyrc4817-link-check'}
 
 
-def probe_url(url):
+def probe_url(url, retry=True):
     if 'portal.e-yantra.org' in url:
         return url, 'skip', 'portal login needed'
     target = url
@@ -39,6 +39,8 @@ def probe_url(url):
     except urllib.error.HTTPError as error:
         if error.code in (401, 403, 429) and 'youtube' not in target:
             return url, 'blocked', f'HTTP {error.code} (bot protection; open in a browser)'
+        if retry and error.code >= 500:
+            return probe_url(url, retry=False)
         return url, 'broken', f'HTTP {error.code}'
     except Exception as error:  # timeouts, DNS, TLS
         return url, 'broken', type(error).__name__

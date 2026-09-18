@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-KD Task 1A stress test — roadmap M1-j.
+KD Task 1A stress test.
 
 The hidden test images will not look exactly like image_1.jpg. This makes harder versions of the
 arena (tilted, rotated, darker, brighter, blurred, noisy, smaller) and runs YOUR script on each one.

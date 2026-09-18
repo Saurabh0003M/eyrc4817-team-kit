@@ -1,4 +1,17 @@
-# Resources — every link from the e-Yantra portal, in one place
+# 07 — Learning resources: every link from the portal
+
+## Watch-first list for the 23 September deadline (≈ 1 day of learning per subtask)
+
+| Subtask | In this order |
+|---|---|
+| **Everyone** | [PID Control — A brief introduction](https://www.youtube.com/watch?v=UR0hOmjaHp0) (8 min) → [What Is PID Control? Part 1](https://www.youtube.com/watch?v=wkfEZmsQqiA) (MATLAB) → portal *PID Controller* page + ball-and-beam demo |
+| **KD 1A** | [Digital Images — Computerphile](https://www.youtube.com/watch?v=06OHflWNCOE) → portal *Image Processing Basics* → [OpenCV Course (freeCodeCamp)](https://www.youtube.com/watch?v=oXlwWbU8l2o): reading images, drawing, colour spaces, thresholding, contours only → [Warp Perspective / Bird View](https://www.youtube.com/watch?v=Tm_7fGolVGE) → [Detecting ArUco markers (PyImageSearch, old API)](https://pyimagesearch.com/2020/12/21/detecting-aruco-markers-with-opencv-and-python/) |
+| **KD 1B/1C** | [A PID Tuning Guide — Part 4](https://www.youtube.com/watch?v=sFOEsA0Irjs) → [Tuner and Plotter demo](https://youtu.be/ef2SI6uARuA) → [Drone flight physics in under 2 minutes](https://www.youtube.com/watch?v=iQAPkN7OWus) → [task 1b submission demo](https://youtu.be/xqOyre-afOE) / [task 1c submission](https://youtu.be/Ut5wKqhMFdM) |
+| **PB 1A** | portal *Path Planning* page → [Dijkstra — Computerphile](https://www.youtube.com/watch?v=GazC3A4OQTE) → [A* — Computerphile](https://www.youtube.com/watch?v=ySN5Wnu88nE) → portal *MQTT* + *MQTT Concepts* → [expected output video](https://youtu.be/95Kb59pPsXU) |
+| **PB 1B** | [A PID Tuning Guide — Part 4](https://www.youtube.com/watch?v=sFOEsA0Irjs) → portal *MQTT* page → portal *MuJoCo* overview → [expected output video](https://youtu.be/Ac7dU4j0nVs) |
+
+Everything else below is for going deeper or for later tasks.
+
 
 Collected from the Khoj-o-Drone (KD) and PacBot (PB) portal pages shared on 2026-09-16, organised the
 same way as the portal. **Use for** tells you which Task 1 subtask it helps (KD = Khoj-o-Drone, PB = PacBot).

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Pixel detective — roadmap experiment M1-b.
+Pixel detective — for KD Task 1A (reading BGR and HSV values).
 
 Click anywhere on the photo to see that pixel's numbers:
   - its position (x = column from the left, y = row from the top)
