@@ -45,6 +45,21 @@ brain's `STATE.md` with your agent name and the date.** Newest entry first.
 
 ## Entries
 
+### 2026-09-23 (deadline day, 18:10) · claude-code — PB 1A + KD 1A solved by Claude (user's call, time/tokens short)
+- **PB 1A** `~/pacbot_ws/task1a/task_1a.py`: BFS over (cell, yaw), tries both pellet orders × both exits.
+  Verified live: **LEFT = yaw +90** (anticlockwise); wire pose `row`/`col` really are swapped (boilerplate is right);
+  pellets are NOT swapped. Evaluate run: both pellets + north exit, 38 commands, sealed `result.yaml`. Checker 10/10.
+  The GUI launcher ignores SIGINT: stop with SIGTERM / closing the window (else 2 sims fight over MQTT).
+  **User still has to do the recorded `--evaluate` run, zip `PB#4817.zip`, YouTube unlisted; Gauri uploads.**
+- **KD 1A** `~/pico_ws/src/swift_pico/scripts/KD_4817_task1a.py` + `KD_4817.zip`: field corners = marker corner
+  nearest the arena centre, IDs 80/85/90/95 = TL/TR/BR/BL, 900² warp, 75 px cells, HSV masks, rounding to nearest
+  intersection; old+new ArUco API. image_1 → Critical B7, C10, I2 · Stable D2, E9, H6 (matches eye check);
+  testbench 10/10, checker 13/13. Results file keeps the blank line 2 (instruction page).
+- **PB 1A evaluated run by the user 18:59:** both pellets + south exit; `PB#4817.zip` made (result.yaml 7714 B).
+  Note: `--evaluate` writes a small result.yaml (~0.5 KB) right at START and the real one at the END; zip only after
+  the bot is off-grid. User had double-clicked the launcher before (no --evaluate, no controller) → added to study file 03.
+- Not done: PB 1B, KD 1B/1C.
+
 ### 2026-09-17 · claude-code — deadline 23 Sep; ChatGPT Project replaces the roadmap PDF
 
 - Saurabh: **Task 1 deadline = 23 Sep 2026**. The portal's *ROS 2 Books* page leads to a paid book (skip). **Teammate info

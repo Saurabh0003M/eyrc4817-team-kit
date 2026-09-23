@@ -76,7 +76,10 @@ cd ~/pacbot_ws/task1a && python3 task_1a.py        # terminal 2
 ```
 
 - Space bar / button = pause/resume. There is no reset: restart both for new pellets.
-- **Stop with Ctrl+C**. Both programs use fixed MQTT client IDs, and a hard kill can leave a stale session that breaks the next run.
+- **Start both from terminals, never by double-clicking `task_1a_launch` in Files.** Double-clicked, it runs without `--evaluate` (no `result.yaml`) and without a terminal, and `task_1a.py` isn't running, so the bot just sits there.
+- **Stopping:** `task_1a.py` → Ctrl+C in its terminal. The maze ignores Ctrl+C: **press `q` in the maze window** (or run `pkill -x task_1a_launch`). The maze terminal prints `evaluation ended → result.yaml (N commands, M rejected)` when a run is done.
+- **Recording on Wayland:** `python3 learning/tools/screen_record.py PB_4817_Task1A` in its own terminal, Ctrl+C there to stop (video in `~/Videos/Screencasts/`). GNOME's Print Screen recorder may hide its stop button on some themes.
+- Never run two mazes or two `task_1a.py` at once: both use fixed MQTT client IDs and the two copies fight (the bot freezes).
 - The broker already runs as a service. **Don't run `mosquitto` manually** (the boilerplate comment suggests it): it will fail with "address already in use". Check it with `systemctl status mosquitto`.
 - Nothing moves? (1) simulator not started first, (2) broker not running, (3) topic name typo.
 - Bot stalls? Look at `valid` in the pose: repeated `false` = you sent FRONT facing the wrong way. The bug is in the turn logic, not the search.
