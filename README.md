@@ -91,24 +91,98 @@ simulator needs the **3.9.0** library. Setup keeps both, and they don't clash.
 
 ---
 
-## 3. Where everything lives on your laptop
+## 3. Where everything lives on your laptop (and why)
+
+Three places, three jobs (`~` = your home folder):
 
 ```
-~/eyrc4817/          ← this repo (docs, ChatGPT files, tools). Any folder works; ~/eyrc4817 is the suggestion
-~/pico_ws/           ← Khoj-o-Drone workspace. Path fixed by e-Yantra; don't rename it
-   src/swift_pico/scripts/   task1a.py + image_1.jpg   (KD Task 1A: write your code in task1a.py)
-   src/swift_pico/src/       pid_values.yaml           (written by the PID tuner's "Save Values")
-~/pacbot_ws/         ← PacBot workspace. Path fixed by e-Yantra
-   task1a/   task_1a_launch · task_1a_boilerplate.py · task_1a.py   (PB Task 1A: edit task_1a.py)
-   task1b/   task_1b_launch · task_1b_boilerplate.py · task_1b.py   (PB Task 1B: edit task_1b.py)
-~/.local/share/eyrc4817/mujoco-3.9.0/   ← library for the KD simulator (made by setup if needed)
-~/eyrc4817-setup.log                    ← setup log
-~/.bashrc.eyrc4817-backup               ← your .bashrc before setup first touched it
+~/eyrc4817/     the KIT = this repo: notes, study files, tools, setup script (any folder works; ~/eyrc4817 is the suggestion)
+~/pico_ws/      the Khoj-o-Drone WORKSHOP: a ROS 2 workspace (drone simulator + your KD code). Path fixed by e-Yantra
+~/pacbot_ws/    the PacBot WORKSHOP: e-Yantra's PacBot download (games + your PB code). Path fixed by e-Yantra
 ```
+
+**Why the workshops are separate from the kit:** e-Yantra's commands (and every teammate's laptop) use exactly
+`~/pico_ws` and `~/pacbot_ws`, so commands can be copy-pasted. And ROS 2's build tool **colcon** writes the workspace's
+full path into what it builds: move or rename `~/pico_ws` and it breaks, and a space in a folder name breaks the build.
+Leave both where setup puts them.
+
+### The kit: `~/eyrc4817/`
+
+```
+README.md          this page
+RESOURCES.md       every portal learning link, tagged by subtask
+CLAUDE.md          briefing for AI assistants: an index of everything (describes Saurabh's laptop)
+chatgpt-project/   instructions + files for the team's ChatGPT project
+context/           detailed notes, one file per topic; 04-task-log.md is the team diary
+learning/tools/    helper programs: submission checker, KD 1A testbench, screen recorder, …
+setup/setup.sh     the one-command installer (section 2)
+.gitignore         decides what may be shared here (never solution files)
+```
+
+### The KD workshop: `~/pico_ws/` (a ROS 2 workspace)
+
+Every ROS 2 workspace has the same four folders:
+
+```
+~/pico_ws/
+├── src/       "source" = the code. The ONLY folder people edit
+├── build/     colcon's workbench while building – ignore it
+├── install/   the finished, runnable result. `source ~/pico_ws/install/setup.bash` (setup puts it in ~/.bashrc)
+│              tells ROS 2 to look here – that's why `ros2 launch swift_pico …` works from any folder
+└── log/       build diaries – read them when `colcon build` fails
+```
+
+**`src` is short for "source code".** It holds **packages**: one folder each, with a `package.xml` "ID card" (name + what it needs):
+
+```
+src/
+├── swift_pico/               ← the one you work in
+│   ├── scripts/              Python programs + task files: task1a.py (KD 1A starter), image_1.jpg
+│   ├── src/                  the package's own "src": e-Yantra's ready-made task_1b_controller and
+│   │                         task_1c_controller; the tuner's "Save Values" writes pid_values.yaml here
+│   ├── launch/               start-up recipes: one command starts several programs
+│   ├── config/               settings files
+│   ├── package.xml           ID card
+│   └── CMakeLists.txt        build instructions for colcon
+├── swift_pico_description/   the drone's 3D model
+├── rotors_simulator/         simulator machinery, incl. e-Yantra's attitude controller
+├── mav_comm/                 message formats for drone commands
+├── controller_tuner/         the tuning window (its package is called pid_tune)
+└── whycode-ros2/             tracks the marker on the drone → gives its position
+```
+
+Rule of thumb: programs started with `ros2 run` / `ros2 launch` are taken from `install/`, so after editing one in
+`src/`, run `colcon build` in `~/pico_ws`. Files you start directly (`python3 task1a.py …`) need no rebuild.
+
+### The PacBot workshop: `~/pacbot_ws/` (e-Yantra's download, not a ROS workspace)
+
+Every task folder follows one pattern:
+
+```
+~/pacbot_ws/
+├── task1a/   task_1a_launch          the maze game – e-Yantra's, encrypted: only run it, never open or edit it
+│             task_1a_boilerplate.py  the empty template
+│             task_1a.py              YOUR code (the bot's brain); starts as a copy of the template
+│             result.yaml             written by the game in --evaluate mode (goes into the zip)
+└── task1b/   task_1b_launch · task_1b_boilerplate.py · task_1b.py   (+ lib/, meshes/ the game needs – don't touch)
+```
+
+Submission zips are made inside the task folder, next to the files they contain.
+
+### Other files setup creates
+
+```
+~/.local/share/eyrc4817/mujoco-3.9.0/   library for the KD simulator (made by setup if needed)
+~/eyrc4817-setup.log                    setup log
+~/.bashrc.eyrc4817-backup               your .bashrc before setup first touched it
+```
+
+**Finding things fast:** in the Files app or any upload/attach window, press **Ctrl+L**, type a path
+(e.g. `~/pacbot_ws/task1a/`) and press Enter.
 
 > ⚠ The portal says `task_1a` / `task_1b`, but e-Yantra's repo uses **`task1a` / `task1b`**. Use the real folders.
-> Some notes in `CLAUDE.md` and `context/` describe Saurabh's laptop (paths like `~/Desktop/e-yantra`,
-> `drone_ws`, `_extracted/`). Those are not in this repo and you don't need them.
+> On Saurabh's laptop the kit folder is `~/Desktop/e-yantra`; it also holds private portal downloads and
+> shortcuts (symlinks) to the workspaces, and notes in `CLAUDE.md` / `context/` use those paths. Same idea, different place.
 
 ---
 
@@ -126,12 +200,15 @@ simulator needs the **3.9.0** library. Setup keeps both, and they don't clash.
 
 Four of the five parts use **PID**, so everyone should watch the PID videos (list in `chatgpt-project/07_Learning_Resources.md`).
 
+**Status (23 Sep, night):** KD 1A and PB 1A finished (code checked, PB run recorded) and packed for Gauri's upload. KD 1B, KD 1C and PB 1B not done yet.
+
 ---
 
 ## 5. How to run each task
 
 One **terminal per command**, in the order shown. Stop everything with **Ctrl+C** (never Ctrl+Z, never
-close the window, never `kill -9`).
+close the window, never `kill -9`). **Exception: the PacBot game windows ignore Ctrl+C: press `q` in the maze window**
+(if it still won't close: `pkill -x task_1a_launch`).
 
 **KD 1A** (no simulator):
 ```bash
@@ -152,11 +229,19 @@ Tuner facts:
 
 **PB 1A** (two terminals; the broker already runs as a service):
 ```bash
-cd ~/pacbot_ws/task1a && ./task_1a_launch                   # 1: maze window
-cd ~/pacbot_ws/task1a && python3 task_1a.py                 # 2: your code
+cd ~/pacbot_ws/task1a && ./task_1a_launch                   # 1: maze window (add --evaluate for the recorded run)
+cd ~/pacbot_ws/task1a && python3 task_1a.py                 # 2: your code - the bot moves ONLY while this runs
 mosquitto_sub -h localhost -t 'robot/pose' -t 'pellets/pose' -t 'bot/cmd' -v   # optional: watch messages
 mosquitto_pub -h localhost -t robot/cmd_vel -m FRONT        # optional: drive one step by hand
 ```
+
+PacBot lessons from our 1A run:
+- Start the launcher **from a terminal, never by double-clicking it** in Files: it then runs without `--evaluate`,
+  without a terminal, and with nothing driving the bot.
+- **One maze at a time.** Two mazes (or two `task_1a.py`) share the same MQTT names and fight: the bot freezes.
+  Close old ones with `q` before starting again.
+- With `--evaluate` the maze terminal prints `evaluation ended → result.yaml (N commands, M rejected)` when the run is
+  over. `result.yaml` is written once at the start (small) and again at the end (full): **zip only after the end**.
 
 **PB 1B** (two terminals):
 ```bash
@@ -168,7 +253,7 @@ cd ~/pacbot_ws/task1b && python3 task_1b.py                 # 2: your code
 
 ## 6. Submission cheat sheet
 
-Always run `learning/tools/submission_check.py` first. Only **Gauri** can upload. Videos go on YouTube as **Unlisted** (not Private), recorded in **one unbroken take** with the terminal visible from the start.
+Always run `learning/tools/submission_check.py` first. Only **Gauri** can upload. Videos go on YouTube as **Unlisted** (not Private), recorded in **one unbroken take** with the terminal visible from the start. Record with `learning/tools/screen_record.py` (section 8). PacBot's pages give no video title; we used `PB_4817_Task_1a` (no `#`: YouTube turns it into a hashtag).
 
 | Part | Run it for real | Upload (zip = files at top level, **no folder**) | Video title |
 |---|---|---|---|
@@ -210,6 +295,7 @@ All in `learning/tools/`, run from the repo folder. None of them solves a task; 
 | `bag_score.py` | Estimate KD 1B/1C marks from a practice bag (assumptions in the file) | `python3 learning/tools/bag_score.py 1b task_1b` |
 | `toy_drone.py` | Plain-Python PID playground; you write the controller (PID practice) | `python3 learning/tools/toy_drone.py --kp 20` |
 | `check_links.py` | Check every link in these docs still works | `python3 learning/tools/check_links.py` |
+| `screen_record.py` | Record the whole screen for task videos (works on Wayland). **Ctrl+C in its terminal stops it**; video → `~/Videos/Screencasts/` | `python3 learning/tools/screen_record.py PB_4817_Task1A` |
 
 ---
 
@@ -222,11 +308,12 @@ All in `learning/tools/`, run from the repo folder. None of them solves a task; 
 | `module 'cv2.aruco' has no attribute 'ArucoDetector'` | Tutorial for newer OpenCV → old API: `cv2.aruco.getPredefinedDictionary`, `DetectorParameters_create`, `detectMarkers` |
 | Tempted to `pip install opencv-python` | **Don't.** It breaks ROS 2's OpenCV. OpenCV comes from `apt` (4.5.4) |
 | KD drone ignores your gains | Marker outside the camera view, or you didn't press Enter / −/+ in the tuner |
-| PacBot: nothing moves | Start the launcher **before** your code · `systemctl status mosquitto` · topic name typo |
+| PacBot: bot doesn't move | Your `task_1a.py` isn't running (the maze never moves the bot by itself) · launcher double-clicked instead of started in a terminal · **two mazes open** (they fight: close all with `q`, start one) · `systemctl status mosquitto` |
+| PacBot maze window won't close | It ignores Ctrl+C → press `q` in the window, or `pkill -x task_1a_launch` |
 | PacBot acts strangely after a crash | A hard-killed process left a stale MQTT session → restart both with Ctrl+C |
 | `pico_mujoco_ws/install/setup.bash: No such file` in every terminal | Old bonus-task line in `~/.bashrc` → re-run `setup.sh` (it comments that line out) |
 | Ubuntu "internal error" popup after stopping a ROS tool | Harmless crash report → click Don't send; stop tools with Ctrl+C |
-| Screen recording is black | Wayland → Ubuntu's built-in recorder (Print Screen → video), OBS, or log in with "Ubuntu on Xorg". **Test a 2-minute recording first** |
+| Screen recording is black, or the recorder has no stop button | Wayland → `learning/tools/screen_record.py` (Ctrl+C stops it). Kazam / SimpleScreenRecorder record black on Wayland. **Test a short recording first** |
 | Someone else's ROS nodes in `ros2 node list` | `ROS_LOCALHOST_ONLY` not set → re-run setup, open a new terminal |
 | `setup.sh` says `[!!] ... exists but is not the git clone` | You made that folder by hand → rename it (e.g. `mv ~/pico_ws ~/pico_ws.old`) and re-run |
 

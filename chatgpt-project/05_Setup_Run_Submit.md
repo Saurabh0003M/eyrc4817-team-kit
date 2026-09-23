@@ -44,16 +44,28 @@ sudo apt install mosquitto mosquitto-clients && pip install paho-mqtt
 ```
 Manual setup still needs the MuJoCo 3.9.0 library fix above, or the drone simulator fails with `libmujoco.so.3.9.0: cannot open shared object file`.
 
-## Where things are on the laptop
+## Where things are on the laptop (and why)
 
 ```
-~/pico_ws/src/swift_pico/scripts/   task1a.py, image_1.jpg          ← KD 1A (write code here)
-~/pico_ws/src/swift_pico/src/       pid_values.yaml                 ← saved PID gains (KD 1B/1C)
-~/pacbot_ws/task1a/                 task_1a_launch, task_1a.py      ← PB 1A (write code in task_1a.py)
-~/pacbot_ws/task1b/                 task_1b_launch, task_1b.py      ← PB 1B (write code in task_1b.py)
-~/eyrc4817/                         team repo: setup script + tools
+~/eyrc4817/     the team kit (GitHub repo): notes, these study files, tools, setup script
+~/pico_ws/      KD workshop = a ROS 2 workspace
+   src/         "source" = the code, the ONLY folder people edit. Holds packages (a folder + package.xml "ID card"):
+      swift_pico/scripts/   task1a.py (KD 1A starter), image_1.jpg        ← KD 1A: write code here
+      swift_pico/src/       task_1b_controller, task_1c_controller; pid_values.yaml (tuner "Save Values")
+      swift_pico/launch/    start-up recipes (one command starts several programs)
+      controller_tuner/ (package pid_tune: the tuning window) · whycode-ros2/ (marker tracker → drone position)
+      rotors_simulator/ (simulator machinery, attitude controller) · mav_comm/ (message formats) · swift_pico_description/ (3D model)
+   build/       colcon's workbench – ignore
+   install/     the runnable result; `source ~/pico_ws/install/setup.bash` (in ~/.bashrc) lets `ros2 run/launch` find it
+   log/         build diaries – read them when `colcon build` fails
+~/pacbot_ws/    PB workshop = e-Yantra's download (not a ROS workspace), one folder per task:
+   task1a/      task_1a_launch (the game: encrypted, only run it) · task_1a_boilerplate.py (template) · task_1a.py (your code) · result.yaml (--evaluate)
+   task1b/      same pattern: task_1b_launch · task_1b_boilerplate.py · task_1b.py (+ lib/, meshes/ – don't touch)
 ```
-The portal writes `task_1a` / `task_1b`, but e-Yantra's repo folders are **`task1a` / `task1b`**.
+- **Why the workshops aren't inside the kit:** e-Yantra's commands use exactly `~/pico_ws` and `~/pacbot_ws`, and colcon writes the workspace's full path into what it builds, so moving/renaming `~/pico_ws` (or a space in a folder name) breaks it.
+- After editing a program you start with `ros2 run` / `ros2 launch`, run `colcon build` in `~/pico_ws`. Files started directly with `python3 …` need no rebuild.
+- Find anything fast: in Files or any upload window press **Ctrl+L** and type the path.
+- The portal writes `task_1a` / `task_1b`, but e-Yantra's repo folders are **`task1a` / `task1b`**.
 
 ## Running each task (one terminal per line, in order; stop with Ctrl+C)
 
@@ -77,7 +89,7 @@ If `./task_1a_launch` says "Permission denied": `chmod +x ./task_1a_launch`.
 | PB 1A | `PB#4817.zip` | `result.yaml`, `task_1a.py` (from `./task_1a_launch --evaluate`) | link on portal |
 | PB 1B | `PB#4817.zip` | `result.json`, `task_1b.py` (from `./task_1b_launch --evaluate`) | link on portal |
 
-**Screen recording:** Ubuntu 22.04 uses Wayland; Kazam / SimpleScreenRecorder often record a black screen. Use Ubuntu's built-in recorder (Print Screen → switch to video) or OBS, or log in with "Ubuntu on Xorg". **Do a 2-minute test recording before the real run.** Record one unbroken take with the terminal visible from the start. Keep videos online until results are published.
+**Screen recording:** Ubuntu 22.04 uses Wayland; Kazam / SimpleScreenRecorder record a black screen. Use the team tool: `python3 ~/eyrc4817/learning/tools/screen_record.py PB_4817_Task1A` in its own terminal; **Ctrl+C there stops it**; the video lands in `~/Videos/Screencasts/`. (GNOME's Print Screen recorder also works, but on some themes its stop button is hidden and nothing else can stop it.) **Do a short test first.** Record one unbroken take with the terminal visible from the start. Keep videos online until results are published.
 
 **Checker tool:** `python3 ~/eyrc4817/learning/tools/submission_check.py <kd1a|kd1b|kd1c|pb1a|pb1b> --file <your file> --zip <your zip>` checks names, coding standard, no GUI/input calls, results format, unchanged PacBot functions, and zip layout.
 
@@ -142,6 +154,6 @@ For PacBot, add these comments **without renaming or restructuring** the boilerp
 | `mosquitto`: address already in use | The broker already runs as a service. Don't start it again |
 | PacBot misbehaves after a crash | A hard kill left a stale MQTT session → stop both programs with Ctrl+C and restart |
 | Ubuntu "internal error" popup after stopping a ROS command | Harmless crash report → "Don't send"; stop programs with Ctrl+C |
-| Screen recording is black | Wayland → built-in recorder, OBS, or "Ubuntu on Xorg" login |
+| Screen recording is black / can't be stopped | Wayland → `learning/tools/screen_record.py` (Ctrl+C stops it) |
 | Someone else's nodes in `ros2 node list` | Set `export ROS_LOCALHOST_ONLY=1` (setup adds it) or give each laptop a different `ROS_DOMAIN_ID` |
 | Low disk space | Clear `~/.cache`, `sudo apt clean`; bag files and videos can be moved to another drive |

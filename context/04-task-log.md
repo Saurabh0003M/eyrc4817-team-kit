@@ -58,6 +58,9 @@ brain's `STATE.md` with your agent name and the date.** Newest entry first.
 - **PB 1A evaluated run by the user 18:59:** both pellets + south exit; `PB#4817.zip` made (result.yaml 7714 B).
   Note: `--evaluate` writes a small result.yaml (~0.5 KB) right at START and the real one at the END; zip only after
   the bot is off-grid. User had double-clicked the launcher before (no --evaluate, no controller) → added to study file 03.
+- **PB 1A FINAL (21:29 run):** `PB#4817.zip` (result.yaml 8450 B) + video `~/Videos/Screencasts/PB_4817_Task1A_20260923_212908.webm`
+  (52 s, run ends ~0:48). Recorded with the new `learning/tools/screen_record.py` (GNOME recorder via D-Bus, Ctrl+C stops).
+  Other videos there are failed/older attempts - do not upload. User uploads video (Unlisted) + Gauri uploads zip.
 - Not done: PB 1B, KD 1B/1C.
 
 ### 2026-09-17 · claude-code — deadline 23 Sep; ChatGPT Project replaces the roadmap PDF
