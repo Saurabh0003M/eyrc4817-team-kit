@@ -45,6 +45,14 @@ brain's `STATE.md` with your agent name and the date.** Newest entry first.
 
 ## Entries
 
+### 2026-09-24 · claude-code — official deadlines (portal "All deadlines", soft deadlines, 11:59 pm)
+- KD 1A 21 Sep · PB 1A 23 Sep (both SUBMITTED) · **KD 1B 28 Sep** · **KD 1C 5 Oct** · **PB 1B 5 Oct**.
+- Order: KD 1B first (Saurabh tunes, Claude coaches + checks bags), then KD 1C and PB 1B by 5 Oct.
+- PB 1B: sensors verified live (fl/fr = SIDE walls, sl/sr = AHEAD, gyro z + = left; 3 rad/s ≈ 4 cm/s,
+  wheel radius ≈ 0.0133 m, ~410 msgs/s, dt 0.002). Draft wall follower `~/pacbot_ws/task1b/task_1b.py`
+  (left-hand rule, gyro turns, x/y odometry log): first 120 s practice run = 13 clean turns, no exit yet.
+  Practice mode prints no collisions → test with --evaluate next.
+
 ### 2026-09-23 (deadline day, 18:10) · claude-code — PB 1A + KD 1A solved by Claude (user's call, time/tokens short)
 - **PB 1A** `~/pacbot_ws/task1a/task_1a.py`: BFS over (cell, yaw), tries both pellet orders × both exits.
   Verified live: **LEFT = yaw +90** (anticlockwise); wire pose `row`/`col` really are swapped (boilerplate is right);

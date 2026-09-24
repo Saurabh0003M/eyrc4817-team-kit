@@ -188,7 +188,7 @@ Submission zips are made inside the task folder, next to the files they contain.
 
 ## 4. Task 1 at a glance
 
-**Deadline: 23 September 2026** (confirm the exact time on the portal). Suggested owners and a day-by-day plan: [`chatgpt-project/00_START_HERE.md`](chatgpt-project/00_START_HERE.md).
+**Deadlines (portal, 11:59 pm, soft):** KD 1A 21 Sep · PB 1A 23 Sep (both submitted) · **KD 1B 28 Sep** · **KD 1C 5 Oct** · **PB 1B 5 Oct**. Suggested owners and a day-by-day plan: [`chatgpt-project/00_START_HERE.md`](chatgpt-project/00_START_HERE.md).
 
 | Theme | Part | What | Code or tune? | Marks | Study file | Full brief |
 |---|---|---|---|---|---|---|
