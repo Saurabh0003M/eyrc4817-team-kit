@@ -25,19 +25,22 @@ It's a 3D physics simulation: the robot has mass, wheels can slip, and **sensors
 
 | Topic | Direction | Payload |
 |---|---|---|
-| `pacbot/sensors` | sim → you, **~500 times per second** | JSON: `fl`, `fr`, `sl`, `sr` (4 Time-of-Flight distance sensors, metres), `gyro` [3] (turn rates, rad/s; `gyro[2]` = turning about the vertical axis), `accel` [3], `dt` (seconds since the last step, 0.002) |
+| `pacbot/sensors` | sim → you, **~410 times per second** (measured) | JSON: `fl`, `fr`, `sl`, `sr` (4 Time-of-Flight distance sensors, metres), `gyro` [3] (turn rates, rad/s; `gyro[2]` = turning about the vertical axis), `accel` [3], `dt` (seconds since the last step, 0.002) |
 | `pacbot/wheel_vel` | you → sim | JSON `{"left": …, "right": …}` wheel speeds in **rad/s**. **Latest value wins**: the robot keeps going at the last speeds until you send new ones. It does not stop on its own |
 
 Publish **one wheel command for every sensors message** (the boilerplate already does this inside `on_message`).
 
-## ⚠ Contradiction: which sensor is which? Verify before coding
+## Which sensor is which — RESOLVED (tested live on 24 Sep)
 
 | Source | `fl`, `fr` | `sl`, `sr` |
 |---|---|---|
-| Portal instructions | **front**-left / **front**-right distance | **side**-left / **side**-right distance |
+| Portal instructions | front-left / front-right | side-left / side-right |
 | Boilerplate comments | distance to the left / right **side** wall | distance **ahead**, left / right of centre |
+| **Measured on our sim (24 Sep)** | **side walls** ✔ | **ahead** ✔ |
 
-They say opposite things. **Find out by experiment:** set a small equal forward speed on both wheels, watch the printed values, and see which pair shrinks as the robot approaches the wall ahead. The first readings in our setup test (robot parked at the entry) were `fl ≈ 0.10, fr ≈ 0.10, sl ≈ 0.26, sr ≈ 0.26`.
+**The boilerplate is right and the portal text is wrong.** Other measured facts: `gyro[2]` positive = turning
+**left** (anticlockwise); ~410 sensor messages per second (`dt` = 0.002 s); wheel radius ≈ 0.0133 m, so
+3 rad/s ≈ 4 cm/s. At the entry: `fl ≈ 0.10, fr ≈ 0.10` (side walls close), `sl ≈ 0.26, sr ≈ 0.26` (wall ahead farther).
 
 ## Boilerplate (`~/pacbot_ws/task1b/task_1b_boilerplate.py`)
 

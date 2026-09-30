@@ -1,6 +1,6 @@
 # 00 — START HERE: Team 4817 · eYRC 2026-27 · Task 1
 
-**Read this first.** It says what Task 1 is, who does what, the 6-day plan, and which file to open next.
+**Read this first.** It says what Task 1 is, who does what now, the plan to the 5 Oct deadline, and which file to open next.
 
 ## Team
 
@@ -27,39 +27,33 @@
 
 KD Task 1 total = 100 (20 + 40 + 40). PB Task 1 total = 100 (35 + 65).
 
-## Who does what (proposal, the team decides)
+## Who does what now (1 Oct)
 
-With 6 days, work in parallel. One owner per subtask, a helper for the hard one, and everyone understands PID.
-
-| Owner | Subtask | Why |
+| Subtask | Status | Owner (agreed 24 Sep; the team can change it) |
 |---|---|---|
-| Gauri | KD 1B → KD 1C (tuning) | PID is her Electrical coursework; tuning needs no coding |
-| Mahesh | KD 1A (OpenCV) | Image-processing pipeline |
-| Parth | PB 1A (maze planning) | Python + search algorithm |
-| Saurabh | PB 1B (wall following) + helps others | Hardest subtask, highest marks |
+| KD 1A, PB 1A | Submitted | — |
+| KD 1B | Recorded, 40/40 estimated. **Gauri uploads** | Saurabh tuned it on Gauri's laptop |
+| **KD 1C** | Not started | Saurabh tunes; anyone can learn along with `02_KD_Task1B_1C_PID_Tuning.md` |
+| **PB 1B** | A first draft runs on Gauri's laptop (13 clean turns in practice, no exit yet) | Saurabh |
 
-Everyone: set up the laptop (day 1), watch the PID videos (see `07_Learning_Resources.md`), and explain your subtask to one teammate before submitting.
+Only Gauri can upload. Only Gauri's laptop (HP OMEN, Ubuntu 22.04) is fully set up; the other laptops are not
+recorded yet (`B3_Background_Team_Setup_Log.md` → 03-machines).
 
-## 6-day plan (Fri 18 → Wed 23 September)
+## Plan to the 5 Oct deadline (Thu 1 → Mon 5 October, 11:59 pm)
 
-Everything is **final on Tue 22**, so the deadline day is only for uploading.
-
-| Day | Everyone | KD 1A | KD 1B/1C | PB 1A | PB 1B |
-|---|---|---|---|---|---|
-| **Fri 18** | Laptop setup (`05_Setup_Run_Submit.md`); **test screen recording**; read your subtask file; post the forum questions (below) | Look at `image_1.jpg`; learn pixels/HSV | Watch PID videos; launch sim + tuner | Learn BFS; watch MQTT messages | Watch PID videos; launch sim, read sensor values |
-| **Sat 19** | Short team check-in | Markers + perspective transform | Tune KD 1B | Drive the bot by hand with `mosquitto_pub`; write BFS | P-controller on side distance |
-| **Sun 20** | | Grid + names + colour masks | Record KD 1B bag + video; start KD 1C | Turn logic + first full run | Add D (and I); corners with the gyro |
-| **Mon 21** | Short team check-in | Centres + nearest intersection + results file | Tune KD 1C | Pellet order + exit; coding standard comments | Reduce collisions; full maze runs |
-| **Tue 22** | **Submission dry runs** + checker tool; **everything final tonight** | Coding standard; harder images; final file + zip | Record KD 1C bag + video; zips ready | Evaluate run + video; zip ready | Coding standard; evaluate run + video; zip ready |
-| **Wed 23** | **Gauri uploads everything early in the day** | | | | |
+| Day | KD 1C | PB 1B | Everyone |
+|---|---|---|---|
+| **Thu 1** | Launch sim + `task_1c_controller` with the 1B throttle gains (`09_Team_Results_PRIVATE.md`); confirm height hold | Run the draft with `--evaluate`; note exactly where it fails | Gauri uploads the KD 1B zip + YouTube link |
+| **Fri 2** | Tune pitch = roll together, testing from a **fresh takeoff** each time | Fix the failure found on Thu (corners / exit) | |
+| **Sat 3** | Score practice bags (`bag_score.py 1c task_1c`); aim for 40/40 est. with margin | Full `--evaluate` runs: zero collisions, reaches the exit | Test the screen recording |
+| **Sun 4** | **Record** the 1C bag + video; score before zipping; zip | **Record** the evaluate run + video; coding standard; zip; checker tool | **Everything final tonight** |
+| **Mon 5** | | | **Gauri uploads both early in the day** |
 
 ## Open questions to ask on the e-Yantra forum (the portal doesn't answer these)
 
-1. Exact deadline time on 23 September.
-2. KD 1A results file: 3 lines or 4? The instruction page shows an empty line 2; the submission page says "exactly these three lines".
-3. KD 1A: are the marker IDs always 80, 85, 90, 95? The submission page example shows 10, 15, 20, 25.
-4. KD 1B/1C scoring: when does the 15-second clock start? Are hover seconds continuous or total?
-5. PacBot 1A and 1B both use the zip name `PB#4817.zip`: separate upload slots, correct?
+1. Uploads after a "soft" deadline (KD 1B's was 28 Sep): still accepted, and with what penalty?
+2. KD 1B/1C scoring: when does the 15-second clock start? (Our 1B tests reach the box ~2.5 s after takeoff, so for a well-tuned drone it hardly matters.)
+3. PacBot 1A and 1B both use the zip name `PB#4817.zip`: separate upload slots, correct?
 
 ## Files in this project
 
@@ -75,6 +69,7 @@ Everything is **final on Tue 22**, so the deadline day is only for uploading.
 | `07_Learning_Resources.md` | looking for a video, doc or portal link |
 | `08_Portal_Learnings_Summary.md` | what e-Yantra's learning pages say, and the mistakes we found in them |
 | `09_Team_Results_PRIVATE.md` | you need our own graded numbers (KD 1B gains). **Never copy them outside this project** |
+| `B1_Background_Khoj_o_Drone.md` · `B2_Background_PacBot.md` · `B3_Background_Team_Setup_Log.md` | you need deeper detail: the team's raw notes per theme, the machines and the dated task log. Written for another AI assistant; the numbered files above win when they disagree |
 
 ## Rules that can cost the whole team
 
