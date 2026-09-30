@@ -13,7 +13,7 @@ brain's `STATE.md` with your agent name and the date.** Newest entry first.
 | **Task 0 — Bonus task** | end of Task 0 | **Part 1 DONE · Part 2 UNBLOCKED (sim builds; launch not tried)** | Saurabh + claude-code | Practice only. (1) turtlesim circle: node `task_0_4817` verified; portal text says d=2.0 but its figure shows ~8.0, so `radius` is a parameter. (2) apt packages installed; fresh `~/pico_ws` builds all 17 packages. Details: `08-task0-bonus.md` |
 | **Task 1A — find survivors (OpenCV)** | released 2026-09-16, **deadline 23 Sep** | **NOT STARTED — next** | proposed: Mahesh | 20 marks. Spec + traps: `09-task1-overview-and-1a.md`. Study file `chatgpt-project/01_…` |
 | **Task 1B — tune altitude PID** | same | **FINAL RUN RECORDED 2026-10-01 00:07 — 40/40 est.** (gains: `chatgpt-project/09_Team_Results_PRIVATE.md`, not on GitHub). Zip `~/task_1b/KD_4817_task_1b.zip`, video `KD_4817_Task_1b_20261001_000514.webm` (2:14). Gauri uploads zip; YouTube Unlisted `KD_4817_Task_1b` | proposed: Gauri | 40 marks. Controller is a pre-built binary: **tune gains, record bag + YouTube**. `10-task1b.md` |
-| **Task 1C — tune pitch + roll** | same | not started (needs 1B throttle gains first) | proposed: Gauri | 40 marks. Tuning, not coding; bag + YouTube. `11-task1c.md` |
+| **Task 1C — tune pitch + roll** | same | **FINAL RUN RECORDED 2026-10-01 01:20 — 40/40 est.** (gains: `chatgpt-project/09_Team_Results_PRIVATE.md`). Zip `~/task_1c/KD_4817_task_1c.zip`, video `KD_4817_Task_1c_20261001_011657.webm` (3:34). Gauri uploads; YouTube Unlisted `KD_4817_Task_1c` | proposed: Gauri | 40 marks. Tuning, not coding; bag + YouTube. `11-task1c.md` |
 | **PacBot Task 1A — maze path planning** | released, **deadline 23 Sep** | **SETUP DONE, not started** | proposed: Parth | 35 marks. `15-pacbot-task1.md` |
 | **PacBot Task 1B — wall following (MuJoCo)** | same | **SETUP DONE, not started**; submission page received | proposed: Saurabh | 65 marks. `15-pacbot-task1.md` |
 | Task 2 — Learn & Explore II | ~4 wk | not started | — | commit to one theme |
@@ -44,6 +44,17 @@ brain's `STATE.md` with your agent name and the date.** Newest entry first.
    Firebird V robot and can be skipped. Worth it only if all four can sit together for 5 hours.
 
 ## Entries
+
+### 2026-10-01 (01:20) · claude-code — KD 1C tuned by Claude (Saurabh's request) and recorded
+- `learning/tools/kd1c_trial.sh "T" "PR"` (pitch = roll) + `kd1b_timeline.py BAG 1c`. 14 fresh-takeoff trials in `~/kd1c_trials/`.
+- Findings: the 1C target is ~1.5 m off in x AND y (errors start +1.49 / −1.51) and 2.0 in z. Tilting steals lift, so
+  the 1B throttle gains overshoot above target after the sideways move → less throttle Ki, more throttle Kp, gentler
+  pitch/roll. Throttle Kd above ~55 amplifies the (off-centre, noisier) WhyCode height and causes late exits. Only the
+  first 10 s hover finished by 15 s counts, so tune for a clean first 15 s.
+- Recorded run 01:20: 76.8 s, all three inside ±0.4 the whole time (x/y ±0.07, z −0.25..+0.37) → 40/40 est.
+  Gains + trial table: `chatgpt-project/09_Team_Results_PRIVATE.md` (git-ignored). Tuner file
+  `~/pico_ws/src/swift_pico/src/pid_values.yaml` now holds the 1C gains.
+- Next: Gauri uploads KD 1B + 1C zips and YouTube links; PB 1B by 5 Oct.
 
 ### 2026-10-01 (00:30) · claude-code — KD 1B gains tuned by Claude (Saurabh's request)
 - Saurabh asked Claude to tune and test. New tools in `learning/tools/`: `kd1b_trial.sh KP KI KD [SECS]`

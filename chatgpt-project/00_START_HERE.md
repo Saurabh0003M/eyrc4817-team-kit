@@ -13,7 +13,7 @@
 | Portal | https://portal.e-yantra.org/courses/theme_kd and https://portal.e-yantra.org/courses/theme_pb (login needed) |
 | Team repo | https://github.com/Saurabh0003M/eyrc4817-team-kit (setup script + checker tools) |
 | **Task 1 deadlines** (portal "All deadlines", soft, 11:59 pm) | KD 1A **21 Sep** (submitted) · PB 1A **23 Sep** (submitted) · KD 1B **28 Sep** · KD 1C **5 Oct** · PB 1B **5 Oct** |
-| **Status (1 Oct)** | **KD 1B recorded: 40/40 estimated** (gains in `09_Team_Results_PRIVATE.md`; upload pending — past 28 Sep, check the slot). Next: **KD 1C** and **PB 1B** by 5 Oct |
+| **Status (1 Oct)** | **KD 1B + KD 1C recorded: 40/40 estimated each** (gains in `09_Team_Results_PRIVATE.md`; Gauri uploads — KD 1B was due 28 Sep, check the slot). Next: **PB 1B** by 5 Oct |
 
 ## Task 1 = five subtasks, 200 marks
 
@@ -33,7 +33,7 @@ KD Task 1 total = 100 (20 + 40 + 40). PB Task 1 total = 100 (35 + 65).
 |---|---|---|
 | KD 1A, PB 1A | Submitted | — |
 | KD 1B | Recorded, 40/40 estimated. **Gauri uploads** | Saurabh tuned it on Gauri's laptop |
-| **KD 1C** | Not started | Saurabh tunes; anyone can learn along with `02_KD_Task1B_1C_PID_Tuning.md` |
+| **KD 1C** | **Recorded 1 Oct, 40/40 estimated** (gains in `09_Team_Results_PRIVATE.md`). **Gauri uploads** | Saurabh (tuned with Claude) |
 | **PB 1B** | A first draft runs on Gauri's laptop (13 clean turns in practice, no exit yet) | Saurabh |
 
 Only Gauri can upload. Only Gauri's laptop (HP OMEN, Ubuntu 22.04) is fully set up; the other laptops are not
@@ -43,7 +43,7 @@ recorded yet (`B3_Background_Team_Setup_Log.md` → 03-machines).
 
 | Day | KD 1C | PB 1B | Everyone |
 |---|---|---|---|
-| **Thu 1** | Launch sim + `task_1c_controller` with the 1B throttle gains (`09_Team_Results_PRIVATE.md`); confirm height hold | Run the draft with `--evaluate`; note exactly where it fails | Gauri uploads the KD 1B zip + YouTube link |
+| **Thu 1** | ✅ Recorded (40/40 est.); zip + video ready for Gauri | Run the draft with `--evaluate`; note exactly where it fails | Gauri uploads the KD 1B zip + YouTube link |
 | **Fri 2** | Tune pitch = roll together, testing from a **fresh takeoff** each time | Fix the failure found on Thu (corners / exit) | |
 | **Sat 3** | Score practice bags (`bag_score.py 1c task_1c`); aim for 40/40 est. with margin | Full `--evaluate` runs: zero collisions, reaches the exit | Test the screen recording |
 | **Sun 4** | **Record** the 1C bag + video; score before zipping; zip | **Record** the evaluate run + video; coding standard; zip; checker tool | **Everything final tonight** |

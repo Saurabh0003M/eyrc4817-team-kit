@@ -61,6 +61,12 @@ Messages: gains are `controller_msg/PIDTune` (kp, ki, kd); errors are `error_msg
 **What each gain does (feel):** Kp = how hard it pushes toward the target (too big → overshoot and swinging). Kd = brakes when it's moving fast toward the target (too big → jittery). Ki = slowly adds push if it stays off target (too big → slow big swings, "windup").
 
 **1C specifics:**
+- **Team result (1 Oct):** tuned to 40/40 estimated from fresh takeoffs; all 9 gains + the trial table are in `09_Team_Results_PRIVATE.md`. What we learned:
+  - The 1C target is ~1.5 m away in x **and** y, so the drone must tilt and travel while it climbs.
+  - **Tilting steals lift:** the throttle's I-term builds up extra push during the move, and when the drone levels out it rises above the target. The 1B throttle gains overshoot in 1C; the fix was less throttle Ki and more throttle Kp, plus a gentler sideways move.
+  - The camera's height reading is noisier when the drone sits off-centre. A big throttle Kd reacts to that jitter and makes the drone twitch, so don't cure every wobble with more Kd.
+  - Only the **first 10 s hover, finished by 15 s,** counts for marks; later wobbles don't cost anything.
+  - `learning/tools/kd1c_trial.sh "T_KP T_KI T_KD" "PR_KP PR_KI PR_KD"` runs one scored fresh-takeoff trial (pitch = roll).
 - Keep the 1B throttle gains (in `09_Team_Results_PRIVATE.md`, with their tuner-box integers); confirm height hold first.
 - **Pitch and roll are symmetric on this drone: tune them together with the same values.**
 - Tilting to move sideways steals some upward thrust, so throttle may need a small touch-up.
