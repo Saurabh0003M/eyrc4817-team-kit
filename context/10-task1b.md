@@ -79,9 +79,18 @@ numbers**, Kp, Ki and Kd, for the throttle (Z) axis, then record proof.
 portal order is sim → controller (which arms at once) → record. Ask on the forum before the final
 run.
 
+## Result [VERIFIED 2026-10-01]
+- **Throttle gains: `chatgpt-project/09_Team_Results_PRIVATE.md`** (git-ignored — this repo is public). Two fresh-takeoff trials: 40/40 est., in ±0.4 at ~2.5 s, then
+  −0.27..+0.23. Final recorded run 00:07 (bag 66.5 s, max |error| 0.23): 40/40 est. Zip
+  `~/task_1b/KD_4817_task_1b.zip`, video `KD_4817_Task_1b_20261001_000514.webm`. Full trial table:
+  `chatgpt-project/02_…` and `04-task-log.md` (2026-10-01).
+- **Clock question, partly answered:** in the trials the bag started together with the controller (worst case)
+  and the 10 s hover still finished by ~12.5 s, so the marks do not depend on when the clock starts.
+- Tools: `learning/tools/kd1b_trial.sh KP KI KD [SECS]` (one fresh-takeoff trial, scored) and `kd1b_timeline.py`.
+
 ## Learning angle
 This is pure **tuning skill**: exactly roadmap M3's P/PD/PID feel, then M6. Claude handles
 bring-up, plots of `throttle_error`, recording and zipping, and a **self-scorer** that reads a
 practice bag and applies the scoring table above. **Saurabh chooses every gain.** Do not auto-tune
-for him. The roadmap M6 text ("you write the PID terms") is outdated; update it in the next
+for him *unless he asks* (on 2026-10-01 he asked Claude to tune 1B; see Result above). The roadmap M6 text ("you write the PID terms") is outdated; update it in the next
 roadmap rebuild, after the rest of the Task 1 material (KD 1C + PacBot) arrives.

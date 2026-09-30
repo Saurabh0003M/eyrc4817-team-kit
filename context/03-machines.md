@@ -10,26 +10,27 @@ Dedicated GPU not necessary for KD, preferable for PB.
 
 | Member | Machine | CPU | RAM | Storage | OS now | Linux ready? |
 |---|---|---|---|---|---|---|
-| **Owner unconfirmed** ("Ubuntu box") | unknown laptop model | AMD Ryzen 7 7840HS, 8C/16T | 14 GiB | 954 GB NVMe; Ubuntu root **48.8 GB** | Ubuntu 22.04.5 bare metal (dual-boot with Windows) | **YES — KD evaluator green, PB submission generated** |
-| Saurabh | HP Pavilion Plus 14-ew1xxx | Core Ultra 5 125H, 14C/18T | 15.5 GB | Samsung 512 GB NVMe (477 GB), GPT | Win 11 Home SL 26200 | **No partition yet** *(as of 2026-09-12 — may be superseded by the Ubuntu box)* |
-| Gauri | **UNKNOWN** | — | — | — | — | — |
+| **Gauri** ("Ubuntu box", confirmed by Saurabh 2026-09-24) | HP OMEN 16-xd0xxx, RTX 4050 | AMD Ryzen 7 7840HS, 8C/16T | 14 GiB | 954 GB NVMe; Ubuntu root **48.8 GB** | Ubuntu 22.04.5 bare metal (dual-boot with Windows) | **YES — KD evaluator green, PB submission generated** |
+| Saurabh | HP Pavilion Plus 14-ew1xxx | Core Ultra 5 125H, 14C/18T | 15.5 GB | Samsung 512 GB NVMe (477 GB), GPT | Win 11 Home SL 26200 | **No partition yet** *(as of 2026-09-12; the Ubuntu box is Gauri's, not a replacement — Saurabh works across several laptops)* |
 | Parth | **UNKNOWN** | — | — | — | — | — |
 | Mahesh | **UNKNOWN** | — | — | — | — | — |
 
 **Open action:** ask the three for RAM, free disk, CPU and current OS. Do not probe their machines.
 All four must complete Task 0 individually; on a drone theme the weakest laptop sets the team's pace.
 
-### Ubuntu box — measured 2026-09-13 (owner unconfirmed)
+### Ubuntu box = Gauri's laptop — measured 2026-09-13 (owner confirmed 2026-09-24)
 
 Measured by claude-code running on this machine, inside the account of the person who drives this
-repo. **The hardware does not match the HP Pavilion recorded for Saurabh below.** It could be
-another laptop of his or a teammate's machine, so ask rather than assume.
+repo. **The hardware does not match the HP Pavilion recorded for Saurabh below.** **It is
+Gauri's laptop** (Saurabh, 2026-09-24); Saurabh uses it along with his own machines.
 
 - **HP OMEN 16** (per the NEON//HUD session notes) · CPU **AMD Ryzen 7 7840HS** (Zen 4, 8C/16T) ·
   iGPU **Radeon 780M** (Phoenix1) **plus discrete NVIDIA GeForce RTX 4050 Laptop GPU**, driver
-  580.178.04, found 2026-09-16 · RAM 14.9 GiB
+  580.178.04, found 2026-09-16 · RAM 14.9 GiB · desktop session **Ubuntu on Xorg** (verified 2026-09-24;
+  GDM keeps Xorg while the NVIDIA driver is loaded), so Alt+F2 → r restarts GNOME Shell
 - `nvme0n1` 954 GB: EFI 260 MB · MSR 16 MB · NTFS 550.9 GB · NTFS 353.3 GB · NTFS 572 MB (recovery) ·
-  **ext4 48.8 GB mounted at `/`** (20 GB used, 26 GB free)
+  **ext4 48.8 GB mounted at `/`** (20 GB used, 26 GB free on 09-13; 41 GB used, 4.4 GB free early on
+  09-24, 8 GB of it a swapfile; 30 GB used, 17 GB free after the 09-24 cleanup, swapfile now 4 GB)
 - External Samsung T9 1 TB (2 × 466 GB NTFS) mounted under `/media/ubantu/`
 - Ubuntu **22.04.5**, kernel **6.8.0-138-generic** (HWE). Not virtualised and not WSL, per the KD
   evaluator

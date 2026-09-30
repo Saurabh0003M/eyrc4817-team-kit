@@ -14,7 +14,8 @@ is **registered, payment confirmed, roster 4/4 active**. Themes chosen: **Khoj-o
 PacBot secondary**. The team is inside the **Task 0 — Setup & Installation** window (~3 weeks,
 Sep 2026). **Task 0 has been run on one bare-metal Ubuntu 22.04.5 machine for both themes
 (2026-09-12)**: the KD evaluator is all green, and the PB evaluator produced `4817_task0.zip`.
-Portal upload status and machine owner are unknown → `context/04-task-log.md`.
+That machine is Gauri's laptop (confirmed 2026-09-24); portal upload status is unknown →
+`context/04-task-log.md`.
 
 **NOW (2026-09-16): Task 1 is released.** It has three parts: **1A** image processing, find
 survivors in a photo (20 marks); **1B** PID for altitude hold (40); **1C** PID for all 3 axes (40).
@@ -106,17 +107,18 @@ individually strong performers. Advancement to Stage 2 is **purely on Stage 1 ta
 
 Requirement: Ubuntu 22.04 LTS · >4 cores x86_64 · 8 GB+ RAM · 100 GB+ storage · no dedicated GPU needed.
 
-**Ubuntu box, Task 0 done (measured 2026-09-13, owner unconfirmed):** AMD Ryzen 7 7840HS
-(8C/16T), Radeon 780M iGPU, 14 GiB RAM, 954 GB NVMe dual-boot. Ubuntu 22.04.5 bare metal, kernel
-6.8. **Its root partition is only 48.8 GB (26 GB free), below the 100 GB requirement.** That is
-fine for Task 0 but will get tight once MuJoCo workspaces, colcon builds and `ros2 bag` recordings
-pile up.
+**Ubuntu box = Gauri's laptop (HP OMEN 16), Task 0 done (measured 2026-09-13; owner confirmed
+2026-09-24):** AMD Ryzen 7 7840HS (8C/16T), Radeon 780M iGPU + NVIDIA RTX 4050 Laptop (6 GB), 14 GiB RAM, 954 GB NVMe dual-boot. Ubuntu 22.04.5 bare metal, kernel
+6.8. **Its root partition is only 48.8 GB, below the 100 GB requirement: 26 GB free on 09-13, 4.4 GB
+early on 2026-09-24, 17 GB after that day's cleanup (model file moved to the T9, swapfile 8→4 GB,
+caches cleared).** Run `df -h /` before colcon builds or `ros2 bag` recordings;
+the Samsung T9 (`/media/ubantu/Samsung T9 volume 2`, 375 GB free) takes big files.
 
 **Saurabh's HP Pavilion Plus 14** as recorded 2026-09-12: Core Ultra 5 125H, Intel Arc, 477 GB
-NVMe, Windows only with no Linux partition. It is unclear whether this has been superseded by the
-Ubuntu box above.
+NVMe, Windows only with no Linux partition. The Ubuntu box above is Gauri's, not a replacement:
+Saurabh works across several laptops.
 
-**Gauri's, Parth's and Mahesh's machines are UNKNOWN — ask the team, do not probe.** Full inventory,
+**Parth's and Mahesh's machines are UNKNOWN — ask the team, do not probe.** Full inventory,
 the install risks, and the dual-boot plan: `context/03-machines.md`.
 
 ## Where things are

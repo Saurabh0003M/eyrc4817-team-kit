@@ -23,6 +23,8 @@ KD_*_task*.py
 *_results.txt
 PB#*.zip
 KD_*.zip
+# Team-only results (graded answers like PID gains) go in *_PRIVATE.md: ChatGPT Project only.
+*_PRIVATE.md
 
 # Python / editor clutter
 __pycache__/

@@ -12,7 +12,8 @@
 | Themes | **Khoj-o-Drone (KD)**, primary: a drone searches a disaster zone for survivors · **PacBot (PB)**, secondary: a Pac-Man-style robot in a maze. The team must do both until Task 2/3, then e-Yantra lets us keep one |
 | Portal | https://portal.e-yantra.org/courses/theme_kd and https://portal.e-yantra.org/courses/theme_pb (login needed) |
 | Team repo | https://github.com/Saurabh0003M/eyrc4817-team-kit (setup script + checker tools) |
-| **Task 1 deadline** | **23 September 2026** (confirm the exact time on the portal) |
+| **Task 1 deadlines** (portal "All deadlines", soft, 11:59 pm) | KD 1A **21 Sep** (submitted) · PB 1A **23 Sep** (submitted) · KD 1B **28 Sep** · KD 1C **5 Oct** · PB 1B **5 Oct** |
+| **Status (1 Oct)** | **KD 1B recorded: 40/40 estimated** (gains in `09_Team_Results_PRIVATE.md`; upload pending — past 28 Sep, check the slot). Next: **KD 1C** and **PB 1B** by 5 Oct |
 
 ## Task 1 = five subtasks, 200 marks
 
@@ -73,6 +74,7 @@ Everything is **final on Tue 22**, so the deadline day is only for uploading.
 | `06_Concepts_Explained.md` | any word or idea is unclear (PID, ROS 2, MQTT, HSV, BFS…) |
 | `07_Learning_Resources.md` | looking for a video, doc or portal link |
 | `08_Portal_Learnings_Summary.md` | what e-Yantra's learning pages say, and the mistakes we found in them |
+| `09_Team_Results_PRIVATE.md` | you need our own graded numbers (KD 1B gains). **Never copy them outside this project** |
 
 ## Rules that can cost the whole team
 

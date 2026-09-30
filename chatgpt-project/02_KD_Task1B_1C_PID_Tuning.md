@@ -6,6 +6,16 @@ Source: e-Yantra portal, KD → Stage 1 → Task 1 → Task 1B/1C Instruction + 
 
 **No coding.** e-Yantra gives a ready-made controller program. You choose the **PID gains** (Kp, Ki, Kd) so the simulated Swift Pico drone holds still: **1B = height only**, **1C = height + forward/back + left/right**.
 
+## Team result — KD 1B (recorded 1 Oct 2026, 40/40 estimated)
+
+Our gains, their tuner-box integers and the full trial table are in **`09_Team_Results_PRIVATE.md`**: ChatGPT Project only, **never the public GitHub repo** (if another team copies graded answers, our submission gets flagged too).
+
+**Lessons (they apply to 1C too):**
+- **Test from a fresh takeoff.** After minutes of flying, Ki has "filled up" and the tuner graph looks perfect; the evaluation starts from the ground, where Ki starts at zero.
+- **Rule of thumb:** time to reach the box ≈ **1.2 × Kp ÷ Ki** seconds (12.3 ÷ 0.288 predicted 51 s; we measured 50 s). Aim for ~3 s.
+- **Positive error that shrinks slowly and never crosses zero** = Ki too small. **Error swinging across zero** = Kp/Ki too big for the Kd.
+- `learning/tools/kd1b_trial.sh KP KI KD` runs one fresh-takeoff trial (sim + controller + bag), stops everything and prints the estimated marks. `kd1b_timeline.py` shows the error second by second.
+
 ## The pieces (three programs at once, each in its own terminal)
 
 | Terminal | Command | What it is |
@@ -51,7 +61,7 @@ Messages: gains are `controller_msg/PIDTune` (kp, ki, kd); errors are `error_msg
 **What each gain does (feel):** Kp = how hard it pushes toward the target (too big → overshoot and swinging). Kd = brakes when it's moving fast toward the target (too big → jittery). Ki = slowly adds push if it stays off target (too big → slow big swings, "windup").
 
 **1C specifics:**
-- Keep the 1B throttle gains; confirm height hold first.
+- Keep the 1B throttle gains (in `09_Team_Results_PRIVATE.md`, with their tuner-box integers); confirm height hold first.
 - **Pitch and roll are symmetric on this drone: tune them together with the same values.**
 - Tilting to move sideways steals some upward thrust, so throttle may need a small touch-up.
 - Why x/y is harder: the drone can't push sideways. It must **tilt**, and the tilt splits thrust into up + sideways. Sideways acceleration ≈ g × tilt angle (radians).
@@ -60,11 +70,12 @@ Messages: gains are `controller_msg/PIDTune` (kp, ki, kd); errors are `error_msg
 
 1. Tune, press **Save Values**, open `pid_values.yaml` and note the three throttle numbers.
 2. **Start the screen recording** (terminal visible before you launch anything, for the whole run).
-3. Launch the sim. In a second terminal: `ros2 run swift_pico task_1b_controller`, answer the prompt, type your gains.
-4. Third terminal, record **at least 60 seconds**: `ros2 bag record -o task_1b /pos_error /whycode_node/markers`
-5. From **inside** the `task_1b` folder: `zip -r KD_4817_task_1b.zip task_1b_0.db3 metadata.yaml` (the two files, **no folder**).
-6. **Gauri uploads** in the Task 1B slot.
-7. Upload the video to YouTube as **Unlisted**, titled **`KD_4817_Task_1b`**, and submit the link. (The tuner GUI need not appear in the video.)
+3. Launch the sim. In a second terminal: `ros2 run swift_pico task_1b_controller`, answer **N**, type your gains. **Check the drone actually rises** before recording (our first bag was 3.5 min of a drone sitting on the ground = 0 marks).
+4. Third terminal, record **at least 60 seconds** (we do ~90): `ros2 bag record -o task_1b /pos_error /whycode_node/markers`. If it says `Output folder 'task_1b' already exists`, rename the old one first (`mv ~/task_1b ~/task_1b_old`).
+5. **Score it before zipping:** `python3 ~/eyrc4817/learning/tools/bag_score.py 1b task_1b` (run from the folder that contains `task_1b`).
+6. From **inside** the `task_1b` folder: `zip -r KD_4817_task_1b.zip task_1b_0.db3 metadata.yaml` (the two files, **no folder**).
+7. **Gauri uploads** in the Task 1B slot.
+8. Upload the video to YouTube as **Unlisted**, titled **`KD_4817_Task_1b`**, and submit the link. (The tuner GUI need not appear in the video.)
 
 ## Submission — KD 1C
 

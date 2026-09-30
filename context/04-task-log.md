@@ -12,7 +12,7 @@ brain's `STATE.md` with your agent name and the date.** Newest entry first.
 | **Task 0 — Setup & Installation** | ~3 wk, Sep 2026 | **IN PROGRESS — 1 of 4 machines done** | all four | Ubuntu box: KD evaluator all green; PB sealed submission generated (2026-09-12). Portal upload status **unknown**. Other three machines not started or unknown |
 | **Task 0 — Bonus task** | end of Task 0 | **Part 1 DONE · Part 2 UNBLOCKED (sim builds; launch not tried)** | Saurabh + claude-code | Practice only. (1) turtlesim circle: node `task_0_4817` verified; portal text says d=2.0 but its figure shows ~8.0, so `radius` is a parameter. (2) apt packages installed; fresh `~/pico_ws` builds all 17 packages. Details: `08-task0-bonus.md` |
 | **Task 1A — find survivors (OpenCV)** | released 2026-09-16, **deadline 23 Sep** | **NOT STARTED — next** | proposed: Mahesh | 20 marks. Spec + traps: `09-task1-overview-and-1a.md`. Study file `chatgpt-project/01_…` |
-| **Task 1B — tune altitude PID** | same | **READY TO TUNE** (sim libraries all found; not yet launched with the controller) | proposed: Gauri | 40 marks. Controller is a pre-built binary: **tune gains, record bag + YouTube**. `10-task1b.md` |
+| **Task 1B — tune altitude PID** | same | **FINAL RUN RECORDED 2026-10-01 00:07 — 40/40 est.** (gains: `chatgpt-project/09_Team_Results_PRIVATE.md`, not on GitHub). Zip `~/task_1b/KD_4817_task_1b.zip`, video `KD_4817_Task_1b_20261001_000514.webm` (2:14). Gauri uploads zip; YouTube Unlisted `KD_4817_Task_1b` | proposed: Gauri | 40 marks. Controller is a pre-built binary: **tune gains, record bag + YouTube**. `10-task1b.md` |
 | **Task 1C — tune pitch + roll** | same | not started (needs 1B throttle gains first) | proposed: Gauri | 40 marks. Tuning, not coding; bag + YouTube. `11-task1c.md` |
 | **PacBot Task 1A — maze path planning** | released, **deadline 23 Sep** | **SETUP DONE, not started** | proposed: Parth | 35 marks. `15-pacbot-task1.md` |
 | **PacBot Task 1B — wall following (MuJoCo)** | same | **SETUP DONE, not started**; submission page received | proposed: Saurabh | 65 marks. `15-pacbot-task1.md` |
@@ -44,6 +44,20 @@ brain's `STATE.md` with your agent name and the date.** Newest entry first.
    Firebird V robot and can be skipped. Worth it only if all four can sit together for 5 hours.
 
 ## Entries
+
+### 2026-10-01 (00:30) · claude-code — KD 1B gains tuned by Claude (Saurabh's request)
+- Saurabh asked Claude to tune and test. New tools in `learning/tools/`: `kd1b_trial.sh KP KI KD [SECS]`
+  (fresh sim takeoff → controller answered N + gains via stdin → bag starts WITH the controller = worst-case
+  clock → SIGINT stop → `bag_score.py` + `kd1b_timeline.py`). Trial bags: `~/kd1b_trials/`.
+- User's own bags 30 Sep: 21:49 = 0/40 (drone never took off, error flat 3.01); 23:22 = 0/40 (sags, creeps
+  toward the box over 80 s); 23:40 = 24/40 (in the box only at 50 s → speed 0). Rule of thumb that matched:
+  time to box ≈ 1.2 × Kp ÷ Ki s. The tuner graph looked perfect only because Ki had been integrating for
+  minutes — always test from a fresh takeoff.
+- 8 fresh-takeoff trials: more Kd removed the overshoot, more Kp shrank the sag, more Ki refilled the hover
+  push faster; the chosen set scored 40/40 twice. **Gains + full trial table: `chatgpt-project/09_Team_Results_PRIVATE.md`
+  (git-ignored; this repo is public).**
+- Next: user records the real run with these gains, Claude scores, zip, Gauri uploads, YouTube Unlisted
+  `KD_4817_Task_1b`. Fallback (24/40): `~/task_1b_24marks` + video `KD_4817_Task_1b_20260930_233656.webm`.
 
 ### 2026-09-24 · claude-code — official deadlines (portal "All deadlines", soft deadlines, 11:59 pm)
 - KD 1A 21 Sep · PB 1A 23 Sep (both SUBMITTED) · **KD 1B 28 Sep** · **KD 1C 5 Oct** · **PB 1B 5 Oct**.
