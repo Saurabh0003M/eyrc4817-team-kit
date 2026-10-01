@@ -13,7 +13,7 @@
 | Portal | https://portal.e-yantra.org/courses/theme_kd and https://portal.e-yantra.org/courses/theme_pb (login needed) |
 | Team repo | https://github.com/Saurabh0003M/eyrc4817-team-kit (setup script + checker tools) |
 | **Task 1 deadlines** (portal "All deadlines", soft, 11:59 pm) | KD 1A **21 Sep** (submitted) · PB 1A **23 Sep** (submitted) · KD 1B **28 Sep** · KD 1C **5 Oct** · PB 1B **5 Oct** |
-| **Status (1 Oct)** | **KD 1B + KD 1C recorded: 40/40 estimated each** (gains in `09_Team_Results_PRIVATE.md`; Gauri uploads — KD 1B was due 28 Sep, check the slot). Next: **PB 1B** by 5 Oct |
+| **Marks (1 Oct, portal)** | **KD 1A 20/20 · KD 1B 40/40 · KD 1C 40/40 (KD = 100/100) · PB 1A 35/35.** **PB 1B recorded 1 Oct (65/65 est.)**: Gauri uploads `PB#4817.zip` + video before 5 Oct |
 
 ## Task 1 = five subtasks, 200 marks
 
@@ -31,29 +31,30 @@ KD Task 1 total = 100 (20 + 40 + 40). PB Task 1 total = 100 (35 + 65).
 
 | Subtask | Status | Owner (agreed 24 Sep; the team can change it) |
 |---|---|---|
-| KD 1A, PB 1A | Submitted | — |
-| KD 1B | Recorded, 40/40 estimated. **Gauri uploads** | Saurabh tuned it on Gauri's laptop |
-| **KD 1C** | **Recorded 1 Oct, 40/40 estimated** (gains in `09_Team_Results_PRIVATE.md`). **Gauri uploads** | Saurabh (tuned with Claude) |
-| **PB 1B** | A first draft runs on Gauri's laptop (13 clean turns in practice, no exit yet) | Saurabh |
+| KD 1A, PB 1A | **Marked 20/20 and 35/35** | — |
+| KD 1B | **Marked 40/40** | Saurabh (tuned with Claude) |
+| **KD 1C** | **Marked 40/40** (gains in `09_Team_Results_PRIVATE.md`) | Saurabh (tuned with Claude) |
+| **PB 1B** | **Recorded 1 Oct, 65/65 est.** (0 collisions). **Gauri uploads** | Saurabh (with Claude) |
 
 Only Gauri can upload. Only Gauri's laptop (HP OMEN, Ubuntu 22.04) is fully set up; the other laptops are not
 recorded yet (`B3_Background_Team_Setup_Log.md` → 03-machines).
 
 ## Plan to the 5 Oct deadline (Thu 1 → Mon 5 October, 11:59 pm)
 
-| Day | KD 1C | PB 1B | Everyone |
-|---|---|---|---|
-| **Thu 1** | ✅ Recorded (40/40 est.); zip + video ready for Gauri | Run the draft with `--evaluate`; note exactly where it fails | Gauri uploads the KD 1B zip + YouTube link |
-| **Fri 2** | Tune pitch = roll together, testing from a **fresh takeoff** each time | Fix the failure found on Thu (corners / exit) | |
-| **Sat 3** | Score practice bags (`bag_score.py 1c task_1c`); aim for 40/40 est. with margin | Full `--evaluate` runs: zero collisions, reaches the exit | Test the screen recording |
-| **Sun 4** | **Record** the 1C bag + video; score before zipping; zip | **Record** the evaluate run + video; coding standard; zip; checker tool | **Everything final tonight** |
-| **Mon 5** | | | **Gauri uploads both early in the day** |
+Only PB 1B is left. **Submit before the deadline**: on-time uploads earn e-Ratna (PB 1A got +11); late ones are
+still marked but show "Late, not eligible".
+
+| Day | PB 1B | Everyone |
+|---|---|---|
+| **Thu 1** | ✅ Recorded + zipped (`PB#4817.zip`, video `PB_4817_Task1B_20261001_124141.webm`) | |
+| **Fri 2** | **Gauri uploads** in the PB Task 1B slot + the Unlisted YouTube link | Read up for Task 2 when it is released |
+| **Mon 5** | Deadline, 11:59 pm (nothing should be left for this day) | |
 
 ## Open questions to ask on the e-Yantra forum (the portal doesn't answer these)
 
-1. Uploads after a "soft" deadline (KD 1B's was 28 Sep): still accepted, and with what penalty?
-2. KD 1B/1C scoring: when does the 15-second clock start? (Our 1B tests reach the box ~2.5 s after takeoff, so for a well-tuned drone it hardly matters.)
-3. PacBot 1A and 1B both use the zip name `PB#4817.zip`: separate upload slots, correct?
+1. KD 1B/1C scoring: when does the 15-second clock start? (Answered in practice: both scored 40/40.)
+2. ~~Uploads after a "soft" deadline~~ Answered by the portal: accepted and marked, but "Late, not eligible" for e-Ratna.
+3. ~~PacBot 1A and 1B both use `PB#4817.zip`~~ The portal has a separate upload slot per subtask.
 
 ## Files in this project
 
@@ -68,7 +69,7 @@ recorded yet (`B3_Background_Team_Setup_Log.md` → 03-machines).
 | `06_Concepts_Explained.md` | any word or idea is unclear (PID, ROS 2, MQTT, HSV, BFS…) |
 | `07_Learning_Resources.md` | looking for a video, doc or portal link |
 | `08_Portal_Learnings_Summary.md` | what e-Yantra's learning pages say, and the mistakes we found in them |
-| `09_Team_Results_PRIVATE.md` | you need our own graded numbers (KD 1B gains). **Never copy them outside this project** |
+| `09_Team_Results_PRIVATE.md` | you need our own graded results (KD 1B/1C gains, the PB 1B maze note). **Never copy them outside this project** |
 | `B1_Background_Khoj_o_Drone.md` · `B2_Background_PacBot.md` · `B3_Background_Team_Setup_Log.md` | you need deeper detail: the team's raw notes per theme, the machines and the dated task log. Written for another AI assistant; the numbered files above win when they disagree |
 
 ## Rules that can cost the whole team

@@ -60,6 +60,16 @@ Publish **one wheel command for every sensors message** (the boilerplate already
 7. **Exit:** no walls in range on any side = out of the maze (the portal's example run printed "No walls in range on any side - clear of the maze").
 8. **Tune one gain at a time**, and count collisions after each change.
 
+## Team result and lessons (1 Oct)
+
+Our wall follower solves the maze with 0 collisions in evaluate mode (details, team only: `09_Team_Results_PRIVATE.md`).
+General lessons:
+- **A wall follower can loop forever around a free-standing block** (a wall piece not connected to the outer wall).
+  Plot the robot's path from its logged position, and if it circles, change the rule (e.g. the other hand).
+- **Test in `--evaluate` mode**: only it prints collisions and `MAZE SOLVED`.
+- The launcher buffers its output when redirected to a file; run it in a normal terminal (or under `script`) to see lines live.
+- `learning/tools/pb1b_trial.sh` runs one evaluate trial and draws the path (`pb1b_path.py`).
+
 ## Running
 
 ```bash

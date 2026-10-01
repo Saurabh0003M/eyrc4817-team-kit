@@ -12,7 +12,7 @@ Our gains, their tuner-box integers and the full trial table are in **`09_Team_R
 
 **Lessons (they apply to 1C too):**
 - **Test from a fresh takeoff.** After minutes of flying, Ki has "filled up" and the tuner graph looks perfect; the evaluation starts from the ground, where Ki starts at zero.
-- **Rule of thumb:** time to reach the box ≈ **1.2 × Kp ÷ Ki** seconds (12.3 ÷ 0.288 predicted 51 s; we measured 50 s). Aim for ~3 s.
+- **Rule of thumb:** time to reach the box ≈ **1.2 × Kp ÷ Ki** seconds (for our first, too-slow gains it predicted 51 s; the bag measured 50 s). Aim for ~3 s.
 - **Positive error that shrinks slowly and never crosses zero** = Ki too small. **Error swinging across zero** = Kp/Ki too big for the Kd.
 - `learning/tools/kd1b_trial.sh KP KI KD` runs one fresh-takeoff trial (sim + controller + bag), stops everything and prints the estimated marks. `kd1b_timeline.py` shows the error second by second.
 

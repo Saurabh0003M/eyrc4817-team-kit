@@ -11,11 +11,11 @@ brain's `STATE.md` with your agent name and the date.** Newest entry first.
 | Theme selection | Sep 2026 | **DONE** | team | KD primary, PB secondary |
 | **Task 0 — Setup & Installation** | ~3 wk, Sep 2026 | **IN PROGRESS — 1 of 4 machines done** | all four | Ubuntu box: KD evaluator all green; PB sealed submission generated (2026-09-12). Portal upload status **unknown**. Other three machines not started or unknown |
 | **Task 0 — Bonus task** | end of Task 0 | **Part 1 DONE · Part 2 UNBLOCKED (sim builds; launch not tried)** | Saurabh + claude-code | Practice only. (1) turtlesim circle: node `task_0_4817` verified; portal text says d=2.0 but its figure shows ~8.0, so `radius` is a parameter. (2) apt packages installed; fresh `~/pico_ws` builds all 17 packages. Details: `08-task0-bonus.md` |
-| **Task 1A — find survivors (OpenCV)** | released 2026-09-16, **deadline 23 Sep** | **NOT STARTED — next** | proposed: Mahesh | 20 marks. Spec + traps: `09-task1-overview-and-1a.md`. Study file `chatgpt-project/01_…` |
-| **Task 1B — tune altitude PID** | same | **FINAL RUN RECORDED 2026-10-01 00:07 — 40/40 est.** (gains: `chatgpt-project/09_Team_Results_PRIVATE.md`, not on GitHub). Zip `~/task_1b/KD_4817_task_1b.zip`, video `KD_4817_Task_1b_20261001_000514.webm` (2:14). Gauri uploads zip; YouTube Unlisted `KD_4817_Task_1b` | proposed: Gauri | 40 marks. Controller is a pre-built binary: **tune gains, record bag + YouTube**. `10-task1b.md` |
-| **Task 1C — tune pitch + roll** | same | **FINAL RUN RECORDED 2026-10-01 01:20 — 40/40 est.** (gains: `chatgpt-project/09_Team_Results_PRIVATE.md`). Zip `~/task_1c/KD_4817_task_1c.zip`, video `KD_4817_Task_1c_20261001_011657.webm` (3:34). Gauri uploads; YouTube Unlisted `KD_4817_Task_1c` | proposed: Gauri | 40 marks. Tuning, not coding; bag + YouTube. `11-task1c.md` |
-| **PacBot Task 1A — maze path planning** | released, **deadline 23 Sep** | **SETUP DONE, not started** | proposed: Parth | 35 marks. `15-pacbot-task1.md` |
-| **PacBot Task 1B — wall following (MuJoCo)** | same | **SETUP DONE, not started**; submission page received | proposed: Saurabh | 65 marks. `15-pacbot-task1.md` |
+| **Task 1A — find survivors (OpenCV)** | released 2026-09-16, **deadline 23 Sep** | **MARKED 20/20** (submitted 23 Sep 22:53; e-Ratna: late, not eligible) | proposed: Mahesh | 20 marks. Spec + traps: `09-task1-overview-and-1a.md`. Study file `chatgpt-project/01_…` |
+| **Task 1B — tune altitude PID** | same | **MARKED 40/40** (submitted 1 Oct 00:11; e-Ratna: late, not eligible). Gains: `chatgpt-project/09_Team_Results_PRIVATE.md` | proposed: Gauri | 40 marks. Controller is a pre-built binary: **tune gains, record bag + YouTube**. `10-task1b.md` |
+| **Task 1C — tune pitch + roll** | same | **MARKED 40/40** (submitted 1 Oct 01:26; e-Ratna not calculated yet). Gains: `chatgpt-project/09_Team_Results_PRIVATE.md` | proposed: Gauri | 40 marks. Tuning, not coding; bag + YouTube. `11-task1c.md` |
+| **PacBot Task 1A — maze path planning** | released, **deadline 23 Sep** | **MARKED 35/35** (submitted 23 Sep 22:21; e-Ratna +11) | proposed: Parth | 35 marks. `15-pacbot-task1.md` |
+| **PacBot Task 1B — wall following (MuJoCo)** | same | **RECORDED 2026-10-01 12:46, 65/65 est.** (MAZE SOLVED, 0 collisions). Zip `~/pacbot_ws/task1b/PB#4817.zip`, video `PB_4817_Task1B_20261001_124141.webm` (4:16). Gauri uploads | proposed: Saurabh | 65 marks. `15-pacbot-task1.md` |
 | Task 2 — Learn & Explore II | ~4 wk | not started | — | commit to one theme |
 | Tasks 3–6 | Nov 26 – Feb 27 | Stage 2 only | — | needs Stage 1 selection |
 
@@ -45,11 +45,37 @@ brain's `STATE.md` with your agent name and the date.** Newest entry first.
 
 ## Entries
 
+### 2026-10-01 (12:46) · claude-code — PB 1B recorded
+- `learning/tools/pb1b_record.py`: one GTK window with two real terminals (VTE) so both stay readable, starts/stops
+  GNOME's recorder, keeps the screen from blanking while recording, marks the run INTERRUPTED if the screen locks,
+  and zips on camera. First attempt (12:30) lost its video: started recording before Saurabh was at the screen, the
+  screen locked at 5 min idle and GNOME stopped the recording. Now recording starts on Enter in the top pane.
+- Recorded run 12:42–12:46: robot started 12:42:22, MAZE SOLVED ~3 min 48 s later, 0 collision lines.
+  Video `PB_4817_Task1B_20261001_124141.webm` (4:16, no Claude app visible anywhere); zip = that run's result.json + task_1b.py.
+- Next: Gauri uploads `PB#4817.zip` in the PB Task 1B slot + the Unlisted YouTube link, before 5 Oct (e-Ratna).
+
+### 2026-10-01 (day) · claude-code — official marks from the portal (Saurabh's screenshot)
+- KD 1A **20/20**, KD 1B **40/40**, KD 1C **40/40** → Khoj-o-Drone Task 1 = **100/100**. PacBot 1A **35/35**.
+  The bag scorer's 40/40 estimates for 1B and 1C matched the portal exactly.
+- e-Ratna: on-time submissions earn it (PB 1A: +11); late ones show "Late, not eligible" (KD 1A, KD 1B). So PB 1B
+  should go in before its deadline (portal showed "4d 22h left" for Task 1).
+- Left: PB 1B (solves in evaluate mode, 65/65 est.) — recorded run + video, `PB#4817.zip`, Gauri uploads.
+
+### 2026-10-01 (03:10) · claude-code — PB 1B: draft fixed, solves the maze with 0 collisions
+- `learning/tools/pb1b_trial.sh [MAX_S] [LABEL]` runs one `--evaluate` trial (launcher under `script` so its output is
+  line-buffered; stops on "wrote sealed result") and draws the path with `pb1b_path.py`. Trials in `~/pb1b_trials/`.
+- The 09-24 left-hand draft circled a free-standing block for ever (path plot). The one change that fixed it is in
+  `chatgpt-project/09_Team_Results_PRIVATE.md` (maze-specific, so git-ignored). Two evaluate runs: `MAZE SOLVED` at
+  ~250 s, 0 collision lines → 65/65 est. Submission checker 8/8.
+- Launcher facts: prints `evaluate: recording data…`, `MAZE SOLVED`, `evaluate: wrote sealed result to result.json`;
+  result.json is sealed (encrypted). Sim time runs ~0.66× real time.
+- Next: the recorded evaluate run + video; zip `PB#4817.zip` (result.json + task_1b.py); Gauri uploads.
+
 ### 2026-10-01 (01:20) · claude-code — KD 1C tuned by Claude (Saurabh's request) and recorded
 - `learning/tools/kd1c_trial.sh "T" "PR"` (pitch = roll) + `kd1b_timeline.py BAG 1c`. 14 fresh-takeoff trials in `~/kd1c_trials/`.
 - Findings: the 1C target is ~1.5 m off in x AND y (errors start +1.49 / −1.51) and 2.0 in z. Tilting steals lift, so
   the 1B throttle gains overshoot above target after the sideways move → less throttle Ki, more throttle Kp, gentler
-  pitch/roll. Throttle Kd above ~55 amplifies the (off-centre, noisier) WhyCode height and causes late exits. Only the
+  pitch/roll. A larger throttle Kd amplifies the (off-centre, noisier) WhyCode height and causes late exits. Only the
   first 10 s hover finished by 15 s counts, so tune for a clean first 15 s.
 - Recorded run 01:20: 76.8 s, all three inside ±0.4 the whole time (x/y ±0.07, z −0.25..+0.37) → 40/40 est.
   Gains + trial table: `chatgpt-project/09_Team_Results_PRIVATE.md` (git-ignored). Tuner file
