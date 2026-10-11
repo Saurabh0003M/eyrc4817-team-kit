@@ -2,7 +2,7 @@
 
 **Repo:** https://github.com/Saurabh0003M/eyrc4817-team-kit ·
 **Portal:** [Khoj-o-Drone](https://portal.e-yantra.org/courses/theme_kd) · [PacBot](https://portal.e-yantra.org/courses/theme_pb) (login) ·
-**Links:** [RESOURCES.md](RESOURCES.md) · **Study with ChatGPT:** [chatgpt-project/](chatgpt-project) · **⏰ Task 1 deadline: 23 September 2026**
+**Links:** [RESOURCES.md](RESOURCES.md) · **Study with ChatGPT:** [chatgpt-project/](chatgpt-project) · **⏰ Task 2 deadline: 26 October 2026** · Task 3: 27 Oct – 16 Nov
 
 ```bash
 git clone https://github.com/Saurabh0003M/eyrc4817-team-kit.git ~/eyrc4817
@@ -200,7 +200,7 @@ Submission zips are made inside the task folder, next to the files they contain.
 
 Four of the five parts use **PID**, so everyone should watch the PID videos (list in `chatgpt-project/07_Learning_Resources.md`).
 
-**Status (23 Sep, night):** KD 1A and PB 1A finished (code checked, PB run recorded) and packed for Gauri's upload. KD 1B, KD 1C and PB 1B not done yet.
+**Status (8 Oct):** Task 1 done — all five parts submitted with full marks on both themes. Task 2 (released 5 Oct) is in progress; deadline 26 Oct.
 
 ---
 
