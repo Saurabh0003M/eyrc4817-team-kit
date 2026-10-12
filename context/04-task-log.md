@@ -16,7 +16,7 @@ brain's `STATE.md` with your agent name and the date.** Newest entry first.
 | **Task 1C — tune pitch + roll** | same | **MARKED 40/40** (submitted 1 Oct 01:26; e-Ratna not calculated yet). Gains: `chatgpt-project/09_Team_Results_PRIVATE.md` | proposed: Gauri | 40 marks. Tuning, not coding; bag + YouTube. `11-task1c.md` |
 | **PacBot Task 1A — maze path planning** | released, **deadline 23 Sep** | **MARKED 35/35** (submitted 23 Sep 22:21; e-Ratna +11) | proposed: Parth | 35 marks. `15-pacbot-task1.md` |
 | **PacBot Task 1B — wall following (MuJoCo)** | same | **RECORDED 2026-10-01 12:46, 65/65 est.** (MAZE SOLVED, 0 collisions). Zip `~/pacbot_ws/task1b/PB#4817.zip`, video `PB_4817_Task1B_20261001_124141.webm` (4:16). Gauri uploads | proposed: Saurabh | 65 marks. `15-pacbot-task1.md` |
-| Task 2 — Learn & Explore II | ~4 wk | not started | — | commit to one theme |
+| **Task 2** | **released 2026-10-05** (both repos) | **not started**; repos pulled + KD workspace rebuilt 2026-10-12 | — | Deadline/marks/theme commitment: portal. Repo facts: `16-task2-from-repos.md` |
 | Tasks 3–6 | Nov 26 – Feb 27 | Stage 2 only | — | needs Stage 1 selection |
 
 ## Open actions
@@ -44,6 +44,14 @@ brain's `STATE.md` with your agent name and the date.** Newest entry first.
    Firebird V robot and can be skipped. Worth it only if all four can sit together for 5 hours.
 
 ## Entries
+
+### 2026-10-12 · claude-code — Task 2 found in the official repos
+- Saurabh pointed at the two official e-Yantra repos. Both were already our clones (`~/pico_ws/src`, `~/pacbot_ws`).
+  Fetch showed Task 2 released 2026-10-05 in both. Fast-forward pulls: KD `3318915 → af3b062`, PB `2c1343c → a5fad58`.
+- `~/pico_ws` rebuilt from scratch (an attempted `--symlink-install` build poisoned the CMake caches; old
+  build/install/log moved aside, then deleted after a clean 17/17 build). Tuner gains live in `src/`, untouched.
+- An unsourced `ros2 pkg list` triggered an Ubuntu crash dialog (ros2cli metadata not found). ROS 2 is fine when sourced.
+- Summary of Task 2 per theme + gaps: `16-task2-from-repos.md`. Next: read the portal for marks, deadline, theme commitment.
 
 ### 2026-10-01 (12:46) · claude-code — PB 1B recorded
 - `learning/tools/pb1b_record.py`: one GTK window with two real terminals (VTE) so both stay readable, starts/stops

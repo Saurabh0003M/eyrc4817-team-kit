@@ -17,7 +17,10 @@ Sep 2026). **Task 0 has been run on one bare-metal Ubuntu 22.04.5 machine for bo
 That machine is Gauri's laptop (confirmed 2026-09-24); portal upload status is unknown →
 `context/04-task-log.md`.
 
-**NOW (2026-09-16): Task 1 is released.** It has three parts: **1A** image processing, find
+**NOW (2026-10-12): Task 2 was released 2026-10-05 in both official repos** (pulled and built; summary
+`context/16-task2-from-repos.md`; marks and deadline are portal-only). Task 1 below is finished.
+
+**Task 1 (released 2026-09-16).** It has three parts: **1A** image processing, find
 survivors in a photo (20 marks); **1B** PID for altitude hold (40); **1C** PID for all 3 axes (40).
 Brief and traps: `context/09-task1-overview-and-1a.md`. The workspace is now **`~/pico_ws`** (it
 replaced `pico_mujoco_ws`) and builds cleanly. **Task 1 deadline: 23 Sep 2026** (confirm the exact time).
@@ -94,8 +97,8 @@ Stage-2 kit, free to teams that clear Stage 1: flight controller, motors, RadioM
 | When | What |
 |---|---|
 | Sep 2026 | Task 0 — Setup & Installation (~3 weeks) |
-| **16 → 23 Sep 2026** | **Task 1 (KD 1A/1B/1C + PB 1A/1B). ← CURRENT. Deadline 23 Sep** |
-| Oct–Nov 2026 | Task 2 Learn & Explore II (~4 wk) |
+| 16 → 23 Sep 2026 | Task 1 (KD 1A/1B/1C + PB 1A/1B), all marked full |
+| **Oct–Nov 2026** | **Task 2: released 2026-10-05 ← CURRENT.** Deadline on the portal |
 | Nov 2026 | Stage 1 ends. Top teams selected for Stage 2 + free hardware kit |
 | Nov 2026 – Feb 2027 | Tasks 3–6 (hardware) |
 | Mar 2027 | National Finale, IIT Bombay |
@@ -139,6 +142,7 @@ the install risks, and the dual-boot plan: `context/03-machines.md`.
 | `context/06-prelearnings.md` | **triaged study path** (ROS 2, MuJoCo, quadcopter physics), tiers, gotchas, per-member split | teaching or planning study |
 | `context/07-swift-pico-interface.md` | **Swift Pico sim: topics, message, arming, axis mapping** | writing any controller code |
 | `context/08-task0-bonus.md` | **Task 0 bonus:** turtlesim circle (d=2.0 at 5,5) + Swift Pico bring-up, approach notes, MuJoCo-version watch-out | bonus task / sim bring-up |
+| `context/16-task2-from-repos.md` | **Task 2 (both themes) as the official repos show it**: repo URLs, local clones, how to pull + rebuild, KD waypoint server PID/LQR, PB 2A/2B, unknowns | starting Task 2; checking for new tasks |
 | `context/15-pacbot-task1.md` | **PacBot Task 1:** 1A grid maze over MQTT (35), 1B MuJoCo wall following (65); topics, scoring, submission (`PB#4817.zip`), **tamper rule for the launch binaries**, repo-vs-portal name differences, setup verified | working on PacBot Task 1 |
 | `context/14-learnings-pacbot-mqtt-pathplanning.md` | **PacBot learnings:** MQTT (QoS, wildcards, retained/LWT; **local mosquitto + paho 2.1.0 verified**), path planning (BFS/DFS/Dijkstra/Greedy/A*; **PB Task 1A = grid maze planning + pellet choice**) | PacBot work; updating `chatgpt-project/` |
 | `context/13-learnings-quad-control-imgproc-coding.md` | Quadcopter Control (6 DOF, **Stage-2 laptop→RC→attitude-controller architecture = the sim's structure**, translational-EOM exercise trap), Image Processing/OpenCV/ROS 2–OpenCV (red hue wraps; sim `image_sink` defaults to shm so no `/image_raw`), **e-Yantra Coding Standard** for submissions | updating `chatgpt-project/`; Task 1A/2 coding |
@@ -186,11 +190,12 @@ live here with a home symlink. Reasoning: `context/08-task0-bonus.md`.
 
 1. **Answer from this file first.** If you find yourself running `find` or `ls` to orient, this file
    failed — fix it at the end of the session rather than leaving the next agent to re-explore.
-2. **Folder vs brain split.** This folder holds *artifacts and current technical state*. The Obsidian
-   brain (`brain/e-yantra/e-yantra-index`) holds *decisions and why*. Do not duplicate across them;
-   link instead.
+2. **Folder vs brain split.** This folder holds *artifacts and current technical state*. The shared
+   brain holds *decisions and why*: on this laptop it is the git clone `~/brain` (e-Yantra notes in
+   `~/brain/e-yantra/`; it is pulled automatically at session start). Do not duplicate; link instead.
 3. **Update `context/04-task-log.md`** whenever a task's status changes, then update the `e-yantra`
-   block in the brain's `STATE.md` with your agent name and the date.
+   block in `~/brain/STATE.md` (replace lines, STATE is over its 16 KB ceiling) and commit with
+   `~/.claude/hooks/brain-commit.sh -a claude-code -m "..." --push`. Never raw `git commit` in `~/brain`.
 4. **Write every file as UTF-8.** A single cp1252 byte corrupted the brain's STATE.md in Sep 2026.
 5. **Mark confidence.** Distinguish what a source document says from what you inferred. The WhyCon
    inference above is the template.
