@@ -117,9 +117,11 @@ early on 2026-09-24, 17 GB after that day's cleanup (model file moved to the T9,
 caches cleared).** Run `df -h /` before colcon builds or `ros2 bag` recordings;
 the Samsung T9 (`/media/ubantu/Samsung T9 volume 2`, 375 GB free) takes big files.
 
-**Saurabh's HP Pavilion Plus 14** as recorded 2026-09-12: Core Ultra 5 125H, Intel Arc, 477 GB
-NVMe, Windows only with no Linux partition. The Ubuntu box above is Gauri's, not a replacement:
-Saurabh works across several laptops.
+**Saurabh's new laptop arrives by 27 Oct 2026:** HP OMEN 15 (gb0204AX), Ryzen 7 8745HX, RTX 5050 8 GB,
+16 GB DDR5, 1 TB SSD, Windows 11. Plan: Ubuntu 22.04.5 dual-boot with 200-250 GB. **His HP Pavilion Plus 14
+and the Samsung T9 then go to his younger brother**, so neither is a long-term home for anything. Migration
+kit on the T9 (`Migration-2026-10/`); plan in the brain note "New laptop and Pavilion-T9 handover (2026-10)".
+The Ubuntu box above is Gauri's, not a replacement.
 
 **Parth's and Mahesh's machines are UNKNOWN — ask the team, do not probe.** Full inventory,
 the install risks, and the dual-boot plan: `context/03-machines.md`.
@@ -181,7 +183,7 @@ colcon/CMake. **ROS 2 (colcon) workspaces live at the portal's home-level path**
 the reverse of `drone_ws`, because colcon writes physical paths into `install/`. Plain venvs can
 live here with a home symlink. Reasoning: `context/08-task0-bonus.md`.
 
-> **Backups and provenance:** the full unzipped folder, as it was before this session's edits, is
+> **Backups and provenance** (the T9 leaves with Saurabh's brother after ~27 Oct 2026): the full unzipped folder, as it was before this session's edits, is
 > on **T9 volume 2** (`/media/ubantu/Samsung T9 volume 2/e-yantra`), verified 2026-09-13: 87
 > files, CRC-clean. Both truncated `e-yantra.zip` copies were moved to Trash. `F:\e-yantra` on
 > Windows is the original.
