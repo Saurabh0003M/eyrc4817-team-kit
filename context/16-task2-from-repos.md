@@ -56,6 +56,19 @@ and `meshes/` beside itself. Both are MQTT + MuJoCo, 15×15 maze, 0.22 m cells.
 Topics: in `pacbot/poses`, `pacbot/pellets` (retained, once), `pacbot/sensors` (every 10 ms: ToF,
 gyro, accelerometer, encoder ticks), `pacbot/result`; out `pacbot/wheel_vel` (rad/s).
 
+## PB Task 2 smoke test on Gauri's OMEN (2026-10-12, verified)
+- Both launchers start with the bundled libs; mosquitto active; paho-mqtt 2.1.0. Stock boilerplates connect,
+  receive the start messages and stream `pacbot/wheel_vel`.
+- **2B ghost:** `pacbot/ghost` `{"row","col","x","y"}` every sensor frame (x/y in the maze's metre frame). Example run:
+  pellets (3,3) (4,12) (12,10); "ghost guarding the pellet at (12,10), a path of 7 cells". The boilerplate already
+  subscribes (`controller.ghost`).
+- **2B modes:** `./task_2b_launch` = practice (nothing written); `./task_2b_launch --evaluate` = scored run that writes
+  the sealed `result.json`, zipped as `PB#4817.zip`. Maze, pellet rules and **time limit are built in**.
+- 2A launcher has no `--help` (it treats the argument as a model file). Run it with no arguments. Never probe the binaries further (tamper rule).
+- **Trap: retained MQTT messages survive between tasks.** The 2B run also received 2A's retained `pacbot/poses`
+  and the old `pacbot/pellets {"pellet": ...}`. Parse by the key you expect (`"pellets"` in 2B), or clear stale
+  retained topics before a scored run: `mosquitto_pub -t pacbot/poses -r -n` (same for `pacbot/pellets`).
+
 ## Dates and marks (from the brain note "eYRC Task 2 — released 2026-10-05, both themes", 2026-10-08)
 Source: the public PacBot task site https://themes.e-yantra.org/Pacbot_2627/ . The competition runs one
 schedule, but **verify the KD dates on the portal**.
