@@ -17,8 +17,9 @@ Sep 2026). **Task 0 has been run on one bare-metal Ubuntu 22.04.5 machine for bo
 That machine is Gauri's laptop (confirmed 2026-09-24); portal upload status is unknown →
 `context/04-task-log.md`.
 
-**NOW (2026-10-12): Task 2 was released 2026-10-05 in both official repos** (pulled and built; summary
-`context/16-task2-from-repos.md`; marks and deadline are portal-only). Task 1 below is finished.
+**NOW (2026-10-13): Task 2, read from the portal → `context/17-task2-portal.md`.** Deadlines: **KD 2A 12 Oct
+(MISSED, late policy unknown) · PB 2A 15 Oct · KD 2B 19 Oct · KD 2C + PB 2B 26 Oct.** Repo facts + smoke tests:
+`context/16-task2-from-repos.md`. Task 1 below is finished (full marks, both themes).
 
 **Task 1 (released 2026-09-16).** It has three parts: **1A** image processing, find
 survivors in a photo (20 marks); **1B** PID for altitude hold (40); **1C** PID for all 3 axes (40).
@@ -98,7 +99,8 @@ Stage-2 kit, free to teams that clear Stage 1: flight controller, motors, RadioM
 |---|---|
 | Sep 2026 | Task 0 — Setup & Installation (~3 weeks) |
 | 16 → 23 Sep 2026 | Task 1 (KD 1A/1B/1C + PB 1A/1B), all marked full |
-| **Oct–Nov 2026** | **Task 2: released 2026-10-05 ← CURRENT.** Deadline on the portal |
+| **6 → 26 Oct 2026** | **Task 2 ← CURRENT.** KD 2A 12 Oct (missed) · PB 2A 15 Oct · KD 2B 19 Oct · KD 2C + PB 2B 26 Oct |
+| 27 Oct → 16 Nov 2026 | Task 3, ends Stage 1 |
 | Nov 2026 | Stage 1 ends. Top teams selected for Stage 2 + free hardware kit |
 | Nov 2026 – Feb 2027 | Tasks 3–6 (hardware) |
 | Mar 2027 | National Finale, IIT Bombay |
@@ -144,6 +146,7 @@ the install risks, and the dual-boot plan: `context/03-machines.md`.
 | `context/06-prelearnings.md` | **triaged study path** (ROS 2, MuJoCo, quadcopter physics), tiers, gotchas, per-member split | teaching or planning study |
 | `context/07-swift-pico-interface.md` | **Swift Pico sim: topics, message, arming, axis mapping** | writing any controller code |
 | `context/08-task0-bonus.md` | **Task 0 bonus:** turtlesim circle (d=2.0 at 5,5) + Swift Pico bring-up, approach notes, MuJoCo-version watch-out | bonus task / sim bring-up |
+| `context/17-task2-portal.md` | **Task 2 from the portal (authoritative):** all 5 subtasks' deadlines, marks, files, topics, zip names, scoring formulas, traps | any Task 2 work |
 | `context/16-task2-from-repos.md` | **Task 2 (both themes) as the official repos show it**: repo URLs, local clones, how to pull + rebuild, KD waypoint server PID/LQR, PB 2A/2B, unknowns | starting Task 2; checking for new tasks |
 | `context/15-pacbot-task1.md` | **PacBot Task 1:** 1A grid maze over MQTT (35), 1B MuJoCo wall following (65); topics, scoring, submission (`PB#4817.zip`), **tamper rule for the launch binaries**, repo-vs-portal name differences, setup verified | working on PacBot Task 1 |
 | `context/14-learnings-pacbot-mqtt-pathplanning.md` | **PacBot learnings:** MQTT (QoS, wildcards, retained/LWT; **local mosquitto + paho 2.1.0 verified**), path planning (BFS/DFS/Dijkstra/Greedy/A*; **PB Task 1A = grid maze planning + pellet choice**) | PacBot work; updating `chatgpt-project/` |
