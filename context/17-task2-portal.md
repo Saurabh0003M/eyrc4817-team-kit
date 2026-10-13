@@ -14,8 +14,9 @@ differ. Summarised in our own words; the portal pages are the authority.
 | **PB 2B** | fixed spawn, 3 random pellets, a ghost guards one, exit; time counts | 70 | **26 Oct 2026** |
 
 Each KD subtask builds on the previous one (2B drives the 2A controller; 2C drives the 2B pipeline).
-**Late policy: not stated on any Task 2 page.** In Task 1, late uploads were still marked (e-Ratna lost). Ask on
-the forum before assuming the same for KD 2A.
+**Late policy (forum answer, 2026-10-13):** the dates above are *soft* deadlines; e-Ratna goes only to submissions
+before them. Each subtask also has a later *hard* deadline (not published). **KD 2A's hard deadline has passed: it
+cannot be submitted.** Submit every remaining subtask as early as possible.
 **Theme commitment:** no Task 2 page asks the team to pick one theme; both courses carry Task 2.
 
 ## KD 2A — position controller (20)
@@ -37,6 +38,11 @@ the forum before assuming the same for KD 2A.
 - Waypoints, in this order: wp1 (−2.41, −2.41, 13), wp2 (2.41, 1.20, 13), wp3 (1.20, −2.41, 13), wp4 (−1.20, 1.20, 13).
 - Yaw now matters: add a P or PD yaw hold using the boilerplate's yaw variable and setpoint.
 - Fill `swift_pico/CMakeLists.txt` + `package.xml` (install the scripts, depend on `waypoint_navigation`). C++ nodes need different names (`pico_server_cpp`).
+- **Plumbing DONE 2026-10-13 (claude-code):** `~/pico_ws/src/waypoint_navigation` (action + srv, verified with
+  `ros2 interface show`); `swift_pico/CMakeLists.txt` installs `pico_controller_LQR.py` and `waypoint_service`,
+  `pico_client`, `pico_server` (renamed, no `.py`); `package.xml` depends on `waypoint_navigation`. Build is 7/7 clean.
+  The three node scripts are still the untouched boilerplate: that is the graded part. **Before the next
+  `git pull` in `~/pico_ws/src`:** `git stash`, pull, `git stash pop` (our CMakeLists/package.xml edits).
 - Run order: sim → service → client → **bag** (`ros2 bag record -o task_2b /whycode_node/markers /controller_heartbeat`) → server last (it starts the flight).
 - Zip `KD_4817_task_2b.zip` = `KD_4817_waypoint_service.py`, `KD_4817_pico_client.py`, `KD_4817_pico_server.py`, `task_2b_0.db3`, `metadata.yaml`. Same language for all three. YouTube `KD_4817_Task_2b`.
 - Score /40: per waypoint reach 2 + hold 3 s 6; speed 8 only if all four held (full by 40 s, −0.13/s, 0 at 100 s cap). In order; a skipped waypoint can't score.

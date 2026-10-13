@@ -16,7 +16,7 @@ brain's `STATE.md` with your agent name and the date.** Newest entry first.
 | **Task 1C — tune pitch + roll** | same | **MARKED 40/40** (submitted 1 Oct 01:26; e-Ratna not calculated yet). Gains: `chatgpt-project/09_Team_Results_PRIVATE.md` | proposed: Gauri | 40 marks. Tuning, not coding; bag + YouTube. `11-task1c.md` |
 | **PacBot Task 1A — maze path planning** | released, **deadline 23 Sep** | **MARKED 35/35** (submitted 23 Sep 22:21; e-Ratna +11) | proposed: Parth | 35 marks. `15-pacbot-task1.md` |
 | **PacBot Task 1B — wall following (MuJoCo)** | same | **RECORDED 2026-10-01 12:46, 65/65 est.** (MAZE SOLVED, 0 collisions). Zip `~/pacbot_ws/task1b/PB#4817.zip`, video `PB_4817_Task1B_20261001_124141.webm` (4:16). Gauri uploads | proposed: Saurabh | 65 marks. `15-pacbot-task1.md` |
-| **KD Task 2A** — position controller | due **12 Oct (MISSED)** | not started; late policy unknown | — | 20 marks. `17-task2-portal.md` |
+| **KD Task 2A** — position controller | due **12 Oct (MISSED)** | **cannot be submitted** (hard deadline passed, forum 2026-10-13): 20 marks lost. Still build it: 2B/2C fly with it | — | `17-task2-portal.md` |
 | **PB Task 2A** — maze traversal | due **15 Oct** | sim verified, not started | — | 30 marks |
 | **KD Task 2B** — action/service waypoints | due **19 Oct** | not started | — | 40 marks |
 | **KD Task 2C** — camera-driven waypoints | due **26 Oct** | not started; CSV + `/image_raw` frame not in repo yet | — | 40 marks |

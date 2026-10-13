@@ -18,7 +18,9 @@ That machine is Gauri's laptop (confirmed 2026-09-24); portal upload status is u
 `context/04-task-log.md`.
 
 **NOW (2026-10-13): Task 2, read from the portal → `context/17-task2-portal.md`.** Deadlines: **KD 2A 12 Oct
-(MISSED, late policy unknown) · PB 2A 15 Oct · KD 2B 19 Oct · KD 2C + PB 2B 26 Oct.** Repo facts + smoke tests:
+(MISSED: hard deadline passed, cannot be submitted, 20 marks lost; the controller is still needed for 2B/2C)
+· PB 2A 15 Oct · KD 2B 19 Oct · KD 2C + PB 2B 26 Oct.** Forum, 2026-10-13: the posted dates are the *soft*
+deadlines (e-Ratna only before them); later hard deadlines exist but are not published. Submit everything ASAP. Repo facts + smoke tests:
 `context/16-task2-from-repos.md`. Task 1 below is finished (full marks, both themes).
 
 **Task 1 (released 2026-09-16).** It has three parts: **1A** image processing, find
