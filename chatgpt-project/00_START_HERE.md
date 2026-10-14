@@ -1,6 +1,22 @@
-# 00 — START HERE: Team 4817 · eYRC 2026-27 · Task 1
+# 00 — START HERE: Team 4817 · eYRC 2026-27 · now Task 2
 
-**Read this first.** It says what Task 1 is, who does what now, the plan to the 5 Oct deadline, and which file to open next.
+**Read this first.** It says which task is live, who does what now, and which file to open next.
+
+## NOW (14 Oct 2026): Task 2 → `10_Task2_Overview.md`
+
+| Subtask | Soft deadline | Status |
+|---|---|---|
+| **PB 2A** maze traversal (30) | **15 Oct** | code done, 5/5 clean practice runs → **record + Gauri uploads** |
+| **KD 2B** waypoint navigation (40) | **19 Oct** | code done, rehearsed (~39–40 est.) → **record + Gauri uploads** |
+| **KD 2C** camera waypoints (40) | **26 Oct** | code done, rehearsed (40 est.) → **record + Gauri uploads** |
+| **PB 2B** pellets + ghost (70) | **26 Oct** | code done, 5/5 clean practice runs → **record + Gauri uploads** |
+| KD 2A position controller (20) | 12 Oct | missed; the forum says it cannot be submitted |
+
+Recording is one command per subtask (table at the end of `10_Task2_Overview.md`). Task 2 code was written by
+Claude at Saurabh's request: everyone studies how it works with `11_Task2_How_It_Works_PRIVATE.md`.
+Task 3 opens 27 Oct and ends Stage 1 on 16 Nov.
+
+*Everything below is Task 1 (finished: KD 100/100, PB 1A 35/35, PB 1B recorded 65/65 est.), kept for reference.*
 
 ## Team
 
@@ -69,8 +85,10 @@ still marked but show "Late, not eligible".
 | `06_Concepts_Explained.md` | any word or idea is unclear (PID, ROS 2, MQTT, HSV, BFS…) |
 | `07_Learning_Resources.md` | looking for a video, doc or portal link |
 | `08_Portal_Learnings_Summary.md` | what e-Yantra's learning pages say, and the mistakes we found in them |
-| `09_Team_Results_PRIVATE.md` | you need our own graded results (KD 1B/1C gains, the PB 1B maze note). **Never copy them outside this project** |
-| `B1_Background_Khoj_o_Drone.md` · `B2_Background_PacBot.md` · `B3_Background_Team_Setup_Log.md` | you need deeper detail: the team's raw notes per theme, the machines and the dated task log. Written for another AI assistant; the numbered files above win when they disagree |
+| `09_Team_Results_PRIVATE.md` | you need our own graded results (KD 1B/1C gains, the PB 1B maze note, Task 2 gains and notes). **Never copy them outside this project** |
+| `10_Task2_Overview.md` | working on Task 2: what each subtask asks, what to learn, traps, how to record and submit |
+| `11_Task2_How_It_Works_PRIVATE.md` | learning how the team's Task 2 code works, or being quizzed on it. **Never copy it outside this project** |
+| `B1_Background_Khoj_o_Drone.md` · `B2_Background_PacBot.md` · `B3_Background_Team_Setup_Log.md` · `B4_Background_Task2.md` | you need deeper detail: the team's raw notes per theme, the machines and the dated task log. Written for another AI assistant; the numbered files above win when they disagree |
 
 ## Rules that can cost the whole team
 

@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 """
-Submission checker — for all five Task 1 subtasks (KD 1A/1B/1C, PB 1A/1B).
+Submission checker — Task 1 (KD 1A/1B/1C, PB 1A/1B) and Task 2 (PB 2A/2B, KD 2B/2C).
 
 It never looks at *whether your answer is right*. It checks what gets submissions rejected:
 file names, e-Yantra's coding-standard comment blocks, forbidden GUI/input calls, the KD 1A
@@ -11,6 +11,10 @@ results-file format, unchanged PacBot boilerplate functions, and zip structure.
     python3 submission_check.py pb1b  --file task_1b.py [--zip 'PB#4817.zip']
     python3 submission_check.py kd1b  --zip KD_4817_task_1b.zip
     python3 submission_check.py kd1c  --zip KD_4817_task_1c.zip
+    python3 submission_check.py pb2a  --file task_2a_boilerplate.py [--zip 'PB#4817.zip']
+    python3 submission_check.py pb2b  --file task_2b_boilerplate.py [--zip 'PB#4817.zip']
+    python3 submission_check.py kd2b  --zip KD_4817_task_2b.zip      (also checks the 3 scripts inside)
+    python3 submission_check.py kd2c  --zip KD_4817_task_2c.zip
 """
 import argparse
 import ast
@@ -24,12 +28,20 @@ import zipfile
 
 TEAM_ID = '4817'
 PB_BOILERPLATE = {'pb1a': '~/pacbot_ws/task1a/task_1a_boilerplate.py',
-                  'pb1b': '~/pacbot_ws/task1b/task_1b_boilerplate.py'}
+                  'pb1b': '~/pacbot_ws/task1b/task_1b_boilerplate.py',
+                  # Task 2 is solved inside the boilerplate file itself: read the original from git
+                  'pb2a': 'git:task2a/task_2a_boilerplate.py',
+                  'pb2b': 'git:task2b/task_2b_boilerplate.py'}
+KD2_SCRIPTS = [f'KD_{TEAM_ID}_waypoint_service.py', f'KD_{TEAM_ID}_pico_client.py', f'KD_{TEAM_ID}_pico_server.py']
 EXPECTED_ZIP = {'kd1a': (f'KD_{TEAM_ID}.zip', {f'KD_{TEAM_ID}_task1a.py'}),
                 'kd1b': (f'KD_{TEAM_ID}_task_1b.zip', {'task_1b_0.db3', 'metadata.yaml'}),
                 'kd1c': (f'KD_{TEAM_ID}_task_1c.zip', {'task_1c_0.db3', 'metadata.yaml'}),
                 'pb1a': (f'PB#{TEAM_ID}.zip', {'result.yaml', 'task_1a.py'}),
-                'pb1b': (f'PB#{TEAM_ID}.zip', {'result.json', 'task_1b.py'})}
+                'pb1b': (f'PB#{TEAM_ID}.zip', {'result.json', 'task_1b.py'}),
+                'pb2a': (f'PB#{TEAM_ID}.zip', {'result.json', 'task_2a_boilerplate.py'}),
+                'pb2b': (f'PB#{TEAM_ID}.zip', {'result.json', 'task_2b_boilerplate.py'}),
+                'kd2b': (f'KD_{TEAM_ID}_task_2b.zip', set(KD2_SCRIPTS) | {'task_2b_0.db3', 'metadata.yaml'}),
+                'kd2c': (f'KD_{TEAM_ID}_task_2c.zip', set(KD2_SCRIPTS) | {'task_2c_0.db3', 'metadata.yaml'})}
 HEADER_FIELDS = ['Team ID:', 'Theme:', 'Author List:', 'Filename:', 'Functions:', 'Global variables:']
 DOC_FIELDS = ['Purpose:', 'Input Arguments:', 'Returns:', 'Example call:']
 FORBIDDEN_CALLS = [r'cv2\.imshow', r'cv2\.waitKey', r'cv2\.namedWindow', r'\binput\s*\(', r'plt\.show']
@@ -113,11 +125,21 @@ def signatures(tree):
 
 def check_boilerplate(task, tree):
     print('\n== PacBot: boilerplate functions unchanged (the evaluator looks for them)')
-    path = os.path.expanduser(PB_BOILERPLATE[task])
-    if not os.path.isfile(path):
-        report(False, f'boilerplate found at {path}')
-        return
-    original = signatures(ast.parse(open(path, encoding='utf-8').read()))
+    path = PB_BOILERPLATE[task]
+    if path.startswith('git:'):
+        proc = subprocess.run(['git', '-C', os.path.expanduser('~/pacbot_ws'), 'show', 'HEAD:' + path[4:]],
+                              capture_output=True, text=True)
+        if proc.returncode != 0:
+            report(False, f'original boilerplate readable from git ({path[4:]})')
+            return
+        original_source = proc.stdout
+    else:
+        path = os.path.expanduser(path)
+        if not os.path.isfile(path):
+            report(False, f'boilerplate found at {path}')
+            return
+        original_source = open(path, encoding='utf-8').read()
+    original = signatures(ast.parse(original_source))
     mine = signatures(tree)
     for name, args in original.items():
         if name not in mine:
@@ -133,11 +155,19 @@ def check_zip(task, zip_path):
     with zipfile.ZipFile(zip_path) as archive:
         names = set(n for n in archive.namelist() if not n.endswith('/'))
     report(names == expected_files, f'contains exactly {sorted(expected_files)} at the top level (found {sorted(names)})')
+    if task in ('kd2b', 'kd2c'):
+        with zipfile.ZipFile(zip_path) as archive:
+            for name in KD2_SCRIPTS:
+                if name in names:
+                    source = archive.read(name).decode('utf-8')
+                    print(f'\n== {name} (inside the zip)')
+                    check_coding_standard(name, source, ast.parse(source))
+                    check_forbidden(source)
 
 
 def main():
     parser = argparse.ArgumentParser(description='Check a submission before handing it to the Team Leader.')
-    parser.add_argument('task', choices=['kd1a', 'kd1b', 'kd1c', 'pb1a', 'pb1b'])
+    parser.add_argument('task', choices=['kd1a', 'kd1b', 'kd1c', 'pb1a', 'pb1b', 'pb2a', 'pb2b', 'kd2b', 'kd2c'])
     parser.add_argument('--file', help='your submission .py file')
     parser.add_argument('--image', default=os.path.expanduser('~/pico_ws/src/swift_pico/scripts/image_1.jpg'))
     parser.add_argument('--zip', help='the zip you are about to upload')

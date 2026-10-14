@@ -27,7 +27,9 @@ BLOCK_END="# <<< eyrc4817 <<<"
 APT_PACKAGES="git zip curl python3-pip python3-venv python3-opencv python3-numpy python3-tk python3-yaml \
 python3-matplotlib python3-reportlab libglfw3-dev \
 ros-humble-actuator-msgs ros-humble-image-view ros-humble-rosbag2-storage-default-plugins \
-python3-colcon-common-extensions mosquitto mosquitto-clients"
+python3-colcon-common-extensions mosquitto mosquitto-clients \
+ros-humble-tf-transformations unzip ffmpeg gir1.2-vte-2.91"   # Task 2: KD server imports tf_transformations;
+                                                             # pb_record.py needs VTE, its sim-only copy ffmpeg
 MIN_FREE_GB=4
 
 failures=0
@@ -109,6 +111,8 @@ inventory() {
     paho_version="$(python3 -c 'import importlib.metadata as m; print(m.version("paho-mqtt"))' 2>/dev/null)"
     if [ -z "$paho_version" ] || [ "${paho_version%%.*}" -lt 2 ]; then todo "pip install --user 'paho-mqtt>=2'  (found: ${paho_version:-none})"
     else ok "paho-mqtt $paho_version"; fi
+    if python3 -c 'import transforms3d.euler as e; e.quat2euler([1, 0, 0, 0])' >/dev/null 2>&1; then ok "transforms3d works with this numpy"
+    else todo "pip install --user --upgrade transforms3d  (the apt copy uses np.float, removed from numpy; KD 2B/2C need it)"; fi
     cv_version="$(python_version_of cv2)"
     [ -n "$cv_version" ] && info "OpenCV (python3): $cv_version" || info "OpenCV (python3): not importable yet"
     mujoco_py="$(python_version_of mujoco)"
@@ -177,6 +181,8 @@ install_everything() {
     if [ -z "$numpy_version" ] || [ "${numpy_version%%.*}" -ge 2 ]; then python3 -m pip install --user -q "numpy<2" || bad "pip numpy<2 failed"; fi
     paho_version="$(python3 -c 'import importlib.metadata as m; print(m.version("paho-mqtt"))' 2>/dev/null)"
     if [ -z "$paho_version" ] || [ "${paho_version%%.*}" -lt 2 ]; then python3 -m pip install --user -q "paho-mqtt>=2" || bad "pip paho-mqtt failed"; fi
+    python3 -c 'import transforms3d.euler as e; e.quat2euler([1, 0, 0, 0])' >/dev/null 2>&1 \
+        || python3 -m pip install --user -q --upgrade transforms3d || bad "pip transforms3d failed"
 
     if [ -z "$(find_mujoco39_dir)" ]; then
         info "creating $MUJOCO39_VENV (mujoco 3.9.0, ~60 MB)"
@@ -208,6 +214,7 @@ install_everything() {
         done
         chmod +x "$task_dir"/task_1*_launch 2>/dev/null
     done
+    chmod +x "$PB_WS"/task2*/task_2*_launch 2>/dev/null   # Task 2 is solved inside the boilerplate file itself
 
     mujoco39_dir="$(find_mujoco39_dir)"
     update_bashrc "$mujoco39_dir"
@@ -256,11 +263,20 @@ PY
     else
         bad "KD workspace not built ($KD_WS)"
     fi
-    ros2 pkg executables swift_pico 2>/dev/null | grep -q task_1c_controller && ok "KD task_1b / task_1c controllers" || bad "KD controllers not found"
+    ros2 pkg executables swift_pico 2>/dev/null | grep -q pico_controller_PID && ok "KD controller boilerplate (Task 2 repo)" || bad "KD pico_controller_PID not found"
+    ros2 pkg executables swift_pico 2>/dev/null | grep -q pico_server && ok "KD Task 2 nodes (waypoint_service, pico_client, pico_server)" \
+        || warn "KD Task 2 nodes not installed: the team's swift_pico CMakeLists.txt/package.xml edits are needed (copy from Gauri's laptop)"
     ros2 pkg executables pid_tune 2>/dev/null | grep -q button_ui && ok "KD PID tuner GUI" || bad "KD PID tuner not found"
     [ -x "$PB_WS/task1a/task_1a_launch" ] && [ -f "$PB_WS/task1a/task_1a.py" ] && ok "PacBot Task 1A: launcher + task_1a.py" || bad "PacBot Task 1A files missing"
     [ -x "$PB_WS/task1b/task_1b_launch" ] && [ -f "$PB_WS/task1b/task_1b.py" ] && ok "PacBot Task 1B: launcher + task_1b.py" || bad "PacBot Task 1B files missing"
     systemctl is-active --quiet mosquitto && ok "mosquitto broker running" || bad "mosquitto not running"
+    # Task 2
+    python3 -c 'from tf_transformations import euler_from_quaternion; euler_from_quaternion([0, 0, 0, 1])' 2>/dev/null \
+        && ok "tf_transformations works (KD 2B/2C server)" || bad "tf_transformations broken: pip install --user --upgrade transforms3d"
+    [ -x "$PB_WS/task2a/task_2a_launch" ] && [ -x "$PB_WS/task2b/task_2b_launch" ] && ok "PacBot Task 2A/2B launchers" \
+        || warn "PacBot Task 2 launchers missing or not executable (git pull $PB_WS?)"
+    ros2 interface show waypoint_navigation/action/NavToWaypoint >/dev/null 2>&1 && ok "KD Task 2 interfaces (waypoint_navigation)" \
+        || warn "waypoint_navigation not built: the team's KD 2B package (copy it from Gauri's laptop: ~/pico_ws/src/waypoint_navigation)"
 }
 
 summary() {

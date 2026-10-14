@@ -5,7 +5,7 @@ it with zero tool calls.** Open a `context/` file only when the question actuall
 Never bulk-read `_extracted/`, `eYRC 2025-26/`, or the `.docx` / `.pdf` / `.png` originals — those
 are storage, not context.
 
-`Verified: 2026-09-17 · claude-code (on the Ubuntu box)`
+`Verified: 2026-10-14 · claude-code (on the Ubuntu box)`
 
 ## State in one paragraph
 
@@ -17,11 +17,12 @@ Sep 2026). **Task 0 has been run on one bare-metal Ubuntu 22.04.5 machine for bo
 That machine is Gauri's laptop (confirmed 2026-09-24); portal upload status is unknown →
 `context/04-task-log.md`.
 
-**NOW (2026-10-13): Task 2, read from the portal → `context/17-task2-portal.md`.** Deadlines: **KD 2A 12 Oct
-(MISSED: hard deadline passed, cannot be submitted, 20 marks lost; the controller is still needed for 2B/2C)
-· PB 2A 15 Oct · KD 2B 19 Oct · KD 2C + PB 2B 26 Oct.** Forum, 2026-10-13: the posted dates are the *soft*
-deadlines (e-Ratna only before them); later hard deadlines exist but are not published. Submit everything ASAP. Repo facts + smoke tests:
-`context/16-task2-from-repos.md`. Task 1 below is finished (full marks, both themes).
+**NOW (2026-10-14): Task 2 code is DONE for PB 2A, PB 2B, KD 2B, KD 2C (written + sim-tested by claude-code at
+Saurabh's request; KD 2A missed, cannot be submitted). What is left needs a person: record + upload, PB 2A by 15 Oct,
+KD 2B by 19 Oct, KD 2C + PB 2B by 26 Oct → `context/18-task2-submission-runbook.md` (one-command recorders:
+`learning/tools/pb_record.py`, `kd_record.sh`). Graded code is never in this public repo; a verified backup is on the
+T9 (`Migration-2026-10/eyrc-graded-backup/`). Specs: `context/17-task2-portal.md`; repo facts: `context/16-task2-from-repos.md`.
+Posted dates are soft deadlines (e-Ratna); hard ones are unpublished. Task 1 below is finished (full marks, both themes).
 
 **Task 1 (released 2026-09-16).** It has three parts: **1A** image processing, find
 survivors in a photo (20 marks); **1B** PID for altitude hold (40); **1C** PID for all 3 axes (40).
@@ -138,7 +139,7 @@ the install risks, and the dual-boot plan: `context/03-machines.md`.
 | `README.md` | **Teammate entry point** (public repo): first day, what setup checks, laptop layout, per-task run commands, tools, troubleshooting, open forum questions, team rules | teammate questions |
 | `RESOURCES.md` | **Every portal learning link (~180, all verified 2026-09-16 with `check_links.py`)**, grouped like the portal, tagged by subtask (KD 1A … PB 1B) | finding any video/doc link |
 | `setup/setup.sh` | v2: preflight (OS/arch/WSL/VM/RAM/disk/ROS/internet) → inventory → installs only what's missing → verify. `--check` = no changes. bashrc block adds `ROS_LOCALHOST_ONLY=1`. Install mode not yet run on a fresh laptop | teammate setup |
-| `learning/tools/` | `pixel_detective.py` + `hsv_tuner.py` (KD 1A), `toy_drone.py` (PID practice; controller left blank for Saurabh), `kd1a_testbench.py` (KD 1A; consistency across 10 variants, no answer key), `submission_check.py` (kd1a/kd1b/kd1c/pb1a/pb1b: coding standard, GUI calls, results format, PB signatures, zip), `bag_score.py` (KD 1B/1C; scoring assumptions in the file), `check_links.py` (every link in README/RESOURCES/chatgpt-project; retries 5xx), `screen_record.py` (whole-screen recorder via GNOME's D-Bus Screencast, Ctrl+C stops it: GNOME only stops a recording for the process that started it). All tested 2026-09-16 with dummy inputs, and none contains a solution | learning sessions, pre-submission checks |
+| `learning/tools/` | `pixel_detective.py` + `hsv_tuner.py` (KD 1A), `toy_drone.py` (PID practice; controller left blank for Saurabh), `kd1a_testbench.py` (KD 1A; consistency across 10 variants, no answer key), `submission_check.py` (kd1a/kd1b/kd1c/pb1a/pb1b: coding standard, GUI calls, results format, PB signatures, zip), `bag_score.py` (KD 1B/1C; scoring assumptions in the file), `check_links.py` (every link in README/RESOURCES/chatgpt-project; retries 5xx), `screen_record.py` (whole-screen recorder via GNOME's D-Bus Screencast, Ctrl+C stops it: GNOME only stops a recording for the process that started it). `pb_record.py --task 1b|2a|2b` (PacBot recorded `--evaluate` run: two terminals, screen recording, zip on camera; dry-run tested 2026-10-14). `kd_record.sh 2b|2c` (KD recorded run: sim → service → client → bag → server, stops on success, scores the bag with `kd2_bag_score.py`, builds the renamed upload zip; rehearsed 2026-10-14). All tested 2026-09-16 with dummy inputs, and none contains a solution | learning sessions, pre-submission checks |
 | `chatgpt-project/` | **The team's ChatGPT Project kit (2026-09-17):** `PROJECT_INSTRUCTIONS.md` (paste into the project instructions), 9 upload files `00_START_HERE` … `08_Portal_Learnings_Summary`, `HOW_TO_CREATE_THE_PROJECT.md`. **Keep these in sync when task facts change**, then tell Saurabh which file to re-upload | any change to task facts, team plan, setup |
 | `context/01-theme-khoj-o-drone.md` | KD objectives, build targets, win condition, kit | planning KD work |
 | `context/02-theme-pacbot.md` | PB equivalent | only if PB comes back into play |
@@ -149,6 +150,7 @@ the install risks, and the dual-boot plan: `context/03-machines.md`.
 | `context/07-swift-pico-interface.md` | **Swift Pico sim: topics, message, arming, axis mapping** | writing any controller code |
 | `context/08-task0-bonus.md` | **Task 0 bonus:** turtlesim circle (d=2.0 at 5,5) + Swift Pico bring-up, approach notes, MuJoCo-version watch-out | bonus task / sim bring-up |
 | `context/17-task2-portal.md` | **Task 2 from the portal (authoritative):** all 5 subtasks' deadlines, marks, files, topics, zip names, scoring formulas, traps | any Task 2 work |
+| `context/18-task2-submission-runbook.md` | **Recording + upload steps per Task 2 subtask** (one-command recorders, manual fallback, zip contents, YouTube titles) | recording or uploading Task 2 |
 | `context/16-task2-from-repos.md` | **Task 2 (both themes) as the official repos show it**: repo URLs, local clones, how to pull + rebuild, KD waypoint server PID/LQR, PB 2A/2B, unknowns | starting Task 2; checking for new tasks |
 | `context/15-pacbot-task1.md` | **PacBot Task 1:** 1A grid maze over MQTT (35), 1B MuJoCo wall following (65); topics, scoring, submission (`PB#4817.zip`), **tamper rule for the launch binaries**, repo-vs-portal name differences, setup verified | working on PacBot Task 1 |
 | `context/14-learnings-pacbot-mqtt-pathplanning.md` | **PacBot learnings:** MQTT (QoS, wildcards, retained/LWT; **local mosquitto + paho 2.1.0 verified**), path planning (BFS/DFS/Dijkstra/Greedy/A*; **PB Task 1A = grid maze planning + pellet choice**) | PacBot work; updating `chatgpt-project/` |

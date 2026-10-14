@@ -200,7 +200,11 @@ Submission zips are made inside the task folder, next to the files they contain.
 
 Four of the five parts use **PID**, so everyone should watch the PID videos (list in `chatgpt-project/07_Learning_Resources.md`).
 
-**Status (8 Oct):** Task 1 done — all five parts submitted with full marks on both themes. Task 2 (released 5 Oct) is in progress; deadline 26 Oct.
+**Status (14 Oct):** Task 1 done — all five parts submitted with full marks on both themes. **Task 2:** code done and
+tested in simulation for PB 2A, PB 2B, KD 2B and KD 2C (KD 2A was missed and can no longer be submitted). Left: the
+recorded runs and uploads — PB 2A by **15 Oct**, KD 2B by **19 Oct**, KD 2C + PB 2B by **26 Oct**. One command each:
+`python3 learning/tools/pb_record.py --task 2a` (or `2b`) and `learning/tools/kd_record.sh 2b` (or `2c`); details in
+[context/18-task2-submission-runbook.md](context/18-task2-submission-runbook.md).
 
 ---
 

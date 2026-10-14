@@ -2,7 +2,7 @@
 """Build the ChatGPT Project upload set. The plan allows only 25 files per project.
 
 Copies the numbered mentor files (00_… to 09_…) and folds the background notes in ../context/
-into three bundle files, so the whole project is 13 files with room for later tasks.
+into four bundle files, so the whole project stays far below the limit with room for later tasks.
 
     python3 ~/Desktop/e-yantra/chatgpt-project/build_upload_set.py
     -> ~/Desktop/e-yantra/chatgpt-upload/   (git-ignored: the repo's top level is a whitelist)
@@ -21,6 +21,7 @@ BUNDLES = [
     ("B1_Background_Khoj_o_Drone.md", "Background — Khoj-o-Drone", ["01", "07", "09", "10", "11", "12", "13"]),
     ("B2_Background_PacBot.md", "Background — PacBot", ["02", "14", "15"]),
     ("B3_Background_Team_Setup_Log.md", "Background — team, setup, task log", ["03", "04", "05", "06", "08"]),
+    ("B4_Background_Task2.md", "Background — Task 2 (both themes): repos, portal, submission runbook", ["16", "17", "18"]),
 ]
 
 HEADER = """# {title}

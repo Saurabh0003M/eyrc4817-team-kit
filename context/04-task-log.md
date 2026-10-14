@@ -16,11 +16,11 @@ brain's `STATE.md` with your agent name and the date.** Newest entry first.
 | **Task 1C — tune pitch + roll** | same | **MARKED 40/40** (submitted 1 Oct 01:26; e-Ratna not calculated yet). Gains: `chatgpt-project/09_Team_Results_PRIVATE.md` | proposed: Gauri | 40 marks. Tuning, not coding; bag + YouTube. `11-task1c.md` |
 | **PacBot Task 1A — maze path planning** | released, **deadline 23 Sep** | **MARKED 35/35** (submitted 23 Sep 22:21; e-Ratna +11) | proposed: Parth | 35 marks. `15-pacbot-task1.md` |
 | **PacBot Task 1B — wall following (MuJoCo)** | same | **RECORDED 2026-10-01 12:46, 65/65 est.** (MAZE SOLVED, 0 collisions). Zip `~/pacbot_ws/task1b/PB#4817.zip`, video `PB_4817_Task1B_20261001_124141.webm` (4:16). Gauri uploads | proposed: Saurabh | 65 marks. `15-pacbot-task1.md` |
-| **KD Task 2A** — position controller | due **12 Oct (MISSED)** | **cannot be submitted** (hard deadline passed, forum 2026-10-13): 20 marks lost. Still build it: 2B/2C fly with it | — | `17-task2-portal.md` |
-| **PB Task 2A** — maze traversal | due **15 Oct** | sim verified, not started | — | 30 marks |
-| **KD Task 2B** — action/service waypoints | due **19 Oct** | not started | — | 40 marks |
-| **KD Task 2C** — camera-driven waypoints | due **26 Oct** | not started; CSV + `/image_raw` frame not in repo yet | — | 40 marks |
-| **PB Task 2B** — pellets + ghost | due **26 Oct** | sim verified, not started | — | 70 marks |
+| **KD Task 2A** — position controller | due **12 Oct (MISSED)** | **cannot be submitted**; controller written by claude-code (2026-10-14) for use in 2B/2C. The first tuning held the 2A box 26.9 s from t≈2.7 s but flipped the drone on 2B's long waypoint jumps, so the 2B/2C server uses lower x/y gains. Gains are kept out of this public repo: `chatgpt-project/09_Team_Results_PRIVATE.md` (git-ignored) | claude-code | `17-task2-portal.md` |
+| **PB Task 2A** — maze traversal | due **15 Oct** | **code done + sim-verified by claude-code (2026-10-14/15): final version 21 of 25 practice runs clean (84 %)** (30/30 each); record with retries (each run is a new random draw). **Left: `--evaluate` run while screen-recording, zip, YouTube, Gauri uploads** → `18-task2-submission-runbook.md` | claude-code | 30 marks |
+| **KD Task 2B** — action/service waypoints | due **19 Oct** | **code done + sim-verified by claude-code (2026-10-14):** 5/5 flights held all 4 waypoints in order (4×40, 1×39.1 on a replica of the portal formula; 4th hold done 32–47 s). `waypoint_navigation` interfaces, client, service, server. **Left: recording run + bag + YouTube (needs Saurabh/Gauri)** | claude-code | 40 marks |
+| **KD Task 2C** — camera-driven waypoints | due **26 Oct** | **code done + sim-verified by claude-code (2026-10-14):** camera-driven `waypoint_service` (reads the CSV if it appears, else the shipped JSON). 4th hold done at 31.4 s (40/40 on the formula). Files in `~/kd_submissions/task_2c/`. **Left: recording run (needs Saurabh/Gauri); `git fetch` first in case the CSV lands** | claude-code | 40 marks |
+| **PB Task 2B** — pellets + ghost | due **26 Oct** | **code done by claude-code (2026-10-14), sim-tested: after the last fix 24/24 practice runs (4 at a time) exited with 3/3 pellets, 0 collisions, 140–217 s (≈ 51–57/70 each on the formula).** **Left: `--evaluate` run while screen-recording, zip, YouTube, Gauri uploads** → `18-task2-submission-runbook.md` | claude-code | 70 marks |
 | Tasks 3–6 | Nov 26 – Feb 27 | Stage 2 only | — | needs Stage 1 selection |
 
 ## Open actions
@@ -48,6 +48,62 @@ brain's `STATE.md` with your agent name and the date.** Newest entry first.
    Firebird V robot and can be skipped. Worth it only if all four can sit together for 5 hours.
 
 ## Entries
+
+### 2026-10-14/15 (night) · claude-code — PB 2A was less reliable than its 5/5 suggested; now ~85 %
+- 16 more practice runs (random spawn + pellet each time) showed only about half were collision-free; a run with
+  6+ collisions scores 0. Failures clustered on the east side, late in the route.
+- Probes found two causes: a wall-end correction that sometimes matched the wrong wall stub (6–12 cm jumps), and
+  heading drift (up to 13°) because nothing ever corrected the gyro heading. Fixed both; details in the private notes.
+- Result: **21 of 25 runs clean (84 %)** with the final version (was ~9 of 17). The recorder now says "OK to submit" or
+  "do NOT submit, run again" from the COLLISION lines; the runbook has the retry rule.
+
+### 2026-10-14 (22:00) · claude-code — recording tools rehearsed with the real launchers
+- `pb_record.py --no-video` (new): the real `--evaluate` run, no screen recording. **PB 2A:** "PELLET TOUCHED
+  t=109.47s · MAZE SOLVED · wrote sealed result", zip checker 2/2. **PB 2B:** run completed, "wrote sealed
+  result.json", zip checker 2/2. The record file now keeps both panes' full scrollback.
+- KD: 2B and 2C now share one server; 2C 4/4 = 40 under both scoring readings (details private).
+
+### 2026-10-14 (night) · claude-code — stress tests, one PB 2B bug fixed, KD hold-rule risk found
+- **PB 2B:** 4 runs in parallel (each in its own network namespace with a private MQTT broker, so they cannot hear
+  each other) found a real bug: in one run the robot stopped inside the ghost's patrol and was caught. Fixed; details
+  in the private notes. **Re-test after the fix: 8/8 runs clean** (3/3 pellets, 0 collisions, 143–211 s; two cheap
+  detours). A third round stalled because the screen locked while 4 sims ran at once (not a code fault).
+- **KD:** 2C 4/4 rehearsals ≈ 40/40; 2B 5-run baseline 39.5–40 (all waypoints held). **Risk:** the portal pages we
+  saved do not say how the 2B/2C hold is measured. Under a "box" reading every run is fine; under a 0.4 "sphere"
+  reading 3 of 10 runs lose a waypoint (2B down to 18/40). **Fixed:** the hold is now made so that it counts under
+  both readings (details private). Tests: 2B 5/5 ≈ 38.5–40 under both readings (as fast as before), 2C 4/4 = 40
+  under both. Still worth checking the portal for the exact hold rule (see `context/17-task2-portal.md`).
+- ChatGPT Project: `10_Task2_Overview.md` (public, no solutions) + `11_Task2_How_It_Works_PRIVATE.md`; the upload set
+  is now 16 files (`build_upload_set.py`). `setup.sh` covers Task 2 (tf_transformations/transforms3d, VTE, ffmpeg).
+  Graded code backed up to the T9 (`Migration-2026-10/eyrc-graded-backup/`, test-restored).
+
+### 2026-10-14 (late) · claude-code — one-command recording tools, KD rehearsals
+- `learning/tools/pb_record.py --task 2a|2b` (generalised from `pb1b_record.py`): screen recording + `--evaluate`
+  launcher + solver in one window, stops when the solver reports the run over and a new `result.json` exists,
+  zips on camera. 2B starts the solver by itself (its evaluator ends the run if the robot has not moved in 60 s).
+  Dry-run tested for both.
+- `learning/tools/kd_record.sh 2b|2c` + `kd2_bag_score.py`: full KD run in the runbook order, practice score from
+  the bag, renamed upload zip. Rehearsed without video: **2B 39.4/40, 2C 40/40**. A rehearsal never writes to
+  `~/kd_upload_*` (its zip stays in `~/kd_runs/`), so a zip cannot be paired with another run's video.
+- Upstream repos fetched: no new commits (the KD 2C CSV is still not published). Workspace left with the 2B service.
+- Study guide for after exams: brain note "eYRC Task 2 — how the solutions work (study guide)".
+
+### 2026-10-14 (evening) · claude-code — PB 2B finished
+- 19 practice runs while improving the solver; one early version could wait forever for the ghost (fixed), one
+  faster-pivot trial touched a wall once (dropped). **Final version: 5/5 runs, 3/3 pellets, 0 collisions, 142–152 s.**
+- How it works, and what each bug taught: brain note "eYRC Task 2 — how the solutions work (study guide)" (private).
+  Technical notes for the team: `chatgpt-project/09_Team_Results_PRIVATE.md` (git-ignored). Kept out of this public
+  repo on purpose, like the Task 1 solutions.
+- Coding Standard header added to `task_2b_boilerplate.py`.
+
+### 2026-10-14 · claude-code — working while Saurabh writes his college assignment
+- At Saurabh's request ("use you completely"), claude-code is writing and testing Task 2 code itself; every
+  piece is logged here so the team knows what is Claude's. Saurabh studies it after exams.
+- **Sim tests run behind a locked screen:** the MuJoCo windows freeze when GNOME locks (render waits for the
+  compositor). `vblank_mode=0` in the launch environment fixes it for both themes; it changes no settings.
+- PB 2A: wheel slip measured (encoders over-read ~3 % steady, more when braking; pivots over-read 10–20 % →
+  heading from the gyro). KD: WhyCode z grows as the drone descends; pitch>1500 → +x; roll>1500 → +y.
+
 
 ### 2026-10-12 · claude-code — Task 2 found in the official repos
 - Saurabh pointed at the two official e-Yantra repos. Both were already our clones (`~/pico_ws/src`, `~/pacbot_ws`).
