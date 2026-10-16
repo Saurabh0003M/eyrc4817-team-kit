@@ -20,7 +20,7 @@ That machine is Gauri's laptop (confirmed 2026-09-24); portal upload status is u
 **NOW (2026-10-17): TASK 2 FINISHED. Portal: Khoj-o-Drone 100.00/100, PacBot 93.60/100** (KD 2A uploaded late on 16 Oct and
 accepted; PB 2A 30; PB 2B 63.60 is time-scored, 70 would need a 0 s run: our best was 75.28 s after speed tuning). All code was
 written + sim-tested by claude-code at Saurabh's request; graded code is never in this public repo (`~/kd_submissions`,
-`~/pacbot_ws`, `~/pb_backups`; T9 copy `Migration-2026-10/eyrc-graded-backup/` is from 15 Oct, the 16 Oct versions are not on it yet).
+`~/pacbot_ws`, `~/pb_backups`; final T9 copy 2026-10-17: `Migration-2026-10/eyrc-graded-backup/eyrc4817-graded-20261017_final.tar.gz` + `submitted_videos/`, verified).
 **Next: Task 3 opens 27 Oct (ends Stage 1, 16 Nov)**: it arrives through e-Yantra's two GitHub repos (README section 4).
 How Task 2 was recorded: `context/18-task2-submission-runbook.md` (one-command recorders `learning/tools/pb_record.py`,
 `kd_record.sh 2a|2b|2c`); specs `context/17-task2-portal.md`; repo facts `context/16-task2-from-repos.md`. Posted dates are soft
