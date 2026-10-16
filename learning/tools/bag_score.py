@@ -1,11 +1,11 @@
 #!/usr/bin/env python3
 """
-Practice-score estimator for KD Task 1B / 1C bag recordings.
+Practice-score estimator for KD Task 1B / 1C / 2A bag recordings.
 
-Reads /pos_error from a ros2 bag and applies the portal's scoring table:
-  Hovering 16  — per second inside the ±0.4 box, up to 10 s
-  Finishing 8  — only if a full 10 s hover is completed
-  Speed 16     — full if finished within 15 s, falling to 0 at 60 s
+Reads /pos_error from a ros2 bag and applies the portal's scoring table (1B/1C; 2A in brackets):
+  Hovering 16 (8)  — per second inside the ±0.4 box, up to 10 s
+  Finishing 8 (4)  — only if a full 10 s hover is completed
+  Speed 16 (8)     — full if finished within 15 s, falling to 0 at 60 s
 
 ASSUMPTIONS (the portal does not define these; ask on the forum before trusting the number):
   * the clock starts at the bag's first /pos_error message;
@@ -16,6 +16,7 @@ ASSUMPTIONS (the portal does not define these; ask on the forum before trusting 
     source ~/pico_ws/install/setup.bash
     python3 bag_score.py 1b task_1b        # the folder ros2 bag record -o task_1b created
     python3 bag_score.py 1c task_1c
+    python3 bag_score.py 2a task_2a        # 2A: all three axes, marks out of 20
 """
 import argparse
 import sys
@@ -28,7 +29,9 @@ except ImportError:
     sys.exit('Source ROS 2 and the workspace first:  source ~/pico_ws/install/setup.bash')
 
 BOX = 0.4
-FIELDS = {'1b': ['throttle_error'], '1c': ['throttle_error', 'pitch_error', 'roll_error']}
+FIELDS = {'1b': ['throttle_error'], '1c': ['throttle_error', 'pitch_error', 'roll_error'],
+          '2a': ['throttle_error', 'pitch_error', 'roll_error']}
+MARKS = {'1b': (16, 8, 16), '1c': (16, 8, 16), '2a': (8, 4, 8)}     # hovering, finishing, speed
 
 
 def read_errors(bag_dir):
@@ -48,8 +51,8 @@ def read_errors(bag_dir):
 
 
 def main():
-    parser = argparse.ArgumentParser(description='Estimate KD Task 1B/1C marks from a practice bag.')
-    parser.add_argument('task', choices=['1b', '1c'])
+    parser = argparse.ArgumentParser(description='Estimate KD Task 1B/1C/2A marks from a practice bag.')
+    parser.add_argument('task', choices=['1b', '1c', '2a'])
     parser.add_argument('bag', help='bag folder (contains metadata.yaml and *_0.db3)')
     args = parser.parse_args()
 
@@ -73,12 +76,13 @@ def main():
         else:
             streak_start = None
 
-    hover = 16 * min(longest, 10.0) / 10.0
-    bonus = 8 if finish_time is not None else 0
+    hover_max, bonus_max, speed_max = MARKS[args.task]
+    hover = hover_max * min(longest, 10.0) / 10.0
+    bonus = bonus_max if finish_time is not None else 0
     if finish_time is None:
         speed = 0.0
     else:
-        speed = 16.0 if finish_time <= 15 else max(0.0, 16.0 * (60 - finish_time) / 45)
+        speed = speed_max if finish_time <= 15 else max(0.0, speed_max * (60 - finish_time) / 45)
     worst = {f: max(abs(getattr(m, f)) for _, m in samples) for f in fields}
 
     print(f'Bag: {args.bag}  ·  {len(samples)} /pos_error messages over {duration:.1f} s  ·  axes: {", ".join(fields)}')
@@ -86,10 +90,10 @@ def main():
     print(f'Inside ±{BOX}: longest continuous {longest:.1f} s, cumulative {cumulative:.1f} s')
     print(f'10 s hover completed at: {"t = %.1f s" % finish_time if finish_time is not None else "never"}')
     print(f'\nEstimated marks (see ASSUMPTIONS in this file):')
-    print(f'  Hovering  {hover:5.1f} / 16')
-    print(f'  Finishing {bonus:5.1f} / 8')
-    print(f'  Speed     {speed:5.1f} / 16')
-    print(f'  Total     {hover + bonus + speed:5.1f} / 40')
+    print(f'  Hovering  {hover:5.1f} / {hover_max}')
+    print(f'  Finishing {bonus:5.1f} / {bonus_max}')
+    print(f'  Speed     {speed:5.1f} / {speed_max}')
+    print(f'  Total     {hover + bonus + speed:5.1f} / {sum(MARKS[args.task])}')
     if duration < 60:
         print(f'\nNote: the submission needs a recording of at least 60 s (this one is {duration:.0f} s).')
 

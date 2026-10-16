@@ -41,9 +41,15 @@ def main():
     loop = GLib.MainLoop()
 
     def stop():
-        recorder.call_sync('StopScreencast', None, Gio.DBusCallFlags.NONE, -1, None)
-        print(f'\nStopped after {time.time() - start_time:.0f} s. Video saved: {video_path}', flush=True)
-        loop.quit()
+        try:
+            recorder.call_sync('StopScreencast', None, Gio.DBusCallFlags.NONE, -1, None)
+            print(f'\nStopped after {time.time() - start_time:.0f} s. Video saved: {video_path}', flush=True)
+        except (BrokenPipeError, GLib.Error):
+            # Ctrl+C sent to a whole process group (kd_record.sh) also ends the pipe this prints into;
+            # without this the print raised, loop.quit() never ran and the process stayed behind.
+            pass
+        finally:
+            loop.quit()
         return GLib.SOURCE_REMOVE
 
     GLib.unix_signal_add(GLib.PRIORITY_DEFAULT, signal.SIGINT, stop)

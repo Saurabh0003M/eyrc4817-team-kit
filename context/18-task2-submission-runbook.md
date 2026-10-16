@@ -62,9 +62,15 @@ starts when it moves, so this costs nothing. Short waits near the ghost, or a lo
 are normal. A run takes ~2.5–4 min. Never open or edit `result.json`. Same zip name as 2A, but in the `task2b` folder.
 Sim results 2026-10-14: see `04-task-log.md` (PB 2B row).
 
+## KD 2A — late upload (hard deadline reported passed on the forum, 13 Oct; submitted anyway by team decision)
+```
+~/Desktop/e-yantra/learning/tools/kd_record.sh 2a
+```
+Same windows as below. Order: sim → bag (`/pos_error /whycode_node/markers /controller_heartbeat`) → `pico_controller_PID.py` (arms itself, flies to (1.5, −1.5, 13)), runs 75 s (portal: ≥ 60 s), scores with `bag_score.py 2a`, builds `~/kd_upload_2a/KD_4817_task_2a.zip` (`KD_4817_task_2a.py` + `task_2a_0.db3` + `metadata.yaml`). YouTube `KD_4817_Task_2a`, Unlisted. Rehearsals 2026-10-15: 19.5 / 20.0 / 20.0 (10 s hold done 11.6–17.6 s). **Fixed 16 Oct** (affected 2B/2C too): in a real terminal `ros2 bag record` was frozen by job control (it reads the keyboard) → no bag; and the screen recorder stayed behind after stopping. Both fixed and re-tested under a terminal with video: 19.5, 20.0, no leftovers.
+
 ## KD (2B, 2C): one command does it all
 ```
-~/Desktop/e-yantra/learning/tools/kd_record.sh 2b      # or 2c
+~/Desktop/e-yantra/learning/tools/kd_record.sh 2b      # or 2c (or 2a, above)
 ```
 Press Enter: screen recording starts, then the sim. Put the sim on the right half (Super+Right), the terminal on
 the left (Super+Left), press Enter: service → client → bag → server start in the runbook order, every node's
