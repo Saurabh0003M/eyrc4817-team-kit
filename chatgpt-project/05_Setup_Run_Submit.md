@@ -2,8 +2,9 @@
 
 > **Task 2 and later:** this file covers setup and Task 1. For Task 2 runs and submissions (one command per
 > subtask: `pb_record.py --task 2a|2b`, `kd_record.sh 2a|2b|2c`), see `10_Task2_Overview.md`. New tasks arrive through
-> e-Yantra's GitHub repos: `git -C ~/pico_ws/src pull --ff-only && cd ~/pico_ws && colcon build` (Khoj-o-Drone) and
-> `git -C ~/pacbot_ws pull --ff-only` (PacBot).
+> e-Yantra's GitHub repos. Because Task 2 code is written into e-Yantra's own files, pull with **stash → pull → stash pop**:
+> `git -C ~/pacbot_ws stash && git -C ~/pacbot_ws pull && git -C ~/pacbot_ws stash pop` (PacBot), the same with `~/pico_ws/src`
+> (Khoj-o-Drone), then `cd ~/pico_ws && colcon build`. Never forget the `stash pop`.
 
 ## Requirements (from e-Yantra)
 

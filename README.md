@@ -203,14 +203,26 @@ rules and the submission format are **only on the portal**: the repos never stat
 Also public, no login: e-Yantra's [theme site](https://themes.e-yantra.org/) (task pages and timelines; PacBot had its own pages there).
 The organisation page lists every e-Yantra repo: [github.com/eYantra-Robotics-Competition](https://github.com/eYantra-Robotics-Competition).
 
-**New tasks arrive through these repos** (Task 3 opens 27 Oct). To get them:
+**New tasks arrive through these repos** (Task 3 opens 27 Oct). You will have edited e-Yantra's own files (Task 2 is
+written *into* their boilerplates; KD also needs `CMakeLists.txt` / `package.xml` changes), so a plain `git pull` will
+refuse. Do it the way e-Yantra's PacBot README says: **stash, pull, stash pop**.
 ```bash
-git -C ~/pico_ws/src pull --ff-only && cd ~/pico_ws && colcon build     # Khoj-o-Drone (plain build, no --symlink-install)
-git -C ~/pacbot_ws pull --ff-only                                       # PacBot
+git -C ~/pacbot_ws stash && git -C ~/pacbot_ws pull && git -C ~/pacbot_ws stash pop          # PacBot
+git -C ~/pico_ws/src stash && git -C ~/pico_ws/src pull && git -C ~/pico_ws/src stash pop    # Khoj-o-Drone
+cd ~/pico_ws && colcon build                                    # KD: rebuild (plain build, never --symlink-install)
 ```
-If `git pull` refuses because you edited one of e-Yantra's files, save your work first: `git stash`, pull, `git stash pop`.
-Our own files in those folders are untracked, so a pull never touches them. Last checked 2026-10-17: nothing new after
-Task 2 (KD `af3b062`, PB `a5fad58`).
+**Never forget the `stash pop`**: until then your changes are shelved and missing from your files. If the pop reports a
+conflict, open the file it names and keep the lines you want. Files you created yourself (untracked) are never touched.
+Back up your graded files before pulling (Task 2's are on the T9). Last checked 2026-10-17: nothing new after Task 2
+(KD `af3b062`, PB `a5fad58`).
+
+**What the repos themselves require** (checked 2026-10-17):
+- **PacBot README:** `sudo apt install libgl1 libx11-6 libxcb1 libxau6 libxdmcp6 mosquitto mosquitto-clients`, then
+  `pip3 install paho-mqtt` (**pip, not apt**: apt gives 1.5.1, the tasks are tested against 2.x), and the broker running
+  (`sudo systemctl enable --now mosquitto`). Keep each task folder together (the launcher finds `lib/` and `meshes/` next to it).
+- **Khoj-o-Drone:** the README lists no requirements; `swift_pico/package.xml` needs ROS 2 Humble packages plus
+  `libglfw3-dev`, `eigen`, `image_view`, `actuator_msgs`, and the Task 2 server imports `tf_transformations`. Ubuntu 22.04,
+  ROS 2 Humble and MuJoCo 3.9.0 come from the portal's Task 0 page. `setup.sh` installs and checks all of these.
 
 ---
 

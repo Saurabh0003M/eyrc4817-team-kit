@@ -6,8 +6,8 @@ submission format are **only on the portal**; the repos never state them.
 
 | Theme | Repo | Local clone | Branch | Update with |
 |---|---|---|---|---|
-| KD | `eYantra-Robotics-Competition/eYRC_26-27_Khojo-Drone` | `~/pico_ws/src` | `kd_sim` (also `turtle_sim`, `main`) | `git -C ~/pico_ws/src pull --ff-only`, then `cd ~/pico_ws && colcon build` (plain, never `--symlink-install`: the workspace was built plain) |
-| PB | `eYantra-Robotics-Competition/eYRC_26-27_PacBot` | `~/pacbot_ws` | `main` | `git -C ~/pacbot_ws pull --ff-only` (repo README says stash first if you edited tracked files) |
+| KD | `eYantra-Robotics-Competition/eYRC_26-27_Khojo-Drone` | `~/pico_ws/src` | `kd_sim` (also `turtle_sim`, `main`) | `git -C ~/pico_ws/src stash && git -C ~/pico_ws/src pull && git -C ~/pico_ws/src stash pop`, then `cd ~/pico_ws && colcon build` (plain, never `--symlink-install`). Stash is needed: we edited 6 tracked files (Task 2 nodes, CMakeLists.txt, package.xml) |
+| PB | `eYantra-Robotics-Competition/eYRC_26-27_PacBot` | `~/pacbot_ws` | `main` | `git -C ~/pacbot_ws stash && git -C ~/pacbot_ws pull && git -C ~/pacbot_ws stash pop` (repo README's own method; Task 2 is written into the tracked boilerplates) |
 
 Pulled 2026-10-12: KD `3318915 → af3b062`, PB `2c1343c → a5fad58`. Fresh `colcon build` of
 `~/pico_ws`: 17/17 packages. All team files (untracked) survived both pulls.
