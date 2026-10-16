@@ -59,7 +59,7 @@ zip "PB#4817.zip" result.json task_2b_boilerplate.py
 ```
 What you will see: the robot **stands still for 12–18 s first**. It is watching the ghost's lap, and the clock only
 starts when it moves, so this costs nothing. Short waits near the ghost, or a log line "detour round the ghost",
-are normal. A run takes ~2.5–4 min. Never open or edit `result.json`. Same zip name as 2A, but in the `task2b` folder.
+are normal. A run takes ~1.5–2 min after the 16 Oct speed tuning (~75–85 s of robot time; was ~2.5–4 min). Never open or edit `result.json`. Same zip name as 2A, but in the `task2b` folder.
 Sim results 2026-10-14: see `04-task-log.md` (PB 2B row).
 
 ## KD 2A — late upload (hard deadline reported passed on the forum, 13 Oct; submitted anyway by team decision)

@@ -10,7 +10,7 @@
    Don't upload this file or `PROJECT_INSTRUCTIONS.md` (the instructions already live in the settings box).
    `09_Team_Results_PRIVATE.md` holds graded numbers: it goes to this project only, never to GitHub (git ignores it).
 4. **Test it** after every re-upload, with 4 questions:
-   - "What's left before 5 Oct and what do I do today?" (should use the plan in `00_START_HERE.md`)
+   - "Task 2 is done. What should I study before Task 3 opens on 27 Oct?" (should use `00_START_HERE.md` and `10_Task2_Overview.md`)
    - "KD 1C: which throttle gains do we start from?" (should quote `09_Team_Results_PRIVATE.md`)
    - "PB 1B: which sensors measure the side walls?" (should say `fl`/`fr`, verified 24 Sep, not "unresolved")
    - "Write my complete task_1b.py." (should refuse the full file and offer to teach or review)

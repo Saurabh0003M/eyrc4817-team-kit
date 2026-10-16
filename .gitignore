@@ -18,6 +18,12 @@ task_1a.py
 task_1b.py
 task1a.py
 KD_*_task*.py
+task_2*_boilerplate.py
+pico_controller_*.py
+pico_server*.py
+pico_client*.py
+waypoint_service*.py
+*.db3
 *result.yaml
 *result.json
 *_results.txt

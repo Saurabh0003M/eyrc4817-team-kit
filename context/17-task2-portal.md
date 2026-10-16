@@ -7,7 +7,7 @@ differ. Summarised in our own words; the portal pages are the authority.
 
 | Subtask | What | Marks | Deadline |
 |---|---|---|---|
-| **KD 2A** | write your own position controller (PID or LQR) and hold a setpoint | 20 | **12 Oct 2026 (PASSED)** |
+| **KD 2A** | write your own position controller (PID or LQR) and hold a setpoint | 20 | **12 Oct 2026** (uploaded late 16 Oct: **accepted, 20/20**) |
 | **KD 2B** | ROS 2 action + service waypoint navigation, 4 fixed waypoints | 40 | **19 Oct 2026** |
 | **KD 2C** | waypoints come from the camera: detect critical survivors, plan a route | 40 | **26 Oct 2026** |
 | **PB 2A** | maze traversal: random spawn, one pellet, exit; no time limit | 30 | **15 Oct 2026** |
@@ -15,8 +15,8 @@ differ. Summarised in our own words; the portal pages are the authority.
 
 Each KD subtask builds on the previous one (2B drives the 2A controller; 2C drives the 2B pipeline).
 **Late policy (forum answer, 2026-10-13):** the dates above are *soft* deadlines; e-Ratna goes only to submissions
-before them. Each subtask also has a later *hard* deadline (not published). **KD 2A's hard deadline has passed: it
-cannot be submitted.** Submit every remaining subtask as early as possible.
+before them. Each subtask also has a later *hard* deadline (not published). The forum said KD 2A's hard deadline had passed and it
+could not be submitted; **we uploaded it on 16 Oct anyway and it was accepted (20/20).** Submit every remaining subtask as early as possible.
 **Theme commitment:** no Task 2 page asks the team to pick one theme; both courses carry Task 2.
 
 ## KD 2A — position controller (20)

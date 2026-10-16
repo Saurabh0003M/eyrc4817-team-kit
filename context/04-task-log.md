@@ -16,11 +16,12 @@ brain's `STATE.md` with your agent name and the date.** Newest entry first.
 | **Task 1C — tune pitch + roll** | same | **MARKED 40/40** (submitted 1 Oct 01:26; e-Ratna not calculated yet). Gains: `chatgpt-project/09_Team_Results_PRIVATE.md` | proposed: Gauri | 40 marks. Tuning, not coding; bag + YouTube. `11-task1c.md` |
 | **PacBot Task 1A — maze path planning** | released, **deadline 23 Sep** | **MARKED 35/35** (submitted 23 Sep 22:21; e-Ratna +11) | proposed: Parth | 35 marks. `15-pacbot-task1.md` |
 | **PacBot Task 1B — wall following (MuJoCo)** | same | **RECORDED 2026-10-01 12:46, 65/65 est.** (MAZE SOLVED, 0 collisions). Zip `~/pacbot_ws/task1b/PB#4817.zip`, video `PB_4817_Task1B_20261001_124141.webm` (4:16). Gauri uploads | proposed: Saurabh | 65 marks. `15-pacbot-task1.md` |
+| **TASK 2 FINAL (portal, 2026-10-17)** | — | **KD 100.00/100** (2A 20 accepted late + 2B 40 + 2C 40) · **PB 93.60/100** (2A 30 + 2B 63.60, the 75.28 s run) | team | 200 |
 | **KD Task 2A** — position controller | due **12 Oct (MISSED)** | forum said the hard deadline passed; **SUBMITTED LATE 2026-10-16** (team decision): recorded run 13:00, practice score 20.0/20 (inside ±0.4 for all 72.5 s, 10 s hold done 11.8 s); zip + Unlisted YouTube uploaded. Earlier note: cannot be submitted; controller written by claude-code (2026-10-14) for use in 2B/2C. The first tuning held the 2A box 26.9 s from t≈2.7 s but flipped the drone on 2B's long waypoint jumps, so the 2B/2C server uses lower x/y gains. Gains are kept out of this public repo: `chatgpt-project/09_Team_Results_PRIVATE.md` (git-ignored) | claude-code | `17-task2-portal.md` |
 | **PB Task 2A** — maze traversal | due **15 Oct** | **code done + sim-verified by claude-code (2026-10-14/15): final version 19 of 20 practice runs clean (95 %)** (30/30 each; the version before it 21/25); record with retries (each run is a new random draw). **SUBMITTED 2026-10-15**: recorded `--evaluate` run at 22:28 with `pb_record.py`: MAZE SOLVED, 0 collisions, 205.5 s; zip + Unlisted YouTube uploaded (expected 30/30) | claude-code | 30 marks |
 | **KD Task 2B** — action/service waypoints | due **19 Oct** | **code done + sim-verified by claude-code (2026-10-14):** 5/5 flights held all 4 waypoints in order (4×40, 1×39.1 on a replica of the portal formula; 4th hold done 32–47 s). `waypoint_navigation` interfaces, client, service, server. **Left: recording run + bag + YouTube (needs Saurabh/Gauri)** | claude-code | 40 marks |
-| **KD Task 2C** — camera-driven waypoints | due **26 Oct** | **code done + sim-verified by claude-code (2026-10-14):** camera-driven `waypoint_service` (reads the CSV if it appears, else the shipped JSON). 4th hold done at 31.4 s (40/40 on the formula). Files in `~/kd_submissions/task_2c/`. **Left: recording run (needs Saurabh/Gauri); `git fetch` first in case the CSV lands** | claude-code | 40 marks |
-| **PB Task 2B** — pellets + ghost | due **26 Oct** | **SUBMITTED 2026-10-16, portal score 57.09/70**: recorded run 14:10, 3/3 pellets, 0 collisions, exited, 238.4 s (slow: the ghost guarded the last pellet (10,14), detour cost 85.5). The portal's number is higher than our formula gives for 238 s (49.7), so the posted time formula is not exactly what the server uses. **code done by claude-code (2026-10-14), sim-tested: after the last fix 24/24 practice runs (4 at a time) exited with 3/3 pellets, 0 collisions, 140–217 s (≈ 51–57/70 each on the formula).** **Left: `--evaluate` run while screen-recording, zip, YouTube, Gauri uploads** → `18-task2-submission-runbook.md` | claude-code | 70 marks |
+| **KD Task 2C** — camera-driven waypoints | due **26 Oct** | **RECORDED 2026-10-16 21:37** (`kd_record.sh 2c`): all 4 survivors reached + held, finished 40.8 s, practice 40.0/40; zip `~/kd_upload_2c/KD_4817_task_2c.zip` + video ready for upload. **code done + sim-verified by claude-code (2026-10-14):** camera-driven `waypoint_service` (reads the CSV if it appears, else the shipped JSON). 4th hold done at 31.4 s (40/40 on the formula). Files in `~/kd_submissions/task_2c/`. **Left: recording run (needs Saurabh/Gauri); `git fetch` first in case the CSV lands** | claude-code | 40 marks |
+| **PB Task 2B** — pellets + ghost | due **26 Oct** | **SPEED-TUNED 2026-10-16 (claude-code, at Saurabh's request): ~79 s per run (was ~150 s), 25/26 sim runs clean, never stuck or caught, 16/26 clean and under 80 s → est. ≈ 63 marks; **RE-SUBMITTED 2026-10-16 15:12: portal 63.30/70** (3/3, 0 collisions, 78.85 s, first attempt).** Time was 2/3 pivots + starts/stops (23 of 34 runs are 1 cell): sharper pivot finish and arrival, harder accel/braking, ghost timing re-measured. Faster pivots (6 rad/s) rejected: one run lost its position and got stuck (would score 0). Planner turn cost / joint tour: ≤ 0.3 s, not changed. Before: **SUBMITTED 2026-10-16, portal score 57.12/70** (final upload = the re-run at 14:20: 3/3 pellets, 0 collisions, exited, 151.55 s; the posted formula gives exactly 57.12). An earlier upload showed 57.09. Seen in the re-run: a U-turn after the first pellet; the planner plans leg by leg, so it ignores the arrival heading. A joint plan over (cell, heading, pellets collected) removes it (offline: 3.0 units cheaper on that draw; 13 % of 302 random draws cheaper, mean 0.23 units ≈ 0.2 s). Not put into the graded file. **code done by claude-code (2026-10-14), sim-tested: after the last fix 24/24 practice runs (4 at a time) exited with 3/3 pellets, 0 collisions, 140–217 s (≈ 51–57/70 each on the formula).** **Left: `--evaluate` run while screen-recording, zip, YouTube, Gauri uploads** → `18-task2-submission-runbook.md` | claude-code | 70 marks |
 | Tasks 3–6 | Nov 26 – Feb 27 | Stage 2 only | — | needs Stage 1 selection |
 
 ## Open actions
@@ -48,6 +49,26 @@ brain's `STATE.md` with your agent name and the date.** Newest entry first.
    Firebird V robot and can be skipped. Worth it only if all four can sit together for 5 hours.
 
 ## Entries
+
+### 2026-10-16/17 · claude-code + Saurabh — Task 2 recorded, uploaded, scored: KD 100/100, PB 93.60/100
+- **PB 2A** submitted 15 Oct (recorded 22:28: MAZE SOLVED, 0 collisions, 205 s). Portal 30/30.
+- **KD 2A** (forum: closed) built into a late upload at the team's decision: `kd_record.sh 2a` (sim → bag with
+  `/pos_error` → `pico_controller_PID.py`, 75 s), `bag_score.py 2a` (/20). Rehearsals 19.5/20/20. Accepted: 20/20.
+- **Recorder bug found on the first real KD run:** in a real terminal `ros2 bag record` (which reads the keyboard) was
+  frozen by job control (SIGTTIN) → no bag; the screen recorder also stayed behind (its print hit a closed pipe, so
+  `loop.quit()` never ran). Fixed (stdin from /dev/null; try/finally) and re-tested under a pty with video. It would
+  have hit KD 2B and 2C too: rehearsals had all run with `--yes` (no terminal).
+- **KD 2B** recorded 13:29: 40.0/40 practice (finish 37.4 s). **KD 2C** recorded 21:37: 40.0/40 practice (40.8 s).
+- **PB 2B:** first upload 57.12 (151.55 s; the portal matches the posted formula exactly). Saurabh asked for full marks:
+  70 is unreachable (time-scored), so it was speed-tuned instead. Time split: pivots 38 %, starts/stops 29 %, driving
+  33 % (23 of 34 runs are 1 cell). Sharper pivot finish/arrival, harder accel/braking, ghost timing re-measured →
+  ~79 s/run, 25/26 sim runs clean. Rejected: faster pivots (one run lost its position after a fast U-turn and got
+  stuck = 0); gentler braking (clean but ~4 s slower); planner turn cost / joint tour (≤ 0.3 s). Saurabh's U-turn
+  observation was right (leg-by-leg planning ignores the arrival heading) but worth only ~0.2 s on average.
+  Seven recorded runs (75.28–109.54 s, all clean; the slow one = ghost guarding the exit → detour); best 75.28 s →
+  **portal 63.60**. `pb_record.py` now moves the previous zip out of the task folder.
+- **Final (portal, 17 Oct): Khoj-o-Drone 100.00/100, PacBot 93.60/100.** Kit README now has e-Yantra's GitHub repos
+  (section 4), Task 2 results, run/submit commands; `.gitignore` blocks the Task 2 solution names.
 
 ### 2026-10-14/15 (night) · claude-code — PB 2A was less reliable than its 5/5 suggested; now ~85 %
 - 16 more practice runs (random spawn + pellet each time) showed only about half were collision-free; a run with

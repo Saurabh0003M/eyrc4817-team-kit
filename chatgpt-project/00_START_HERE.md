@@ -1,22 +1,27 @@
-# 00 — START HERE: Team 4817 · eYRC 2026-27 · now Task 2
+# 00 — START HERE: Team 4817 · eYRC 2026-27 · Task 2 done, Task 3 next
 
-**Read this first.** It says which task is live, who does what now, and which file to open next.
+**Read this first.** It says where the team stands, what comes next, and which file to open.
 
-## NOW (14 Oct 2026): Task 2 → `10_Task2_Overview.md`
+## NOW (17 Oct 2026): Task 2 finished. Next: Task 3 (27 Oct → 16 Nov, ends Stage 1)
 
-| Subtask | Soft deadline | Status |
-|---|---|---|
-| **PB 2A** maze traversal (30) | **15 Oct** | code done, 5/5 clean practice runs → **record + Gauri uploads** |
-| **KD 2B** waypoint navigation (40) | **19 Oct** | code done, rehearsed (~39–40 est.) → **record + Gauri uploads** |
-| **KD 2C** camera waypoints (40) | **26 Oct** | code done, rehearsed (40 est.) → **record + Gauri uploads** |
-| **PB 2B** pellets + ghost (70) | **26 Oct** | code done, 5/5 clean practice runs → **record + Gauri uploads** |
-| KD 2A position controller (20) | 12 Oct | missed; the forum says it cannot be submitted |
+| Subtask | Marks | Our score (portal) | How |
+|---|---|---|---|
+| **KD 2A** position controller | 20 | **20** | uploaded late on 16 Oct; the forum had said "closed", but it was accepted |
+| **KD 2B** waypoint navigation | 40 | **40** | 4 waypoints held, finished in 37 s |
+| **KD 2C** camera waypoints | 40 | **40** | 4 critical survivors found from the camera, flown in 41 s |
+| **PB 2A** maze traversal | 30 | **30** | 0 collisions, 205 s (time does not count in 2A) |
+| **PB 2B** pellets + ghost | 70 | **63.60** | 3/3 pellets, 0 collisions, 75.28 s. Time-scored: 70 would need a 0-second run |
+| **Total** | | **Khoj-o-Drone 100/100 · PacBot 93.60/100** | |
 
-Recording is one command per subtask (table at the end of `10_Task2_Overview.md`). Task 2 code was written by
-Claude at Saurabh's request: everyone studies how it works with `11_Task2_How_It_Works_PRIVATE.md`.
-Task 3 opens 27 Oct and ends Stage 1 on 16 Nov.
+**What to do now:** study how the Task 2 code works (`11_Task2_How_It_Works_PRIVATE.md`; the overview is
+`10_Task2_Overview.md`) so that Task 3, which builds on it, is not a surprise. Task 3 arrives through e-Yantra's two
+GitHub repos: [Khoj-o-Drone](https://github.com/eYantra-Robotics-Competition/eYRC_26-27_Khojo-Drone) (branch `kd_sim`) and
+[PacBot](https://github.com/eYantra-Robotics-Competition/eYRC_26-27_PacBot). Stage 2 (and the free hardware kit) is decided
+**only** by Stage 1 results, so Task 3 matters as much as Tasks 1 and 2.
 
-*Everything below is Task 1 (finished: KD 100/100, PB 1A 35/35, PB 1B recorded 65/65 est.), kept for reference.*
+Task 2 code was written by Claude at Saurabh's request. Ask ChatGPT to explain any part of it.
+
+*Everything below is Task 1 (finished with full marks on both themes: KD 100/100, PB 100/100), kept for reference.*
 
 ## Team
 

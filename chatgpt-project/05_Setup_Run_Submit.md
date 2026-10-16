@@ -1,5 +1,10 @@
 # 05 — Setup, running, submitting, coding standard, troubleshooting
 
+> **Task 2 and later:** this file covers setup and Task 1. For Task 2 runs and submissions (one command per
+> subtask: `pb_record.py --task 2a|2b`, `kd_record.sh 2a|2b|2c`), see `10_Task2_Overview.md`. New tasks arrive through
+> e-Yantra's GitHub repos: `git -C ~/pico_ws/src pull --ff-only && cd ~/pico_ws && colcon build` (Khoj-o-Drone) and
+> `git -C ~/pacbot_ws pull --ff-only` (PacBot).
+
 ## Requirements (from e-Yantra)
 
 Ubuntu **22.04** LTS on **bare metal** (dual-boot is fine; **not** WSL, not a virtual machine, **not 24.04**) · x86_64 processor with more than 4 cores · 8 GB+ RAM · 100 GB+ disk recommended · **ROS 2 Humble** desktop (installed in Task 0).

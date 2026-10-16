@@ -337,8 +337,11 @@ def main():
             keep = TRIALS / f"previous_result_{datetime.fromtimestamp(old.stat().st_mtime):%Y%m%d_%H%M%S}.json"
             shutil.move(str(old), keep)
             print(f"moved the old result.json to {keep}", flush=True)
-        if (TASK / ZIP).exists():
-            (TASK / ZIP).rename(TASK / f"PB#4817_previous_{STAMP}.zip")
+        if (TASK / ZIP).exists():     # out of the task folder: only the newest zip may be there to upload
+            TRIALS.mkdir(exist_ok=True)
+            keep = TRIALS / f"previous_zip_{datetime.fromtimestamp((TASK / ZIP).stat().st_mtime):%Y%m%d_%H%M%S}.zip"
+            shutil.move(str(TASK / ZIP), keep)
+            print(f"moved the old {ZIP} to {keep}", flush=True)
     window = RunWindow()
     window.show_all()
     Gtk.main()

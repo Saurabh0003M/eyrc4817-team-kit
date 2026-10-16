@@ -2,7 +2,8 @@
 
 **Repo:** https://github.com/Saurabh0003M/eyrc4817-team-kit ·
 **Portal:** [Khoj-o-Drone](https://portal.e-yantra.org/courses/theme_kd) · [PacBot](https://portal.e-yantra.org/courses/theme_pb) (login) ·
-**Links:** [RESOURCES.md](RESOURCES.md) · **Study with ChatGPT:** [chatgpt-project/](chatgpt-project) · **⏰ Task 2 deadline: 26 October 2026** · Task 3: 27 Oct – 16 Nov
+**e-Yantra's GitHub repos:** [Khoj-o-Drone](https://github.com/eYantra-Robotics-Competition/eYRC_26-27_Khojo-Drone) · [PacBot](https://github.com/eYantra-Robotics-Competition/eYRC_26-27_PacBot) ([section 4](#4-e-yantras-github-repos)) ·
+**Links:** [RESOURCES.md](RESOURCES.md) · **Study with ChatGPT:** [chatgpt-project/](chatgpt-project) · **✅ Task 2 done: KD 100/100 · PB 93.60/100** · **⏰ Task 3: 27 Oct – 16 Nov 2026** (ends Stage 1)
 
 ```bash
 git clone https://github.com/Saurabh0003M/eyrc4817-team-kit.git ~/eyrc4817
@@ -28,18 +29,19 @@ Competition 2026-27, Stage 1. Written for teammates who are new to ROS 2, PID, M
 
 1. [First day (30 minutes)](#1-first-day-30-minutes)
 2. [Setup: what the script checks and does](#2-setup-what-the-script-checks-and-does)
-3. [Where everything lives on your laptop](#3-where-everything-lives-on-your-laptop)
-4. [Task 1 at a glance](#4-task-1-at-a-glance)
-5. [How to run each task](#5-how-to-run-each-task)
-6. [Submission cheat sheet](#6-submission-cheat-sheet)
-7. [Learning: where to start](#7-learning-where-to-start)
-8. [Tools in this repo](#8-tools-in-this-repo)
-9. [Troubleshooting](#9-troubleshooting)
-10. [FAQ](#10-faq)
-11. [Open questions to ask e-Yantra](#11-open-questions-to-ask-e-yantra)
-12. [Updating, undoing, contributing](#12-updating-undoing-contributing)
-13. [Team rules](#13-team-rules)
-14. [What's in this repo](#14-whats-in-this-repo)
+3. [Where everything lives on your laptop](#3-where-everything-lives-on-your-laptop-and-why)
+4. [e-Yantra's GitHub repos](#4-e-yantras-github-repos)
+5. [Tasks at a glance (Task 1, Task 2, results)](#5-tasks-at-a-glance)
+6. [How to run each task](#6-how-to-run-each-task)
+7. [Submission cheat sheet](#7-submission-cheat-sheet)
+8. [Learning: where to start](#8-learning-where-to-start)
+9. [Tools in this repo](#9-tools-in-this-repo)
+10. [Troubleshooting](#10-troubleshooting)
+11. [FAQ](#11-faq)
+12. [Open questions to ask e-Yantra](#12-open-questions-to-ask-e-yantra)
+13. [Updating, undoing, contributing](#13-updating-undoing-contributing)
+14. [Team rules](#14-team-rules)
+15. [What's in this repo](#15-whats-in-this-repo)
 
 ---
 
@@ -59,8 +61,8 @@ Then:
 1. **Close the terminal and open a new one** so the new settings load.
 2. Run `bash ~/eyrc4817/setup/setup.sh --check` again. It should end with *Everything is set up*.
 3. Open the team's **ChatGPT Project** (Saurabh shares the link) and ask: *"I'm <name>. What's my subtask and what do I do today?"*. The same files are in [`chatgpt-project/`](chatgpt-project); start with `00_START_HERE.md`.
-4. Agree with the team **who owns which Task 1 subtask** ([section 4](#4-task-1-at-a-glance)).
-5. Open one simulator from [section 5](#5-how-to-run-each-task), just to see it start. Stop it with Ctrl+C.
+4. Agree with the team **who owns which Task 1 subtask** ([section 5](#5-tasks-at-a-glance)).
+5. Open one simulator from [section 6](#6-how-to-run-each-task), just to see it start. Stop it with Ctrl+C.
 
 If anything fails, send the team `~/eyrc4817-setup.log`.
 
@@ -164,7 +166,9 @@ Every task folder follows one pattern:
 │             task_1a_boilerplate.py  the empty template
 │             task_1a.py              YOUR code (the bot's brain); starts as a copy of the template
 │             result.yaml             written by the game in --evaluate mode (goes into the zip)
-└── task1b/   task_1b_launch · task_1b_boilerplate.py · task_1b.py   (+ lib/, meshes/ the game needs – don't touch)
+├── task1b/   task_1b_launch · task_1b_boilerplate.py · task_1b.py   (+ lib/, meshes/ the game needs – don't touch)
+├── task2a/   task_2a_launch · task_2a_boilerplate.py   (Task 2: you write INTO the boilerplate file; it is the submitted file)
+└── task2b/   task_2b_launch · task_2b_boilerplate.py · maze_2b.py (the maze the boilerplate imports – don't edit)
 ```
 
 Submission zips are made inside the task folder, next to the files they contain.
@@ -186,9 +190,35 @@ Submission zips are made inside the task folder, next to the files they contain.
 
 ---
 
-## 4. Task 1 at a glance
+## 4. e-Yantra's GitHub repos
 
-**Deadlines (portal, 11:59 pm, soft):** KD 1A 21 Sep · PB 1A 23 Sep (both submitted) · **KD 1B 28 Sep** · **KD 1C 5 Oct** · **PB 1B 5 Oct**. Suggested owners and a day-by-day plan: [`chatgpt-project/00_START_HERE.md`](chatgpt-project/00_START_HERE.md).
+e-Yantra publishes every task's **simulator, launchers and boilerplate code** in two public GitHub repos. Marks, deadlines,
+rules and the submission format are **only on the portal**: the repos never state them. `setup.sh` clones both for you.
+
+| Theme | Repo | On your laptop | Branch | What's in it |
+|---|---|---|---|---|
+| **Khoj-o-Drone** | [eYantra-Robotics-Competition/eYRC_26-27_Khojo-Drone](https://github.com/eYantra-Robotics-Competition/eYRC_26-27_Khojo-Drone) | `~/pico_ws/src` | **`kd_sim`** (also `turtle_sim` = Task 0 bonus, `main`) | the Swift Pico drone simulator (MuJoCo), WhyCon marker tracking, PID tuner, and each task's boilerplate in `swift_pico/src/` (Task 2: `pico_controller_PID/LQR`, `waypoint_service`, `pico_client`, `pico_server`) |
+| **PacBot** | [eYantra-Robotics-Competition/eYRC_26-27_PacBot](https://github.com/eYantra-Robotics-Competition/eYRC_26-27_PacBot) | `~/pacbot_ws` | `main` | one folder per task (`task0`, `task1a`, `task1b`, `task2a`, `task2b`): an encrypted launcher (**run only**, never open it), the boilerplate, and the files it needs |
+
+Also public, no login: e-Yantra's [theme site](https://themes.e-yantra.org/) (task pages and timelines; PacBot had its own pages there).
+The organisation page lists every e-Yantra repo: [github.com/eYantra-Robotics-Competition](https://github.com/eYantra-Robotics-Competition).
+
+**New tasks arrive through these repos** (Task 3 opens 27 Oct). To get them:
+```bash
+git -C ~/pico_ws/src pull --ff-only && cd ~/pico_ws && colcon build     # Khoj-o-Drone (plain build, no --symlink-install)
+git -C ~/pacbot_ws pull --ff-only                                       # PacBot
+```
+If `git pull` refuses because you edited one of e-Yantra's files, save your work first: `git stash`, pull, `git stash pop`.
+Our own files in those folders are untracked, so a pull never touches them. Last checked 2026-10-17: nothing new after
+Task 2 (KD `af3b062`, PB `a5fad58`).
+
+---
+
+## 5. Tasks at a glance
+
+**Results so far (portal):** Task 1 full marks on both themes · **Task 2: Khoj-o-Drone 100.00/100 · PacBot 93.60/100**.
+
+### Task 1 (16 Sep → 5 Oct, done)
 
 | Theme | Part | What | Code or tune? | Marks | Study file | Full brief |
 |---|---|---|---|---|---|---|
@@ -200,15 +230,26 @@ Submission zips are made inside the task folder, next to the files they contain.
 
 Four of the five parts use **PID**, so everyone should watch the PID videos (list in `chatgpt-project/07_Learning_Resources.md`).
 
-**Status (14 Oct):** Task 1 done — all five parts submitted with full marks on both themes. **Task 2:** code done and
-tested in simulation for PB 2A, PB 2B, KD 2B and KD 2C (KD 2A was missed and can no longer be submitted). Left: the
-recorded runs and uploads — PB 2A by **15 Oct**, KD 2B by **19 Oct**, KD 2C + PB 2B by **26 Oct**. One command each:
-`python3 learning/tools/pb_record.py --task 2a` (or `2b`) and `learning/tools/kd_record.sh 2b` (or `2c`); details in
-[context/18-task2-submission-runbook.md](context/18-task2-submission-runbook.md).
+### Task 2 (6 → 26 Oct, done)
+
+| Theme | Part | What | Marks | Our score | Full brief |
+|---|---|---|---|---|---|
+| Khoj-o-Drone | 2A | Write your own position controller (PID): hold the drone at (1.5, −1.5, 13) | 20 | **20** (uploaded late, accepted) | [context/17](context/17-task2-portal.md) |
+| Khoj-o-Drone | 2B | ROS 2 **service + action**: fly 4 fixed waypoints in order, hold each 3 s | 40 | **40** | [context/17](context/17-task2-portal.md) |
+| Khoj-o-Drone | 2C | Waypoints from the **camera**: detect the critical survivors (Task 1A detector), plan a route, fly it | 40 | **40** | [context/17](context/17-task2-portal.md) |
+| PacBot | 2A | MuJoCo maze: random spawn, one pellet, exit, **no live position** (dead reckoning from gyro + encoders) | 30 | **30** | [context/17](context/17-task2-portal.md) |
+| PacBot | 2B | 3 pellets + a **ghost** that patrols one of them (touching it = 0); **time counts** | 70 | **63.60** | [context/17](context/17-task2-portal.md) |
+
+**Why PB 2B can't reach 70:** its score is 5 × pellets + (55 − 0.085 × seconds), so every second costs 0.085 marks and
+the full 70 would need a 0-second run. Ours: 3/3 pellets, 0 collisions, **75.28 s**. Each PacBot run draws new random
+pellets, so we recorded several runs and uploaded the fastest clean one.
+
+How the recordings were made, one command each: [context/18-task2-submission-runbook.md](context/18-task2-submission-runbook.md).
+Day-by-day story of what worked and what didn't: [`context/04-task-log.md`](context/04-task-log.md).
 
 ---
 
-## 5. How to run each task
+## 6. How to run each task
 
 One **terminal per command**, in the order shown. Stop everything with **Ctrl+C** (never Ctrl+Z, never
 close the window, never `kill -9`). **Exception: the PacBot game windows ignore Ctrl+C: press `q` in the maze window**
@@ -253,11 +294,33 @@ cd ~/pacbot_ws/task1b && ./task_1b_launch                   # 1: MuJoCo maze
 cd ~/pacbot_ws/task1b && python3 task_1b.py                 # 2: your code
 ```
 
+**Task 2, practice runs** (nothing is written; one terminal per line):
+```bash
+# PacBot 2A / 2B
+cd ~/pacbot_ws/task2a && ./task_2a_launch                   # 1: MuJoCo maze (task2b: ./task_2b_launch)
+cd ~/pacbot_ws/task2a && python3 task_2a_boilerplate.py     # 2: your code (task2b: task_2b_boilerplate.py)
+
+# Khoj-o-Drone 2B / 2C (order matters: the server starts the flight)
+ros2 launch swift_pico swift_pico_simulation.launch.py      # 1: simulator
+ros2 run swift_pico waypoint_service                        # 2: hands out the waypoints
+ros2 run swift_pico pico_client                             # 3: asks for them, sends them one by one
+ros2 run swift_pico pico_server                             # 4: flies each one
+```
+KD 2A is one node instead: `ros2 run swift_pico pico_controller_PID.py` after the simulator.
+**After editing anything in `~/pico_ws/src`, run `colcon build`**: `ros2 run` uses the built copy.
+
+**Task 2, recorded runs: one command does it all** (screen recording, the runs in the right order, a practice score,
+and the upload zip). Run them from a normal terminal (**Ctrl+Alt+T**), not from an editor's built-in terminal:
+```bash
+python3 ~/eyrc4817/learning/tools/pb_record.py --task 2b    # PacBot (or --task 2a)
+~/eyrc4817/learning/tools/kd_record.sh 2c                   # Khoj-o-Drone (or 2a, 2b)
+```
+
 ---
 
-## 6. Submission cheat sheet
+## 7. Submission cheat sheet
 
-Always run `learning/tools/submission_check.py` first. Only **Gauri** can upload. Videos go on YouTube as **Unlisted** (not Private), recorded in **one unbroken take** with the terminal visible from the start. Record with `learning/tools/screen_record.py` (section 8). PacBot's pages give no video title; we used `PB_4817_Task_1a` (no `#`: YouTube turns it into a hashtag).
+Always run `learning/tools/submission_check.py` first. Only **Gauri** can upload. Videos go on YouTube as **Unlisted** (not Private), recorded in **one unbroken take** with the terminal visible from the start. Record with `learning/tools/screen_record.py` (section 9). PacBot's pages give no video title; we used `PB_4817_Task_1a` (no `#`: YouTube turns it into a hashtag).
 
 | Part | Run it for real | Upload (zip = files at top level, **no folder**) | Video title |
 |---|---|---|---|
@@ -266,12 +329,22 @@ Always run `learning/tools/submission_check.py` first. Only **Gauri** can upload
 | KD 1C | sim → tuner → `task_1c_controller` → `ros2 bag record -o task_1c /pos_error /whycode_node/markers` for ≥ 60 s | `KD_4817_task_1c.zip` → `task_1c_0.db3`, `metadata.yaml` | `KD_4817_Task_1c` |
 | PB 1A | recording on → `./task_1a_launch --evaluate` → `python3 task_1a.py` | `PB#4817.zip` → `result.yaml`, `task_1a.py` | unlisted link on portal |
 | PB 1B | recording on → `./task_1b_launch --evaluate` → `python3 task_1b.py` | `PB#4817.zip` → `result.json`, `task_1b.py` | unlisted link on portal |
+| KD 2A | `kd_record.sh 2a` (sim → bag with `/pos_error` → controller, 75 s) | `KD_4817_task_2a.zip` → `KD_4817_task_2a.py`, `task_2a_0.db3`, `metadata.yaml` | `KD_4817_Task_2a` |
+| KD 2B | `kd_record.sh 2b` (sim → service → client → bag → server) | `KD_4817_task_2b.zip` → `KD_4817_waypoint_service.py`, `KD_4817_pico_client.py`, `KD_4817_pico_server.py`, `task_2b_0.db3`, `metadata.yaml` | `KD_4817_Task_2b` |
+| KD 2C | `kd_record.sh 2c` (same order as 2B) | `KD_4817_task_2c.zip` → same 5 files, `task_2c_0.db3` | `KD_4817_Task_2c` |
+| PB 2A | `pb_record.py --task 2a` (`./task_2a_launch --evaluate` → your code) | `PB#4817.zip` → `result.json`, `task_2a_boilerplate.py` | unlisted link on portal |
+| PB 2B | `pb_record.py --task 2b`; **re-run until "0 collisions · OK to submit"**, keep the fastest | `PB#4817.zip` → `result.json`, `task_2b_boilerplate.py` | unlisted link on portal |
 
 Zip the files, not the folder. Example: `cd task_1b && zip -r KD_4817_task_1b.zip task_1b_0.db3 metadata.yaml`.
 
+**Every PacBot zip is called `PB#4817.zip`.** Upload from the right task folder (`task2a` vs `task2b`): a 2A zip in the 2B
+slot scores 0. `pb_record.py` moves the previous zip out to `~/pb2b_trials/` (`~/pb2a_trials/`) so the task folder only
+ever holds the newest one, and its last line names the matching video. **Never open or edit `result.json`** (it is sealed).
+Re-uploading replaces the earlier upload, so only upload a run that is better.
+
 ---
 
-## 7. Learning: where to start
+## 8. Learning: where to start
 
 | You want to… | Open |
 |---|---|
@@ -286,7 +359,7 @@ Zip the files, not the folder. Example: `cd task_1b && zip -r KD_4817_task_1b.zi
 
 ---
 
-## 8. Tools in this repo
+## 9. Tools in this repo
 
 All in `learning/tools/`, run from the repo folder. None of them solves a task; they measure and check.
 
@@ -296,14 +369,17 @@ All in `learning/tools/`, run from the repo folder. None of them solves a task; 
 | `hsv_tuner.py` | Sliders → see which pixels a colour range keeps (KD 1A) | `python3 learning/tools/hsv_tuner.py` |
 | `kd1a_testbench.py` | Runs **your** KD 1A script on 10 harder arena versions; answers must stay the same (KD 1A) | `python3 learning/tools/kd1a_testbench.py --script ~/pico_ws/src/swift_pico/scripts/task1a.py` |
 | `submission_check.py` | Before upload: names, **coding standard**, blocking calls, results format, PacBot functions unchanged, zip layout | `python3 learning/tools/submission_check.py pb1a --file ~/pacbot_ws/task1a/task_1a.py` |
-| `bag_score.py` | Estimate KD 1B/1C marks from a practice bag (assumptions in the file) | `python3 learning/tools/bag_score.py 1b task_1b` |
+| `bag_score.py` | Estimate KD 1B/1C/2A marks from a practice bag (assumptions in the file) | `python3 learning/tools/bag_score.py 2a task_2a` |
+| `kd2_bag_score.py` | Estimate KD 2B/2C marks from a bag: each waypoint's reach + 3 s hold, and speed | `python3 learning/tools/kd2_bag_score.py 2b task_2b client.log` |
+| `kd_record.sh` | **KD 2A/2B/2C recorded run in one command**: recording → sim → nodes in order → bag → stop on success → score → upload zip in `~/kd_upload_<task>/` (`--no-video` = rehearsal) | `learning/tools/kd_record.sh 2b` |
+| `pb_record.py` | **PacBot 1B/2A/2B recorded run in one command**: two terminals, recording, `--evaluate`, verdict ("0 collisions · OK to submit" or "do NOT submit"), zip made on camera | `python3 learning/tools/pb_record.py --task 2b` |
 | `toy_drone.py` | Plain-Python PID playground; you write the controller (PID practice) | `python3 learning/tools/toy_drone.py --kp 20` |
 | `check_links.py` | Check every link in these docs still works | `python3 learning/tools/check_links.py` |
 | `screen_record.py` | Record the whole screen for task videos (works on Wayland). **Ctrl+C in its terminal stops it**; video → `~/Videos/Screencasts/` | `python3 learning/tools/screen_record.py PB_4817_Task1A` |
 
 ---
 
-## 9. Troubleshooting
+## 10. Troubleshooting
 
 | You see | Cause → fix |
 |---|---|
@@ -319,11 +395,14 @@ All in `learning/tools/`, run from the repo folder. None of them solves a task; 
 | Ubuntu "internal error" popup after stopping a ROS tool | Harmless crash report → click Don't send; stop tools with Ctrl+C |
 | Screen recording is black, or the recorder has no stop button | Wayland → `learning/tools/screen_record.py` (Ctrl+C stops it). Kazam / SimpleScreenRecorder record black on Wayland. **Test a short recording first** |
 | Someone else's ROS nodes in `ros2 node list` | `ROS_LOCALHOST_ONLY` not set → re-run setup, open a new terminal |
+| KD recorder made **no bag** / "bag still running" | Fixed 16 Oct (`ros2 bag record` reads the keyboard, so as a background job in a real terminal it was frozen). `git pull` the kit |
+| PB 2B: after the last pellet the bot takes a very long way round | The ghost guards the way to the exit and the safety check found no gap in a whole lap, so it detoured (~1 run in 10, ~40 s lost). Not a bug: just record again |
+| `ImportError: tf_transformations` or `module 'numpy' has no attribute 'float'` (KD 2B server) | `sudo apt install ros-humble-tf-transformations` then `pip3 install --user --upgrade transforms3d` |
 | `setup.sh` says `[!!] ... exists but is not the git clone` | You made that folder by hand → rename it (e.g. `mv ~/pico_ws ~/pico_ws.old`) and re-run |
 
 ---
 
-## 10. FAQ
+## 11. FAQ
 
 **I'm on Windows / WSL / a VM.** e-Yantra requires bare-metal Ubuntu 22.04; its evaluators reject WSL.
 Dual-boot is the way (see e-Yantra Task 0).
@@ -338,26 +417,32 @@ each person owns specific subtasks.
 
 **Where do I write my code?** KD 1A: `~/pico_ws/src/swift_pico/scripts/task1a.py`. PB 1A/1B:
 `~/pacbot_ws/task1a/task_1a.py`, `~/pacbot_ws/task1b/task_1b.py`. KD 1B/1C: no code, only gains.
-**Never** put solution code in this repo.
+Task 2: KD in `~/pico_ws/src/swift_pico/src/` (`pico_controller_PID.py`, `waypoint_service.py`, `pico_client.py`,
+`pico_server.py`, then `colcon build`); PacBot directly in `~/pacbot_ws/task2a/task_2a_boilerplate.py` and
+`task2b/task_2b_boilerplate.py`. **Never** put solution code in this repo.
+
+**Do we have to pick one theme now?** Both themes ran through Task 2. The rules say the team commits to one from
+Task 2/3; no portal page has asked yet. Watch for it when Task 3 opens.
 
 **Who made these notes?** Saurabh, with an AI assistant (Claude); the `CLAUDE.md` file is its index. Teammates use the ChatGPT Project.
 
 ---
 
-## 11. Open questions to ask e-Yantra
+## 12. Open questions to ask e-Yantra
 
-Post these on the e-Yantra forum; the portal doesn't answer them, or contradicts itself:
+Still open (post on the e-Yantra forum):
 
-1. **Exact deadline time** on 23 September (both themes).
-2. **KD 1A results file:** 3 lines or 4? The instruction page shows a blank line 2; the submission page says "exactly three lines".
-3. **KD 1A marker IDs:** always 80, 85, 90, 95 in the hidden test images? The submission example shows 10, 15, 20, 25.
-4. **KD 1B/1C scoring:** when does the clock start? Are "hover seconds" continuous or cumulative?
-5. **Theme commitment:** from Task 2 or Task 3? Two e-Yantra documents disagree.
-6. **PacBot:** 1A and 1B both use `PB#<team_id>.zip`. Confirm they go in separate slots.
+1. **Theme commitment:** from Task 3, or later? Two e-Yantra documents disagree, and no portal page has asked yet.
+2. **KD hold rule (2B/2C):** "inside" a waypoint = a ±0.4 box per axis, or a 0.4 sphere? Our code holds by straight-line
+   distance, slightly inside 0.4, which counts under both readings.
+3. **Hard deadlines:** posted dates are *soft* (the e-Ratna bonus needs them); the hard cutoffs are not published.
+
+Answered: deadline time (posted dates are soft, 11:59 pm) · KD 1B/1C clock and hover counting · both PacBot tasks use
+`PB#4817.zip`, in separate slots · late KD 2A was accepted after the forum had said it was closed.
 
 ---
 
-## 12. Updating, undoing, contributing
+## 13. Updating, undoing, contributing
 
 **Get the latest docs, tools and e-Yantra updates:**
 ```bash
@@ -378,20 +463,20 @@ The workspaces `~/pico_ws` and `~/pacbot_ws` are e-Yantra's normal task folders;
 
 ---
 
-## 13. Team rules
+## 14. Team rules
 
 - **This repo is public. Never commit graded solution code** (`task1a.py`, `task_1a.py`, `task_1b.py`,
-  `KD_4817_*`, results, zips). Other teams could copy it, and **our** submission would then fail the
+  `task_2*_boilerplate.py`, `pico_*.py`, `waypoint_service.py`, `KD_4817_*`, bags `*.db3`, results, zips). Other teams could copy it, and **our** submission would then fail the
   plagiarism check. `.gitignore` blocks the usual names; still run `git status` before every commit.
 - **Never commit e-Yantra's files** (their IP): theme docs, portal PDFs, launch binaries, boilerplates.
-- **Never open, decompile or modify** the PacBot `task_1*_launch` binaries (tamper rule = disqualification).
+- **Never open, decompile or modify** the PacBot `task_*_launch` binaries (tamper rule = disqualification).
 - **Follow the e-Yantra coding standard** in every submitted file (header block + Purpose / Input Arguments /
   Returns / Example call under each function). `submission_check.py` checks it.
 - **PacBot:** never rename or restructure the boilerplate's functions.
 
 ---
 
-## 14. What's in this repo
+## 15. What's in this repo
 
 | Path | What |
 |---|---|
@@ -399,6 +484,6 @@ The workspaces `~/pico_ws` and `~/pacbot_ws` are e-Yantra's normal task folders;
 | [`RESOURCES.md`](RESOURCES.md) | Every learning link from the portal, tagged by subtask |
 | [`chatgpt-project/`](chatgpt-project) | The files + instructions for the team's ChatGPT Project (see `HOW_TO_CREATE_THE_PROJECT.md`) |
 | [`setup/setup.sh`](setup/setup.sh) | Laptop setup + checker |
-| [`learning/tools/`](learning/tools) | The tools in [section 8](#8-tools-in-this-repo) |
+| [`learning/tools/`](learning/tools) | The tools in [section 9](#9-tools-in-this-repo) |
 | [`CLAUDE.md`](CLAUDE.md) | Index of the team notes (written for the AI assistant, but readable) |
 | [`context/`](context) | Task briefs, setup findings, learning-material analysis, task log |
